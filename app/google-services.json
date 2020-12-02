@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "999252884035",
+    "firebase_url": "https://bookbuzz-a24fb.firebaseio.com",
+    "project_id": "bookbuzz-a24fb",
+    "storage_bucket": "bookbuzz-a24fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999252884035:android:ecdbc2289eb389b50772f6",
+        "android_client_info": {
+          "package_name": "com.example.bookbuzz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "999252884035-g5a6ttc87ie4t2lmfu2qukr61jvbibiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB77Onc4gs7EMoc77qNfmdDErUqgR1gJ5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "999252884035-g5a6ttc87ie4t2lmfu2qukr61jvbibiv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
