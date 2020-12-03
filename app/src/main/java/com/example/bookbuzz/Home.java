@@ -28,6 +28,11 @@ public class Home extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
-}
+
+        }
+        public void search(View v){
+        Intent i=new Intent(this,SearchBook.class);
+        startActivity(i);
+        }
+    }
