@@ -53,7 +53,7 @@ public class Startpage extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent i = new Intent(getApplicationContext(),Splash.class);
+                Intent i = new Intent(getApplicationContext(),Transformationac.class);
                 startActivity(i);
                 finish();
 

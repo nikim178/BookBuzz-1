@@ -1,6 +1,6 @@
 package com.example.bookbuzz;
 
-import androidx.annotation.NonNull;
+/*import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
@@ -18,9 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Member;
-import java.util.HashMap;
+import java.util.HashMap;*/
 
-public class EditProfile extends AppCompatActivity {
+/*public class EditProfile extends AppCompatActivity {
 
     private ImageView iview;
     private EditText uname, uemail, ulocation, ubio;
@@ -106,5 +106,3 @@ public class EditProfile extends AppCompatActivity {
             }
         });
     }*/
-    }
-}
