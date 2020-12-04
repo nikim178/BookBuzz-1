@@ -75,7 +75,7 @@ public class UserRegistration extends AppCompatActivity {
 
         if(firebaseUser!=null)
         {
-            startActivity(new Intent(UserRegistration.this,Home.class));
+            startActivity(new Intent(UserRegistration.this,Startpage.class));
 
         }
 
@@ -117,7 +117,7 @@ public class UserRegistration extends AppCompatActivity {
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
-                            Intent intent=new Intent(UserRegistration.this,Home.class);
+                            Intent intent=new Intent(UserRegistration.this,Startpage.class);
                             startActivity(intent);
                             Toast.makeText(UserRegistration.this,"Sign in with google",Toast.LENGTH_SHORT).show();
                         } else {

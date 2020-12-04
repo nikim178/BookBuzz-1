@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookBuzz">
-        <activity android:name=".SearchBook"></activity>
+        <activity android:name=".Splash"></activity>
+        <activity android:name=".Startpage" />
+        <activity android:name=".SearchBook" />
         <activity android:name=".EditProfile" />
         <activity android:name=".Profile" />
         <activity android:name=".Help" />

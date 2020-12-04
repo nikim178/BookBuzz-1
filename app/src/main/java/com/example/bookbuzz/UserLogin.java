@@ -106,7 +106,7 @@ public class UserLogin extends AppCompatActivity {
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
-                            Intent intent=new Intent(UserLogin.this,Home.class);
+                            Intent intent=new Intent(UserLogin.this,Startpage.class);
                             startActivity(intent);
                             Toast.makeText(UserLogin.this,"Sign in with google",Toast.LENGTH_SHORT).show();
                         } else {
@@ -131,7 +131,7 @@ public class UserLogin extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(UserLogin.this, "Login Successful!!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(UserLogin.this, Home.class));
+                                startActivity(new Intent(UserLogin.this, Startpage.class));
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
