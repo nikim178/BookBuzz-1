@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -21,12 +22,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserRegistration extends AppCompatActivity {
     private EditText uEmail,uPass;
@@ -36,6 +44,8 @@ public class UserRegistration extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button uGoogle;
     GoogleSignInClient mGoogleSignInClient;
+    FirebaseFirestore fStore;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +57,7 @@ public class UserRegistration extends AppCompatActivity {
         uLogin=findViewById(R.id.textView);
         uRegisterButton=findViewById(R.id.button);
         mAuth = FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
         uGoogle=findViewById(R.id.button4);
 
 
@@ -81,6 +92,7 @@ public class UserRegistration extends AppCompatActivity {
 
 
     }
+    //code for google sign in
     int RC_SIGN_IN=66;
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -131,7 +143,7 @@ public class UserRegistration extends AppCompatActivity {
                     }
                 });
     }
-
+    //code for signin through email&password
     private void createUser()
     {
         String email=uEmail.getText().toString();
@@ -147,6 +159,19 @@ public class UserRegistration extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Toast.makeText(UserRegistration.this,"Registered Successfully!!",Toast.LENGTH_SHORT).show();
+
+                                userID=mAuth.getCurrentUser().getUid();
+                                DocumentReference documentReference=fStore.collection("users").document(userID);
+                                Map<String,Object> user= new HashMap<>();
+                                user.put("userName",name);
+                                user.put("userEmail",email);
+                                user.put("userPassword",password);
+                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d("TAG", "onSuccess: user profile is created"+userID);
+                                    }
+                                });
                                 startActivity(new Intent(UserRegistration.this,UserLogin.class));
                                 finish();
                             }
