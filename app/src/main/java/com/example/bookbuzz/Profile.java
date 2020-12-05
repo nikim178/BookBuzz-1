@@ -1,6 +1,7 @@
 package com.example.bookbuzz;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,11 +20,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Profile extends AppCompatActivity {
     private ImageButton eprofile;
-    private TextView name,email,loc,bio;
+    private TextView name,email;
     FirebaseAuth fAuth;
     FirebaseDatabase firebaseDatabase;
     FirebaseFirestore fStore;
@@ -36,37 +40,17 @@ public class Profile extends AppCompatActivity {
 
         name = findViewById(R.id.TextView6);
         email = findViewById(R.id.TextView5);
-        loc = findViewById(R.id.TextView7);
-        bio = findViewById(R.id.TextView8);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-        DatabaseReference databaseReference = firebaseDatabase.getReference(fAuth.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        userId = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this,new EventListener<DocumentSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-               name.setText("Name: " + userProfile.getuName());
-               email.setText("Email: " + userProfile.getuEmail());
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                name.setText(documentSnapshot.getString("userName"));
+                email.setText(documentSnapshot.getString("userEmail"));
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Profile.this,databaseError.getCode(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        eprofile = (ImageButton) findViewById(R.id.imageButton);
-        eprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openEditProfile();
-            }
-
-            private void openEditProfile() {
-                //Intent intent = new Intent(Profile.this,EditProfile.class);
-                //startActivity(intent);
             }
         });
     }
