@@ -38,7 +38,7 @@ import java.util.Map;
 
 public class UserRegistration extends AppCompatActivity {
     private EditText uEmail,uPass;
-    private TextView uName;
+    private TextView uName,uLocation;
     private TextView uLogin;
     private Button uRegisterButton;
     private FirebaseAuth mAuth;
@@ -54,6 +54,7 @@ public class UserRegistration extends AppCompatActivity {
         uEmail=findViewById(R.id.editTextTextEmailAddress);
         uPass=findViewById(R.id.editTextTextPassword);
         uName=findViewById(R.id.editTextTextPersonName);
+        uLocation=findViewById(R.id.editTextTextPersonName3);
         uLogin=findViewById(R.id.textView);
         uRegisterButton=findViewById(R.id.button);
         mAuth = FirebaseAuth.getInstance();
@@ -149,6 +150,7 @@ public class UserRegistration extends AppCompatActivity {
         String email=uEmail.getText().toString();
         String password=uPass.getText().toString();
         String name=uName.getText().toString();
+        String location=uLocation.getText().toString();
 
         if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
@@ -165,6 +167,7 @@ public class UserRegistration extends AppCompatActivity {
                                 Map<String,Object> user= new HashMap<>();
                                 user.put("userName",name);
                                 user.put("userEmail",email);
+                                user.put("userLocation",location);
                                 user.put("userPassword",password);
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
