@@ -59,7 +59,7 @@ public class Startpage extends AppCompatActivity {
 
             }
         };
-        handler.postDelayed(callback, 8000);
+        handler.postDelayed(callback, 4000);
 
     }
 
