@@ -1,11 +1,16 @@
 package com.example.bookbuzz;
 
-/*import androidx.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,96 +18,147 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Member;
-import java.util.HashMap;*/
+import java.util.HashMap;
+import java.util.Map;
 
-/*public class EditProfile extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity {
 
-    private ImageView iview;
     private EditText uname, uemail, ulocation, ubio;
     private Button update;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    Member member;
+    FirebaseFirestore fstore;
+    ImageView profileImageView;
+    FirebaseUser user;
+    StorageReference storageReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-    //private DocumentRefrence refrence;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        Intent data = getIntent();
+        String name = data.getStringExtra("name");
+        String email = data.getStringExtra("email");
+        String location = data.getStringExtra("location");
+
+        mAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
+        user = mAuth.getCurrentUser();
+        storageReference = FirebaseStorage.getInstance().getReference();
+
         uname = findViewById(R.id.editTextTextPersonName2);
         uemail = findViewById(R.id.editTextTextEmailAddress3);
         ulocation = findViewById(R.id.editTextTextPersonName4);
         ubio = findViewById(R.id.editTextTextPersonName5);
         update = (Button) findViewById(R.id.button7);
-        iview = findViewById(R.id.imageView2);
+        profileImageView = findViewById(R.id.imageView3);
 
-        databaseReference = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Member");/*{
-            @NonNull
+        StorageReference profileRef = storageReference.child("users/" + mAuth.getCurrentUser().getUid() + "profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
-            public Class<?> getDeclaringClass() {
-                return null;
-            }
-
-            @NonNull
-            @Override
-            public String getName() {
-                return null;
-            }
-
-            @Override
-            public int getModifiers() {
-                return 0;
-            }
-
-            @Override
-            public boolean isSynthetic() {
-                return false;
-            }
-        };*/
-
-
-
-
-       /* update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-
-
-            }
-
-            private void validateAndsave() {
-                if(TextUtils.isEmpty(uname.getText().toString()))
-                {
-                    Toast.makeText(EditProfile.this,"Please enter your name",Toast.LENGTH_SHORT).show();
-                }
-                else if (TextUtils.isEmpty(uemail.getText().toString()))
-                {
-                    Toast.makeText(EditProfile.this, "Please enter your email", Toast.LENGTH_SHORT).show();
-                }
-                else if (TextUtils.isEmpty(ulocation.getText().toString()))
-                {
-                    Toast.makeText(EditProfile.this, "Please enter your location", Toast.LENGTH_SHORT).show();
-                }
-                else if (TextUtils.isEmpty(ubio.getText().toString()))
-                {
-                    Toast.makeText(EditProfile.this, "Please enter your biography", Toast.LENGTH_SHORT).show();
-                } else {
-                    HashMap<String,Object> userMap = new HashMap<>();
-                    userMap.put("name",uname.getText().toString());
-                    userMap.put("email",uemail.getText().toString());
-                    userMap.put("loction",ulocation.getText().toString());
-                    userMap.put("biography",ubio.getText().toString());
-
-                    databaseReference.
-                }
+            public void onSuccess(Uri uri) {
+                Picasso.with(EditProfile.this).load(uri).into(profileImageView);
             }
         });
-    }*/
+
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGalleryIntent, 1000);
+            }
+        });
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (uname.getText().toString().isEmpty() || uemail.getText().toString().isEmpty() || ulocation.getText().toString().isEmpty()) {
+                    Toast.makeText(EditProfile.this, "One or many fields are empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String name = uname.getText().toString();
+                String email = uemail.getText().toString();
+                String location = ulocation.getText().toString();
+                user.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        DocumentReference documentReference = fstore.collection("users").document(user.getUid());
+                        Map<String, Object> edited = new HashMap<>();
+                        edited.put("userEmail", email);
+                        edited.put("userName", uname.getText().toString());
+                        edited.put("userLocation",ulocation.getText().toString());
+                        documentReference.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(EditProfile.this, "Profile updated", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), Profile.class));
+                                finish();
+                            }
+                        });
+                        Toast.makeText(EditProfile.this, "Changes saved", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(EditProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        uname.setText(name);
+        uemail.setText(email);
+        ulocation.setText(location);
+
+        Log.d("TAG", "onCreate: " + name + " " + email + " " + location);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1000) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri imageUri = data.getData();
+                /*profileImage.setImageURI(imageUri);*/
+                uploadImageToFirebase(imageUri);
+            }
+        }
+    }
+
+    private void uploadImageToFirebase(Uri imageUri) {
+        //upload image to firebase
+        StorageReference fileRef = storageReference.child("users/" + mAuth.getCurrentUser().getUid()+ "profile.jpg");
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.with(EditProfile.this).load(uri).into(profileImageView);
+                    }
+                });
+            }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+            }
+            });
+        }
+    }

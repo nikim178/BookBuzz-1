@@ -42,8 +42,11 @@ dependencies {
    // implementation files('libs/Volley.jar')
     implementation files('libs/picasso.jar')
     implementation files('libs\\Volley.jar')
+    implementation 'com.google.firebase:firebase-storage:19.2.0'
     // implementation files('libs/com.android.volley-2015.05.28.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
 }
