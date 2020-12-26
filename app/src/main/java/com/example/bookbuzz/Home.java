@@ -13,12 +13,14 @@ public class Home extends AppCompatActivity {
     private Button uSignOutButton, myProfile;
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         uSignOutButton=findViewById(R.id.button3);
         myProfile= findViewById(R.id.button9);
+
 
         mAuth = FirebaseAuth.getInstance();
         //Code for Log out button
@@ -41,8 +43,15 @@ public class Home extends AppCompatActivity {
 
 
         }
-        public void search(View v){
+        public void genre(View v){
+        Intent i=new Intent(this,SelectGenre.class);
+        startActivity(i);
+    }
+
+
+    public void search(View v){
         Intent i=new Intent(this,SearchBook.class);
         startActivity(i);
         }
+
     }

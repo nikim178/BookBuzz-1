@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookBuzz">
-        <activity android:name=".Transformationac" android:label="Introduction"></activity>
+        <activity android:name=".SelectGenre"></activity>
+        <activity android:name=".SwipeGenre" />
+        <activity
+            android:name=".Transformationac"
+            android:label="Introduction" />
         <activity android:name=".Startpage" />
         <activity android:name=".SearchBook" />
         <activity android:name=".EditProfile" />
