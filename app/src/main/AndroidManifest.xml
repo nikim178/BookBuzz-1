@@ -15,10 +15,6 @@
         android:theme="@style/Theme.BookBuzz">
         <activity android:name=".Home3Activity"></activity>
         <activity
-            android:name=".Home2Activity"
-            android:label="@string/title_activity_home2"
-            android:theme="@style/Theme.BookBuzz.NoActionBar" />
-        <activity
             android:name=".SelectGenre"
             tools:ignore="MissingClass" />
         <activity android:name=".SwipeGenre" />
