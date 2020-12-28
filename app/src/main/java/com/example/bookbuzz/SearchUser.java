@@ -6,9 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.bookbuzz.models.UserModel;
@@ -44,7 +48,7 @@ public class SearchUser extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull UserModel model) {
                 holder.userName.setText(model.getUserName());
-                holder.userLocation.setText(model.getUserLocation());
+                holder.userLocation.setText(model.getUserLocation().toLowerCase());
                 holder.userEmail.setText(model.getUserEmail());
 
 
@@ -53,6 +57,38 @@ public class SearchUser extends AppCompatActivity {
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
+        EditText searchbox= findViewById(R.id.editTextTextPersonName);
+        searchbox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Query query;
+                Log.d("one","searchbox changed to"+s.toString());
+                if(s.toString().isEmpty()){
+                    query= firestore.collection("users");
+
+                }
+                else {
+                    query = firestore.collection("users")
+                            .whereEqualTo("userLocation", s.toString().toUpperCase());
+                }
+                FirestoreRecyclerOptions<UserModel> options= new FirestoreRecyclerOptions.Builder<UserModel>()
+                        .setQuery(query,UserModel.class)
+                        .build();
+                adapter.updateOptions(options);
+
+
+            }
+        });
 
 
 
