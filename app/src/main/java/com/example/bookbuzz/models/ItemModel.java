@@ -1,4 +1,4 @@
-package com.example.bookbuzz;
+package com.example.bookbuzz.models;
 
 public class ItemModel {
     private int image;

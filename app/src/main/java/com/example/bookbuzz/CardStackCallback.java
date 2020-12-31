@@ -2,6 +2,8 @@ package com.example.bookbuzz;
 
 import androidx.recyclerview.widget.DiffUtil;
 
+import com.example.bookbuzz.models.ItemModel;
+
 import java.util.List;
 
 public class CardStackCallback extends DiffUtil.Callback {

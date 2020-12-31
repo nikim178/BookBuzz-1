@@ -1,4 +1,4 @@
-package com.example.bookbuzz;
+package com.example.bookbuzz.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +8,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookbuzz.models.ItemModel;
+import com.example.bookbuzz.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class CardStackAdapter extends RecyclerView.Adapter<com.example.bookbuzz.CardStackAdapter.ViewHolder> {
+public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.ViewHolder> {
 
     private List<ItemModel> items;
 
@@ -25,7 +27,7 @@ public class CardStackAdapter extends RecyclerView.Adapter<com.example.bookbuzz.
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_card, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view);                   
     }
 
     @Override
