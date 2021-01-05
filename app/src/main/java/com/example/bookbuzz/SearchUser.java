@@ -21,6 +21,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import org.w3c.dom.Text;
+
 public class SearchUser extends AppCompatActivity {
 
     private RecyclerView list;
@@ -49,6 +51,7 @@ public class SearchUser extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull UserModel model) {
                 holder.userName.setText(model.getUserName());
                 holder.userLocation.setText(model.getUserLocation().toLowerCase());
+                holder.userZipcode.setText(model.getUserZipcode());
                 holder.userEmail.setText(model.getUserEmail());
 
 
@@ -79,7 +82,7 @@ public class SearchUser extends AppCompatActivity {
                 }
                 else {
                     query = firestore.collection("users")
-                            .whereEqualTo("userLocation", s.toString().toUpperCase());
+                            .whereEqualTo("userZipcode", s.toString());
                 }
                 FirestoreRecyclerOptions<UserModel> options= new FirestoreRecyclerOptions.Builder<UserModel>()
                         .setQuery(query,UserModel.class)
@@ -98,13 +101,17 @@ public class SearchUser extends AppCompatActivity {
     private class viewHolder extends RecyclerView.ViewHolder{
         private TextView userName;
         private TextView userLocation;
+        private TextView userZipcode;
         private TextView userEmail;
+        private View view;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.name);
             userLocation=itemView.findViewById(R.id.location);
+            userZipcode=itemView.findViewById(R.id.zip);
             userEmail=itemView.findViewById(R.id.email);
+            view= itemView.findViewById(R.id.img1);
         }
     }
 
