@@ -23,19 +23,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:padding="16dp"
-        android:background="@drawable/gradation_black">
+        android:background="@drawable/gradation_black">`
 
         <TextView
             android:id="@+id/item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:textSize="49sp"
+            android:textSize="30sp"
             android:textAlignment="gravity"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:shadowColor="@color/black"/>
-
-
         <TextView
             android:id="@+id/item_city"
             android:layout_width="wrap_content"
