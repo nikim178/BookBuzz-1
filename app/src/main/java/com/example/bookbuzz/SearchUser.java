@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.bookbuzz.models.UserModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -22,6 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import org.w3c.dom.Text;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SearchUser extends AppCompatActivity {
 
@@ -53,6 +56,9 @@ public class SearchUser extends AppCompatActivity {
                 holder.userLocation.setText(model.getUserLocation().toLowerCase());
                 holder.userZipcode.setText(model.getUserZipcode());
                 holder.userEmail.setText(model.getUserEmail());
+                Glide.with(holder.userProfileURI.getContext()).load(model.getUserProfileURI()).into(holder.userProfileURI);
+
+
 
 
             }
@@ -103,7 +109,7 @@ public class SearchUser extends AppCompatActivity {
         private TextView userLocation;
         private TextView userZipcode;
         private TextView userEmail;
-        private View view;
+        private CircleImageView userProfileURI;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -111,7 +117,7 @@ public class SearchUser extends AppCompatActivity {
             userLocation=itemView.findViewById(R.id.location);
             userZipcode=itemView.findViewById(R.id.zip);
             userEmail=itemView.findViewById(R.id.email);
-            view= itemView.findViewById(R.id.img1);
+            userProfileURI= itemView.findViewById(R.id.img1);
         }
     }
 

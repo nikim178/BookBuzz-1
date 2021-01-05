@@ -151,7 +151,7 @@ public class UserRegistration extends AppCompatActivity {
         String email=uEmail.getText().toString();
         String password=uPass.getText().toString();
         String name=uName.getText().toString();
-        String location=uLocation.getText().toString().toUpperCase();
+        String location=uLocation.getText().toString();
         String zipCode=uZipcode.getText().toString();
 
         if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches())

@@ -35,7 +35,7 @@ import static java.lang.System.load;
 
 public class Profile extends AppCompatActivity {
     private ImageButton eprofile;
-    private TextView name, email,location;
+    private TextView name, email,location,bio;
     FirebaseAuth fAuth;
     StorageReference storageReference;
     FirebaseFirestore fStore;
@@ -52,6 +52,7 @@ public class Profile extends AppCompatActivity {
         email = findViewById(R.id.TextView5);
         location = findViewById(R.id.TextView7);
         eprofile = findViewById(R.id.imageButton);
+        bio=findViewById(R.id.TextView8);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -72,6 +73,7 @@ public class Profile extends AppCompatActivity {
                 name.setText(documentSnapshot.getString("userName"));
                 email.setText(documentSnapshot.getString("userEmail"));
                 location.setText(documentSnapshot.getString("userLocation"));
+                bio.setText(documentSnapshot.getString("userBio"));
             }
         });
 
@@ -82,6 +84,7 @@ public class Profile extends AppCompatActivity {
                 i.putExtra("name",name.getText().toString());
                 i.putExtra("email",email.getText().toString());
                 i.putExtra("location",location.getText().toString());
+                i.putExtra("bio",bio.getText().toString());
                 startActivity(i);
             }
         });

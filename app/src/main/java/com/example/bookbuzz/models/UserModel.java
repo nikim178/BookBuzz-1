@@ -5,15 +5,25 @@ public class UserModel {
     private String userLocation;
     private String userZipcode;
     private String userEmail;
+    private String userProfileURI;
 
     public UserModel() {
     }
 
-    public UserModel(String userName, String userEmail, String userLocation, String userZipcode) {
+    public UserModel(String userName, String userEmail, String userLocation, String userZipcode, String userProfileURI) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userLocation = userLocation;
         this.userZipcode = userZipcode;
+        this.userProfileURI = userProfileURI;
+    }
+
+    public String getUserProfileURI() {
+        return userProfileURI;
+    }
+
+    public void setUserProfileURI(String userProfileURI) {
+        this.userProfileURI = userProfileURI;
     }
 
     public String getUserName() {

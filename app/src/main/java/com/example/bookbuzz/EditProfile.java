@@ -18,8 +18,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -56,6 +58,7 @@ public class EditProfile extends AppCompatActivity {
         String name = data.getStringExtra("name");
         String email = data.getStringExtra("email");
         String location = data.getStringExtra("location");
+        String bio= data.getStringExtra("bio");
 
         mAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -74,6 +77,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.with(EditProfile.this).load(uri).into(profileImageView);
+
             }
         });
 
@@ -95,6 +99,7 @@ public class EditProfile extends AppCompatActivity {
                 String name = uname.getText().toString();
                 String email = uemail.getText().toString();
                 String location = ulocation.getText().toString();
+                String bio = ubio.getText().toString();
                 user.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -103,6 +108,7 @@ public class EditProfile extends AppCompatActivity {
                         edited.put("userEmail", email);
                         edited.put("userName", uname.getText().toString());
                         edited.put("userLocation",ulocation.getText().toString());
+                        edited.put("userBio",ubio.getText().toString());
                         documentReference.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -125,6 +131,7 @@ public class EditProfile extends AppCompatActivity {
         uname.setText(name);
         uemail.setText(email);
         ulocation.setText(location);
+        ubio.setText(bio);
 
         Log.d("TAG", "onCreate: " + name + " " + email + " " + location);
     }
@@ -151,6 +158,17 @@ public class EditProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.with(EditProfile.this).load(uri).into(profileImageView);
+                        /// for uploading image to firestore
+                        DocumentReference documentReference = fstore.collection("users").document(user.getUid());
+                        Map<String, Object> edited = new HashMap<>();
+                        edited.put("userProfileURI",uri.toString());
+                        fstore.collection("users").document(mAuth.getUid()).update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                            }
+                        });//till here
+
                     }
                 });
             }
