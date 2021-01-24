@@ -478,12 +478,13 @@ public class SwipeGenre extends AppCompatActivity {
             items.add(new ItemModel(R.drawable.detective5, "The Guest List"));
             items.add(new ItemModel(R.drawable.detective7, "A Study in Scarlet"));
             items.add(new ItemModel(R.drawable.detective, "Murder on the Orient Express"));
-            items.add(new ItemModel(R.drawable.detective1, "Sherlock Holmes"));
-            items.add(new ItemModel(R.drawable.detective2, "The Girl with the Dragon Tatoo"));
-            items.add(new ItemModel(R.drawable.detective3, "The murder of Roger Ackroyd"));
-            items.add(new ItemModel(R.drawable.detective4, "The Murders in the Rue Morgue"));
-            items.add(new ItemModel(R.drawable.detective5, "The Guest List"));
-            items.add(new ItemModel(R.drawable.detective7, "A Study in Scarlet"));
+            items.add(new ItemModel(R.drawable.comic, "Nimona"));
+            items.add(new ItemModel(R.drawable.comic2, "Justic League"));
+            items.add(new ItemModel(R.drawable.comic3, "Batman"));
+            items.add(new ItemModel(R.drawable.comic4, "Daytripper"));
+            items.add(new ItemModel(R.drawable.comic5, "Once & Future"));
+            items.add(new ItemModel(R.drawable.comic6, "The Sherif Of Babylon"));
+            items.add(new ItemModel(R.drawable.comic7, "Iron Man"));
             return items;
         }
             return null;
