@@ -57,6 +57,15 @@ public class SearchUser extends AppCompatActivity {
                 holder.userZipcode.setText(model.getUserZipcode());
                 holder.userEmail.setText(model.getUserEmail());
                 Glide.with(holder.userProfileURI.getContext()).load(model.getUserProfileURI()).into(holder.userProfileURI);
+                 /*holder.userProfileURI.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AppCompatActivity activity=(AppCompatActivity)v.getContext();
+                        activity.getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.wrapper,new indiFragment(model.getUserName(),model.getUserLocation(),model.getUserZipcode(),model.getUserEmail(),model.getUserProfileURI())).addToBackStack(null).commit();
+
+                    }
+                });*/
 
 
 

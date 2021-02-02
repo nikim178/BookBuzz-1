@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             // This is just for test purpose
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,UserRegistration.class));
+                startActivity(new Intent(MainActivity.this,Trial.class));
             }
         });
     }
