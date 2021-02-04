@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.bookbuzz.models.UserModel;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -68,6 +72,41 @@ public class userFragment extends Fragment {
                 .build();
         adapter=new MyAdapter(options);
         recview.setAdapter(adapter);
+        //for search
+        EditText searchbox= view.findViewById(R.id.editTextTextPersonName);
+        searchbox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Query query;
+                Log.d("one","searchbox changed to"+s.toString());
+                if(s.toString().isEmpty()){
+                    query= firestore.collection("users");
+
+                }
+                else {
+                    query = firestore.collection("users")
+                            .whereEqualTo("userZipcode", s.toString());
+                }
+                FirestoreRecyclerOptions<UserModel> options= new FirestoreRecyclerOptions.Builder<UserModel>()
+                        .setQuery(query,UserModel.class)
+                        .build();
+                adapter.updateOptions(options);
+
+
+            }
+        });//till here
+
+
 
         return view;
     }

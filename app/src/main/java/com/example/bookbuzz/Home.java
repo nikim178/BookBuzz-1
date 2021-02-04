@@ -47,12 +47,13 @@ public class Home extends AppCompatActivity {
         Intent i=new Intent(this,SelectGenre.class);
         startActivity(i);
     }
+
     public void homePage(View v){
         Intent i=new Intent(this,Home3Activity.class);
         startActivity(i);
     }
     public void searchUser(View v){
-        Intent i=new Intent(this,SearchUser.class);
+        Intent i=new Intent(this, SearchUsers.class);
         startActivity(i);
     }
 

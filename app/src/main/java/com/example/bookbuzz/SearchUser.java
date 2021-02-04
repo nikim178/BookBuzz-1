@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -66,6 +67,17 @@ public class SearchUser extends AppCompatActivity {
 
                     }
                 });*/
+                //new code
+                holder.userProfileURI.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        user(v,model.getUserName(),model.getUserLocation(),model.getUserZipcode(),model.getUserEmail(),model.getUserProfileURI());
+
+
+
+                    }
+                });//till here
 
 
 
@@ -140,5 +152,14 @@ public class SearchUser extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+    public void user(View v,String name, String location, String zipcode, String email, String url){
+        Intent i=new Intent(this,SearchUsers.class);
+        i.putExtra("name",name);
+        i.putExtra("location",location);
+        i.putExtra("zipcode",zipcode);
+        i.putExtra("email",email);
+        i.putExtra("url",url);
+        startActivity(i);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.bookbuzz;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,13 +9,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 
-public class indiFragment extends Fragment {
+public class indiFragment extends Fragment  {
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -71,6 +73,15 @@ public class indiFragment extends Fragment {
         zipcodeholder.setText(zipcode);
         emailholder.setText(email);
         Glide.with(getContext()).load(imageURL).into(imageholder);
+        Button b= view.findViewById(R.id.request);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Home.class);
+                startActivity(intent);
+
+            }
+        });
 
         return view;
     }
@@ -79,5 +90,9 @@ public class indiFragment extends Fragment {
         activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.wrapper,new userFragment()).addToBackStack(null).commit();
 
+
     }
+
+
+
 }
