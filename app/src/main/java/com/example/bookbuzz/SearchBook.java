@@ -1,8 +1,10 @@
 package com.example.bookbuzz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +27,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bookbuzz.models.BookItem;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -33,10 +46,12 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
-    public class SearchBook extends AppCompatActivity implements View.OnClickListener {
+public class SearchBook extends AppCompatActivity implements View.OnClickListener {
 
         //private UserViewModel mUserViewModel;
         EditText _mSearch;
@@ -190,10 +205,10 @@ import java.util.List;
             matchUserId.setText(book.title);
             matchBookTitle.setText(book.getAuthorsString());
 
-            //SearchListButtonHandler buttonHandler = new SearchListButtonHandler(book);
+            SearchListButtonHandler buttonHandler = new SearchListButtonHandler(book);
 
-            // addBookListButton.setOnClickListener(buttonHandler);
-            //addWishListButton.setOnClickListener(buttonHandler);
+             addBookListButton.setOnClickListener(buttonHandler);
+             addWishListButton.setOnClickListener(buttonHandler);
 
             return convertView;
         }
@@ -204,7 +219,7 @@ import java.util.List;
         }
     }
 
-    /*class SearchListButtonHandler implements View.OnClickListener {
+    class SearchListButtonHandler implements View.OnClickListener {
         private BookItem mBook;
         public SearchListButtonHandler(BookItem b) {
             mBook = b;
@@ -212,25 +227,52 @@ import java.util.List;
 
         @Override
         public void onClick(View v) {
-            dbBook b = new dbBook(mBook.title, mBook.imageLink);
-            b.setBookId(mBook.id.hashCode());
-            int uid = mUserViewModel.getCurrUserId();
+            FirebaseAuth mAuth;
+            FirebaseFirestore fstore;
+            FirebaseUser user;
+            StorageReference storageReference;
+            mAuth = FirebaseAuth.getInstance();
+            fstore = FirebaseFirestore.getInstance();
+            user = mAuth.getCurrentUser();
+
 
             switch (v.getId()) {
                 case R.id.searchAddBookListButton:
-                    mUserViewModel.insertBook(b);
-                    mUserViewModel.addOwnedList(b.getBookId());
-                    mUserViewModel.addOwnedUser(b.getBookId(), uid);
-                    Toast.makeText(getApplicationContext(), "Added book to Book List!" , Toast.LENGTH_SHORT ).show();
+                    DocumentReference documentReference = fstore.collection("users").document(user.getUid()).collection("booklist").document();
+                    Map<String, Object> own = new HashMap<>();
+                    own.put("BookTitle", mBook.title);
+                    own.put("BookAuth", mBook.getAuthorsString());
+                    own.put("image",mBook.imageLink);
+                    documentReference.set(own).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(SearchBook.this, "added book", Toast.LENGTH_SHORT).show();
+                            Log.d("one", "done1 ");
+                        }
+                    });
+
+
+
+                    //Toast.makeText(getApplicationContext(), "Added book to Book List!" , Toast.LENGTH_SHORT ).show();
                     break;
                 case R.id.searchAddWishListButton:
-                    mUserViewModel.insertBook(b);
-                    mUserViewModel.addWishList(b.getBookId());
-                    mUserViewModel.addWishUser(b.getBookId(), uid);
-                    Toast.makeText(getApplicationContext(), "Added book to Wish List!" , Toast.LENGTH_SHORT ).show();
+                    DocumentReference docReference = fstore.collection("users").document(user.getUid()).collection("wishlist").document();
+                    Map<String, Object> wish = new HashMap<>();
+                    wish.put("BookTitle", mBook.title);
+                    wish.put("BookAuth", mBook.getAuthorsString());
+                    wish.put("image",mBook.imageLink);
+                    docReference.set(wish).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(SearchBook.this, "added book", Toast.LENGTH_SHORT).show();
+                            Log.d("one", "done2 ");
+                        }
+                    });
+
+                    // Toast.makeText(getApplicationContext(), "Added book to Wish List!" , Toast.LENGTH_SHORT ).show();
                     break;
             }
         }
-    }*/
+    }
 }
 

@@ -79,5 +79,28 @@
         app:layout_constraintTop_toBottomOf="@+id/button11"
         app:layout_constraintVertical_bias="0.131" />
 
+    <Button
+        android:id="@+id/booklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="144dp"
+        android:onClick="booklist"
+        android:text="BookList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <Button
+        android:id="@+id/wishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="148dp"
+        android:onClick="wishlist"
+        android:text="Wishlist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/booklist"
+        app:layout_constraintVertical_bias="0.203" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

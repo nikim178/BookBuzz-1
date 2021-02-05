@@ -62,4 +62,15 @@ public class Home extends AppCompatActivity {
         startActivity(i);
         }
 
+
+    public void booklist(View v){
+        Intent i=new Intent(this,Booklist.class);
+        startActivity(i);
     }
+
+    public void wishlist(View v){
+        Intent i=new Intent(this,Wishlist.class);
+        startActivity(i);
+        }
+
+}
