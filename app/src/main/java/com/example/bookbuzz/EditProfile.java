@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class EditProfile extends AppCompatActivity {
 
-    private EditText uname, uemail, ulocation, ubio;
+    private EditText uname, uemail, ulocation, ubio, uzip;
     private Button update;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
@@ -59,6 +59,7 @@ public class EditProfile extends AppCompatActivity {
         String email = data.getStringExtra("email");
         String location = data.getStringExtra("location");
         String bio= data.getStringExtra("bio");
+        String zipcode = data.getStringExtra("zipcode");
 
         mAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -69,6 +70,7 @@ public class EditProfile extends AppCompatActivity {
         uemail = findViewById(R.id.editTextTextEmailAddress3);
         ulocation = findViewById(R.id.editTextTextPersonName4);
         ubio = findViewById(R.id.editTextTextPersonName5);
+        uzip = findViewById(R.id.editTextTextPersonName6);
         update = (Button) findViewById(R.id.button7);
         profileImageView = findViewById(R.id.imageView3);
 
@@ -100,6 +102,7 @@ public class EditProfile extends AppCompatActivity {
                 String email = uemail.getText().toString();
                 String location = ulocation.getText().toString();
                 String bio = ubio.getText().toString();
+                String zipCode = uzip.getText().toString();
                 user.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -109,6 +112,7 @@ public class EditProfile extends AppCompatActivity {
                         edited.put("userName", uname.getText().toString());
                         edited.put("userLocation",ulocation.getText().toString());
                         edited.put("userBio",ubio.getText().toString());
+                        edited.put("userZipcode",uzip.getText().toString());
                         documentReference.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -132,8 +136,9 @@ public class EditProfile extends AppCompatActivity {
         uemail.setText(email);
         ulocation.setText(location);
         ubio.setText(bio);
+        uzip.setText(zipcode);
 
-        Log.d("TAG", "onCreate: " + name + " " + email + " " + location);
+        Log.d("TAG", "onCreate: " + name + " " + email + " " + location + " " + zipcode);
     }
 
     @Override
