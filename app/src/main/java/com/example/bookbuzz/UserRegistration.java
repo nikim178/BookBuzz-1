@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class UserRegistration extends AppCompatActivity {
     private EditText uEmail,uPass,uZipcode;
@@ -94,6 +95,7 @@ public class UserRegistration extends AppCompatActivity {
                                 user.put("userLocation",location);
                                 user.put("userPassword",password);
                                 user.put("userZipcode",zipCode);
+                                user.put("id",getRandomString(6));
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
@@ -124,5 +126,16 @@ public class UserRegistration extends AppCompatActivity {
             uEmail.setError("Please enter correct Email");
         }
 
+    }
+
+    private String getRandomString(int i) {
+        String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
+        StringBuilder result = new StringBuilder();
+        while(i>0) {
+            Random rand = new Random();
+            result.append(characters.charAt(rand.nextInt(characters.length())));
+            i--;
+        }
+        return  result.toString();
     }
 }

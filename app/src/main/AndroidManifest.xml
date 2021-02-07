@@ -11,13 +11,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BookBuzz">
+        android:theme="@style/Theme.BookBuzz"
+        android:configChanges="orientation|screenSize">
         <activity android:name=".Wishlist" />
         <activity android:name=".Booklist" />
         <activity android:name=".SearchUsers" />
         <activity
             android:name=".SearchUser"
-            android:parentActivityName=".Home" />
+            android:parentActivityName=".Home"
+            />
         <activity android:name=".Home3Activity" />
         <activity
             android:name=".SelectGenre"
