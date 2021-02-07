@@ -52,6 +52,10 @@ public class Home extends AppCompatActivity {
         Intent i=new Intent(this,Home3Activity.class);
         startActivity(i);
     }
+    public void pendingRequest(View v){
+        Intent i=new Intent(this,PendingRequest.class);
+        startActivity(i);
+    }
     public void searchUser(View v){
         Intent i=new Intent(this, SearchUsers.class);
         startActivity(i);
