@@ -206,8 +206,6 @@ public class indiFragment extends Fragment  {
         AppCompatActivity activity=(AppCompatActivity)getContext();
         activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.wrapper,new userFragment()).addToBackStack(null).commit();
-
-
     }
 
 

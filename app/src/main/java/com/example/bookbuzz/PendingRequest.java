@@ -2,15 +2,11 @@ package com.example.bookbuzz;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bookbuzz.model.ChatActivity;
 import com.example.bookbuzz.model.Friend;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -27,10 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PendingRequest extends AppCompatActivity {
 
@@ -100,7 +93,7 @@ public class PendingRequest extends AppCompatActivity {
 
            }
     private void goChatRoom(String idChatRoom, String uidFriend) {
-        Intent i= new Intent(this,ChatActivity.class);
+        Intent i= new Intent(this, ChatActivity.class);
         i.putExtra("idChatRoom",idChatRoom);
         i.putExtra("uidFriend",uidFriend);
         startActivity(i);
@@ -129,13 +122,10 @@ public class PendingRequest extends AppCompatActivity {
                         {
                             String name=documentSnapshot.get("userName",String.class);
                             txtName.setText(name);
-
                         }
                     }
                 }
             });
         }
-
     }
-
 }
