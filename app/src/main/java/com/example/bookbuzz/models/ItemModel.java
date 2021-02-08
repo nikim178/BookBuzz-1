@@ -1,20 +1,20 @@
 package com.example.bookbuzz.models;
 
 public class ItemModel {
-    private int image;
+    private String url;
     private String name;
 
     public ItemModel() {
     }
 
-    public ItemModel(int image, String name) {
-        this.image = image;
+    public ItemModel(String  url, String name) {
+        this.url = url;
         this.name = name;
 
     }
 
-    public int getImage() {
-        return image;
+    public String getImage() {
+        return url;
     }
 
     public String getName() {

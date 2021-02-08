@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 public class PendingRequest extends AppCompatActivity {
 
@@ -108,7 +110,7 @@ public class PendingRequest extends AppCompatActivity {
         public FriendViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-           imageProfile= itemView.findViewById(R.id.imgProfile);
+            imageProfile= itemView.findViewById(R.id.imagegholder);
             txtName = mView.findViewById(R.id.txtName);
         }
         public void setList(String uidFriend) {
@@ -122,7 +124,9 @@ public class PendingRequest extends AppCompatActivity {
                         {
                             String name=documentSnapshot.get("userName",String.class);
                             txtName.setText(name);
+
                         }
+
                     }
                 }
             });

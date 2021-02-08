@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -95,7 +96,6 @@ public class indiFragment extends Fragment  {
         Glide.with(getContext()).load(imageURL).into(imageholder);
         mAuth=FirebaseAuth.getInstance();
         Button b= view.findViewById(R.id.request);
-        Button decline=view.findViewById(R.id.declinerequest);
         FirebaseUser currentUser=mAuth.getCurrentUser();
         gUid=currentUser.getUid();
         db=FirebaseFirestore.getInstance();
@@ -103,58 +103,61 @@ public class indiFragment extends Fragment  {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog=new Dialog(getActivity());
-                dialog.setTitle("Enter User id");
-                dialog.setContentView(R.layout.dialog_add);
-                dialog.show();
-
-                EditText edtID=dialog.findViewById(R.id.edtID);
-                Button btnOk=dialog.findViewById(R.id.btnOk);
-
-                btnOk.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String idUser=edtID.getText().toString();
-
-                        if (TextUtils.isEmpty(idUser)) {
-                            edtID.setError("required");
-                        } else {
-                            db.collection("users").whereEqualTo("id",idUser)
-                                    .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                @Override
-                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                    if(queryDocumentSnapshots.isEmpty())
-                                    {
-                                        edtID.setError("Id not found");
-                                    }
-                                    else
-                                    {
-                                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments())
-                                        {
-                                            String uidFriend=documentSnapshot.getId();
-                                            if(gUid.equals(uidFriend))
-                                            {
-                                                    edtID.setError("wrong ID");
-                                                } else {
-                                                    dialog.cancel();
-                                                    checkFriendExist(uidFriend);
-                                                }
-
-                                        }
-                                    }
-                                }
-                            });
-
-                        }
-                    }
-                });
-
+               sendingRequest();
             }
         });
 
         return view;
     }
+    public void sendingRequest()
+    {
+        Dialog dialog=new Dialog(getActivity());
+        dialog.setTitle("Enter User id");
+        dialog.setContentView(R.layout.dialog_add);
+        dialog.show();
 
+        EditText edtID=dialog.findViewById(R.id.edtID);
+        Button btnOk=dialog.findViewById(R.id.btnOk);
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String idUser=edtID.getText().toString();
+
+                if (TextUtils.isEmpty(idUser)) {
+                    edtID.setError("required");
+                } else {
+                    db.collection("users").whereEqualTo("id",idUser)
+                            .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if(queryDocumentSnapshots.isEmpty())
+                            {
+                                edtID.setError("Id not found");
+                            }
+                            else
+                            {
+                                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments())
+                                {
+                                    String uidFriend=documentSnapshot.getId();
+                                    if(gUid.equals(uidFriend))
+                                    {
+                                        edtID.setError("wrong ID");
+                                    } else {
+                                        Toast.makeText(getActivity(),"You have sent friend request",Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                        checkFriendExist(uidFriend);
+                                    }
+
+                                }
+                            }
+                        }
+                    });
+
+                }
+            }
+        });
+    }
     private void checkFriendExist(final String uidFriend) {
         db.collection("users").document(gUid).collection("friend").document().get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
