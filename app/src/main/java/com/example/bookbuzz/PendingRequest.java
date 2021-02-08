@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -78,7 +79,12 @@ public class PendingRequest extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull FriendViewHolder holder, int position, @NonNull Friend model) {
                 String uidFriend = getSnapshots().getSnapshot(position).getId();
                 holder.setList(uidFriend);
-
+                holder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        goChatRoom(model.getIdChatRoom(),uidFriend);
+                    }
+                });
             }
 
             @NonNull
@@ -93,6 +99,12 @@ public class PendingRequest extends AppCompatActivity {
         adapter.startListening();
 
            }
+    private void goChatRoom(String idChatRoom, String uidFriend) {
+        Intent i= new Intent(this,ChatActivity.class);
+        i.putExtra("idChatRoom",idChatRoom);
+        i.putExtra("uidFriend",uidFriend);
+        startActivity(i);
+    }
 
     public class FriendViewHolder extends RecyclerView.ViewHolder {
         View mView;
