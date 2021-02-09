@@ -41,11 +41,11 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView image;
+        ImageView url;
         TextView name;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.item_image);
+            url = itemView.findViewById(R.id.item_image);
             name = itemView.findViewById(R.id.item_name);
 
         }
@@ -55,7 +55,7 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
                     .load(data.getImage())
                     .fit()
                     .centerCrop()
-                    .into(image);
+                    .into(url);
             name.setText(data.getName());
 
         }
