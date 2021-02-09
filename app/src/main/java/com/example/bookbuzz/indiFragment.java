@@ -25,12 +25,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class indiFragment extends Fragment  {
@@ -79,6 +82,10 @@ public class indiFragment extends Fragment  {
     private FirebaseAuth.AuthStateListener mAuthListner;
     private String gUid;
     private FirebaseFirestore db;
+    StorageReference str;
+    public Button b;
+    FirebaseUser currentUser;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -95,70 +102,66 @@ public class indiFragment extends Fragment  {
         emailholder.setText(email);
         Glide.with(getContext()).load(imageURL).into(imageholder);
         mAuth=FirebaseAuth.getInstance();
-        Button b= view.findViewById(R.id.request);
-        FirebaseUser currentUser=mAuth.getCurrentUser();
+       b= view.findViewById(R.id.request);
+        currentUser=mAuth.getCurrentUser();
         gUid=currentUser.getUid();
         db=FirebaseFirestore.getInstance();
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               sendingRequest();
+              sendingRequest();
+              b.setText("Requested");
             }
         });
 
         return view;
     }
-    public void sendingRequest()
-    {
-        Dialog dialog=new Dialog(getActivity());
+    private void sendingRequest() {
+        Dialog dialog = new Dialog(getActivity());
         dialog.setTitle("Enter User id");
         dialog.setContentView(R.layout.dialog_add);
         dialog.show();
 
-        EditText edtID=dialog.findViewById(R.id.edtID);
-        Button btnOk=dialog.findViewById(R.id.btnOk);
+        EditText edtID = dialog.findViewById(R.id.edtID);
+        Button btnOk = dialog.findViewById(R.id.btnOk);
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String idUser=edtID.getText().toString();
+                String idUser = edtID.getText().toString();
 
                 if (TextUtils.isEmpty(idUser)) {
                     edtID.setError("required");
                 } else {
-                    db.collection("users").whereEqualTo("id",idUser)
+                    db.collection("users").whereEqualTo("id", idUser)
                             .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            if(queryDocumentSnapshots.isEmpty())
-                            {
+                            if (queryDocumentSnapshots.isEmpty()) {
                                 edtID.setError("Id not found");
-                            }
-                            else
-                            {
-                                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments())
-                                {
-                                    String uidFriend=documentSnapshot.getId();
-                                    if(gUid.equals(uidFriend))
-                                    {
+                            } else {
+                                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
+                                    String uidFriend = documentSnapshot.getId();
+                                    if (gUid.equals(uidFriend)) {
                                         edtID.setError("wrong ID");
                                     } else {
-                                        Toast.makeText(getActivity(),"You have sent friend request",Toast.LENGTH_SHORT).show();
-                                        dialog.cancel();
                                         checkFriendExist(uidFriend);
+                                        dialog.cancel();
+
                                     }
 
                                 }
                             }
                         }
+
                     });
 
                 }
             }
         });
     }
-    private void checkFriendExist(final String uidFriend) {
+            private void checkFriendExist(final String uidFriend) {
         db.collection("users").document(gUid).collection("friend").document().get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
