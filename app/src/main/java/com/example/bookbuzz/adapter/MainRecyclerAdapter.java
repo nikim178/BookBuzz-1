@@ -10,10 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bookbuzz.Home3Activity;
 import com.example.bookbuzz.R;
 import com.example.bookbuzz.model.AllCategory;
 import com.example.bookbuzz.model.CategoryItem;
+import com.example.bookbuzz.ui.HomeActivity;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     private Context context;
     private List<AllCategory> allCategoryList;
 
-    public MainRecyclerAdapter(Home3Activity home3Activity, List<AllCategory> allCategoryList) {
+    public MainRecyclerAdapter ( HomeActivity homeActivity, List<AllCategory> allCategoryList ) {
         this.allCategoryList = allCategoryList;
     }
 

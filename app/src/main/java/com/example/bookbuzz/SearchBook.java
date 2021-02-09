@@ -17,8 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,6 +29,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bookbuzz.models.BookItem;
+import com.example.bookbuzz.ui.HomeActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +55,7 @@ import java.util.Map;
 
 
 public class SearchBook extends AppCompatActivity implements View.OnClickListener {
+
 
         //private UserViewModel mUserViewModel;
         EditText _mSearch;
@@ -274,5 +278,7 @@ public class SearchBook extends AppCompatActivity implements View.OnClickListene
             }
         }
     }
-}
+    }
+
+
 

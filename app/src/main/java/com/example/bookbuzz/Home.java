@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.bookbuzz.ui.HomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
@@ -49,7 +50,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void homePage(View v){
-        Intent i=new Intent(this,Home3Activity.class);
+        Intent i=new Intent( this, HomeActivity.class);
         startActivity(i);
     }
     public void pendingRequest(View v){

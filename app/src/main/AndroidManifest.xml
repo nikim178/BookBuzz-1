@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookBuzz">
-        <activity android:name=".model.ChatActivity"></activity>
+        <activity android:name=".ui.HomeActivity"></activity>
+        <activity android:name=".model.ChatActivity" />
         <activity android:name=".PendingRequest" />
         <activity android:name=".Wishlist" />
         <activity android:name=".Booklist" />
@@ -21,7 +22,6 @@
         <activity
             android:name=".SearchUser"
             android:parentActivityName=".Home" />
-        <activity android:name=".Home3Activity" />
         <activity
             android:name=".SelectGenre"
             tools:ignore="MissingClass" />
