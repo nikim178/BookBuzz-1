@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookbuzz.R;
 import com.example.bookbuzz.model.AllCategory;
 import com.example.bookbuzz.model.CategoryItem;
-import com.example.bookbuzz.ui.HomeActivity;
+import com.example.bookbuzz.HomeActivity;
 
 import java.util.List;
 
