@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemSelected ( int id ) {
                 Fragment fragment =  null;
                 switch ( id ){
-                    case R.id.nav_home:
+                    case R.id.home:
                         fragment = new HomeFragment ();
                         break;
                     case R.id.chat:
@@ -102,9 +102,10 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    public void ClickProfile ( View view ) {
+    public void clickProfile ( View view ) {
         //recreate activity
-        recreate ( );
+        //recreate ( );
+        redirectActivity ( this , Profile.class );
     }
 
     public void onClick ( View view ) {

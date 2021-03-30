@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="Profile">
+        android:onClick="clickProfile">
 
         <TextView
             android:layout_width="0dp"

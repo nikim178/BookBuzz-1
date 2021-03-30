@@ -30,13 +30,13 @@
         <include
             layout="@layout/main_toolbar"/>
 
-        <TextView
+      <!--  <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="HOME"
             android:textSize="50sp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:gravity="center"/>-->
     </LinearLayout>
 
     <RelativeLayout
