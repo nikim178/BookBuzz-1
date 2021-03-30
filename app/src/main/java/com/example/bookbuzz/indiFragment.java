@@ -45,12 +45,13 @@ public class indiFragment extends Fragment  {
 
     private String mParam1;
     private String mParam2;
-    String name, location, zipcode, email, imageURL;
+    String name, location, zipcode, email, imageURL, documentId;
 
     public indiFragment() {
 
     }
-    public indiFragment(String name, String location, String zipcode, String email, String imageURL) {
+    public indiFragment(String documentId, String name, String location, String zipcode, String email, String imageURL) {
+        this.documentId=documentId;
         this.name=name;
         this.location=location;
         this.zipcode=zipcode;
@@ -83,7 +84,7 @@ public class indiFragment extends Fragment  {
     private String gUid;
     private FirebaseFirestore db;
     StorageReference str;
-    public Button b;
+    public Button request;
     FirebaseUser currentUser;
 
     @Override
@@ -102,21 +103,42 @@ public class indiFragment extends Fragment  {
         emailholder.setText(email);
         Glide.with(getContext()).load(imageURL).into(imageholder);
         mAuth=FirebaseAuth.getInstance();
-       b= view.findViewById(R.id.request);
+       request= view.findViewById(R.id.request);
+       Button booklist=(Button) view.findViewById(R.id.booklist);
+       Button wishlist=(Button) view.findViewById(R.id.wishlist);
         currentUser=mAuth.getCurrentUser();
         gUid=currentUser.getUid();
         db=FirebaseFirestore.getInstance();
 
-        b.setOnClickListener(new View.OnClickListener() {
+        request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               sendingRequest();
-              b.setText("Requested");
+              request.setText("Requested");
+            }
+        });
+       booklist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity=(AppCompatActivity)v.getContext();
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.wrapper,new userbooklist(documentId)).addToBackStack(null).commit();
+
+            }
+        });
+        wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity=(AppCompatActivity)v.getContext();
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.wrapper,new userwishlist(documentId)).addToBackStack(null).commit();
+
             }
         });
 
         return view;
     }
+
     private void sendingRequest() {
         Dialog dialog = new Dialog(getActivity());
         dialog.setTitle("Enter User id");

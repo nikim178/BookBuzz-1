@@ -6,6 +6,7 @@ public class UserModel {
     private String userZipcode;
     private String userEmail;
     private String userProfileURI;
+    private String documentId;
 
     public UserModel() {
     }
@@ -16,6 +17,14 @@ public class UserModel {
         this.userLocation = userLocation;
         this.userZipcode = userZipcode;
         this.userProfileURI = userProfileURI;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getUserProfileURI() {

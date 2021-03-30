@@ -24,6 +24,8 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
 
     @Override
     protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull UserModel model) {
+        String documentID=getSnapshots().getSnapshot(position).getId();
+        model.setDocumentId(documentID);
         holder.userName.setText(model.getUserName());
         holder.userLocation.setText(model.getUserLocation().toLowerCase());
         holder.userZipcode.setText(model.getUserZipcode());
@@ -34,7 +36,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
             public void onClick(View v) {
                 AppCompatActivity activity=(AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.wrapper,new indiFragment(model.getUserName(),model.getUserLocation(),model.getUserZipcode(),model.getUserEmail(),model.getUserProfileURI())).addToBackStack(null).commit();
+                        .replace(R.id.wrapper,new indiFragment(model.getDocumentId(),model.getUserName(),model.getUserLocation(),model.getUserZipcode(),model.getUserEmail(),model.getUserProfileURI())).addToBackStack(null).commit();
 
             }
         });

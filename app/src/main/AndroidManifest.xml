@@ -20,9 +20,6 @@
         <activity android:name=".Booklist" />
         <activity android:name=".SearchUsers" />
         <activity
-            android:name=".SearchUser"
-            android:parentActivityName=".Home" />
-        <activity
             android:name=".SelectGenre"
             tools:ignore="MissingClass" />
         <activity android:name=".SwipeGenre" />

@@ -64,7 +64,6 @@ public class userFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         recview = (RecyclerView) view.findViewById(R.id.list);
         recview.setLayoutManager(new LinearLayoutManager(getContext()));
-
         firestore = FirebaseFirestore.getInstance();
         Query query = firestore.collection("users");
         FirestoreRecyclerOptions<UserModel> options = new FirestoreRecyclerOptions.Builder<UserModel>()
