@@ -27,7 +27,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
         String documentID=getSnapshots().getSnapshot(position).getId();
         model.setDocumentId(documentID);
         holder.userName.setText(model.getUserName());
-        holder.userLocation.setText(model.getUserLocation().toLowerCase());
+        holder.userLocation.setText(model.getUserLocation());
         holder.userZipcode.setText(model.getUserZipcode());
         holder.userEmail.setText(model.getUserEmail());
         Glide.with(holder.userProfileURI.getContext()).load(model.getUserProfileURI()).into(holder.userProfileURI);
