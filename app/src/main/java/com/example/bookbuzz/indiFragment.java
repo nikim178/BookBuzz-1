@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -46,6 +47,11 @@ public class indiFragment extends Fragment  {
     private String mParam1;
     private String mParam2;
     String name, location, zipcode, email, imageURL, documentId;
+    public Button request;
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth mAuth;
+    private String current_user_id;
+    private String currentState;
 
     public indiFragment() {
 
@@ -79,13 +85,6 @@ public class indiFragment extends Fragment  {
         }
     }
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListner;
-    private String gUid;
-    private FirebaseFirestore db;
-    StorageReference str;
-    public Button request;
-    FirebaseUser currentUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,21 +101,15 @@ public class indiFragment extends Fragment  {
         zipcodeholder.setText(zipcode);
         emailholder.setText(email);
         Glide.with(getContext()).load(imageURL).into(imageholder);
-        mAuth=FirebaseAuth.getInstance();
-       request= view.findViewById(R.id.request);
        Button booklist=(Button) view.findViewById(R.id.booklist);
        Button wishlist=(Button) view.findViewById(R.id.wishlist);
-        currentUser=mAuth.getCurrentUser();
-        gUid=currentUser.getUid();
-        db=FirebaseFirestore.getInstance();
-
-        request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              sendingRequest();
-              request.setText("Requested");
-            }
-        });
+       //
+        request= view.findViewById(R.id.request);
+        firebaseFirestore=FirebaseFirestore.getInstance();
+        mAuth=FirebaseAuth.getInstance();
+        current_user_id=mAuth.getCurrentUser().getUid();
+        currentState="not_friends";
+        //
        booklist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,10 +129,199 @@ public class indiFragment extends Fragment  {
             }
         });
 
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                request.setEnabled(false);
+                if(currentState.equals("not_friends")) {
+                    addFriend();
+                    request.setText("Cancel Request");
+
+                }
+                if(currentState.equals("req_sent")) {
+                    deleteFriend();
+                    request.setText("Request");
+                }
+           /*  switch (currentState) {
+                    case "not_friends":
+                        addFriend();
+                        break;
+                    case "friends":
+                        unFriend();
+                        break;
+                    case "cancel_req":
+                        deleteFriend();
+                        break;
+                }*/
+                /*firebaseFirestore.collection("users").document(current_user_id +"friends"+documentId).
+                            get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.getResult().exists())
+                            {
+                                request.setText("Unfriend");
+                                currentState="friends";
+                            }
+                        }
+                    });
+                    firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req" +"/"+documentId).
+                            get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(!task.getResult().exists())
+                            {
+                                request.setText("Request");
+                                currentState="not_friends";
+                            }
+
+                        }
+                    });
+                    firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req"+ "/" +documentId).
+                            get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.getResult().exists())
+                            {
+                                request.setText("Cancel_Request");
+                                currentState="cancel_req";
+                            }
+
+                        }
+                    });*/
+
+            }
+        });
+
         return view;
     }
+ /*  @Override
+    public void onStart()
+    {
+        super.onStart();
+        firebaseFirestore.collection("users").document(current_user_id +"friends"+documentId).
+                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.getResult().exists())
+                {
+                    currentState="friends";
+                }
+            }
+        });
+        // check if req id is pending
+        firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req"+ "/" +documentId).
+                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.getResult().exists())
+                {
+                    currentState="cancel_req";
+                }
 
-    private void sendingRequest() {
+            }
+        });
+        //detect if they are friends
+        firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req" +"/"+documentId).
+                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(!task.getResult().exists())
+                {
+                    currentState="not_friends";
+                }
+
+            }
+        });
+    }*/
+    //add friends
+    public void addFriend()
+    {
+        Map other=new HashMap();
+        other.put("request_type","sent");
+        other.put("oid",documentId);
+        firebaseFirestore.collection("users").document(current_user_id+"/"
+                +"friend_req"+"/"+"user_id").set(other).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful())
+                {
+                    Map current=new HashMap();
+                    current.put("cid",current_user_id);
+                    firebaseFirestore.collection("users").document(documentId+"/"
+                            +"friend_req"+"/"+"user_id").set(current).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            request.setEnabled(true);
+                            currentState="req_sent";
+
+                            Toast.makeText(getActivity(),"request Sent succesfully!",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(getActivity(),"request unsuccesfully!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+    //delete friend req
+    public void deleteFriend()
+    {
+        try{
+            firebaseFirestore.collection("users").document(current_user_id+"/"
+                    +"friend_req"+"/"+"user_id").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    firebaseFirestore.collection("users").document(documentId + "/"
+                            + "friend_req" + "/" + "user_id").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            request.setEnabled(true);
+                            currentState = "not_friends";
+
+                        }
+                    });
+                }
+            });
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //unfriend
+  /*  public void unFriend()
+    {
+        try{
+            firebaseFirestore.collection("users").document(current_user_id+"/"
+                    +"friends"+"/"+documentId).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    firebaseFirestore.collection("users").document(documentId+"/"
+                            +"friends"+"/"+current_user_id).delete();
+                }
+            });
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //accept
+    public void acceptRequest()
+    {
+        Map map=new HashMap();
+        try{
+            firebaseFirestore.collection("users").
+                    document(current_user_id+"/"+"friends").set(documentId);
+            firebaseFirestore.collection("users").
+                    document(documentId+"/"+"friends").set(current_user_id);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+*/
+
+  /*  private void sendingRequest() {
         Dialog dialog = new Dialog(getActivity());
         dialog.setTitle("Enter User id");
         dialog.setContentView(R.layout.dialog_add);
@@ -228,7 +410,7 @@ public class indiFragment extends Fragment  {
                 });
             }
         });
-    }
+    }*/
 
     public void onBackPressed(){
         AppCompatActivity activity=(AppCompatActivity)getContext();
