@@ -13,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.bookbuzz.models.UserModel;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -87,27 +90,41 @@ public class userFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 Query query;
-                Log.d("one","searchbox changed to"+s.toString());
+                Boolean value=isNumeric(s.toString());
+                String str= value.toString();
+                Log.d("one","searchbox changed to "+value);
                 if(s.toString().isEmpty()){
                     query= firestore.collection("users");
 
                 }
-                else {
+                else if(str.equals("true")) {
                     query = firestore.collection("users")
                             .whereEqualTo("userZipcode", s.toString());
+                }
+                else{
+                    query = firestore.collection("users")
+                            .whereArrayContains("Books",s.toString().toLowerCase());
                 }
                 FirestoreRecyclerOptions<UserModel> options= new FirestoreRecyclerOptions.Builder<UserModel>()
                         .setQuery(query,UserModel.class)
                         .build();
                 adapter.updateOptions(options);
-
-
             }
         });//till here
 
 
 
         return view;
+    }
+    public Boolean isNumeric(String str){
+
+        try {
+            int value = Integer.parseInt(str);
+            return true;
+        }
+        catch (NumberFormatException e){
+        }
+        return false;
     }
     @Override
     public void onStart() {

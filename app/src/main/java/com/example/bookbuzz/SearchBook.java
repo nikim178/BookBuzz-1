@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Callback;
@@ -235,6 +236,7 @@ public class SearchBook extends AppCompatActivity implements View.OnClickListene
             switch (v.getId()) {
                 case R.id.searchAddBookListButton:
                     DocumentReference documentReference = fstore.collection("users").document(user.getUid()).collection("booklist").document();
+                    DocumentReference documentReference1= fstore.collection("users").document(user.getUid());
                     Map<String, Object> own = new HashMap<>();
                     own.put("BookTitle", mBook.title);
                     own.put("BookAuth", mBook.getAuthorsString());
@@ -244,6 +246,12 @@ public class SearchBook extends AppCompatActivity implements View.OnClickListene
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(SearchBook.this, "added book", Toast.LENGTH_SHORT).show();
                             Log.d("one", "done1 ");
+                        }
+                    });
+                    documentReference1.update("Books", FieldValue.arrayUnion(mBook.title.toLowerCase())).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
                         }
                     });
 
