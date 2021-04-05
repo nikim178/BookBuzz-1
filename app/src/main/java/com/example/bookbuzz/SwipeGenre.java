@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.bookbuzz.adapter.CardStackAdapter;
 import com.example.bookbuzz.models.Book;
 import com.example.bookbuzz.models.BookItem;
+import com.example.bookbuzz.models.Item;
 import com.example.bookbuzz.models.ItemModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,6 +58,15 @@ public class SwipeGenre extends AppCompatActivity {
             public void onCardSwiped(Direction direction) {
                 Log.d(TAG, "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
                 if (direction == Direction.Right){
+                    if (direction == Direction.Right){
+                        List<ItemModel> books= adapter.getItems();
+                        ItemModel book=books.get(manager.getTopPosition());
+                        Item b= new Item();
+                        b.title= book.getName();
+                        b.imageLink=book.getImage();
+                        addToWishlist(b);
+
+                    }
 
                     Toast.makeText(SwipeGenre.this, "Added to Whishlist", Toast.LENGTH_SHORT).show();
 
@@ -119,6 +129,28 @@ public class SwipeGenre extends AppCompatActivity {
         adapter.setItems(baru);
         hasil.dispatchUpdatesTo(adapter);
     }
+    private void addToWishlist(Item b) {
+        FirebaseAuth mAuth;
+        FirebaseFirestore fstore;
+        FirebaseUser user;
+        StorageReference storageReference;
+        mAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
+        user = mAuth.getCurrentUser();
+        Item mBook=b;
+        DocumentReference docReference = fstore.collection("users").document(user.getUid()).collection("wishlist").document();
+        Map<String, Object> wish = new HashMap<>();
+        wish.put("BookTitle", mBook.title);
+        wish.put("image",mBook.imageLink);
+        docReference.set(wish).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(SwipeGenre.this, "added book", Toast.LENGTH_SHORT).show();
+                Log.d("one", "done2 ");
+            }
+        });
+    }
+
     private List<ItemModel> addList() {
         List<ItemModel> items = new ArrayList<>();
         storeResult = (ArrayList<String>) getIntent().getSerializableExtra("book");
@@ -283,6 +315,7 @@ public class SwipeGenre extends AppCompatActivity {
             items.add(new ItemModel("https://images-na.ssl-images-amazon.com/images/I/81N2JTJhzFL.jpg", "Once & Future"));
             items.add(new ItemModel("https://images-na.ssl-images-amazon.com/images/I/A12mMQqXVjL.jpg", "The Sherif Of Babylon"));
             items.add(new ItemModel("https://upload.wikimedia.org/wikipedia/en/f/f4/Ironman001.jpg", "Iron Man"));
+            return items;
 
         }
         //Any one with Fantasy
@@ -510,7 +543,7 @@ public class SwipeGenre extends AppCompatActivity {
             items.add(new ItemModel("https://upload.wikimedia.org/wikipedia/en/f/f4/Ironman001.jpg", "Iron Man"));
             return items;
         }
-            return null;
+
     }
 
 }
