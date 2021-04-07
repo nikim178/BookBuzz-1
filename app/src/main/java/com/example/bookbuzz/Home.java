@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
-    private Button uSignOutButton, myProfile;
+    private Button uSignOutButton, myProfile,friend;
     private FirebaseAuth mAuth;
 
 
@@ -20,7 +20,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         uSignOutButton=findViewById(R.id.button3);
         myProfile= findViewById(R.id.button9);
-
+        friend=findViewById(R.id.button12);
 
         mAuth = FirebaseAuth.getInstance();
         //Code for Log out button
@@ -41,8 +41,7 @@ public class Home extends AppCompatActivity {
             }
         });
 
-
-        }
+    }
         public void genre(View v){
         Intent i=new Intent(this,SelectGenre.class);
         startActivity(i);
@@ -76,5 +75,12 @@ public class Home extends AppCompatActivity {
         Intent i=new Intent(this,Wishlist.class);
         startActivity(i);
         }
+    public void friends(View v){
+        Intent i=new Intent(this,Friend_Message.class);
+        startActivity(i);
+    }
+
 
 }
+
+

@@ -17,4 +17,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="remove">hello</string>
+    <string name="abt"><u>About HelpDesk</u></string>
+    <string name="aboutus1">The “Bookbuzz“ App is a interface for the citizens to locate emergency service providing agencies
+(police station, hospital, fire station) on satellite Image within the periphery of current location so that
+they can easily “reach” the agency in case of emergency. The App displays the current location of
+the citizen on the Google Map along with details such as name of places, roads and major
+landmarks. The App dynamically fetches details of all the agencies near the location of the citizen.
+The App further provides the facility to “Tap” any of this service providing agencies and know the
+route and road distance to reach there and contact numbers. Citizens can select any of these
+numbers and make a call using the App to get immediate help. Also, HelpDesk provides “Tap on
+Call” facility through which citizen can make an emergency call (100, 108, 101, and 181).</string>
+
+
+
+    <string name="about_us2">The Mobile App has been developed on Android platforms. The HelpDesk App aims to provide
+safety and security of the citizen anytime anywhere.</string>
+
 </resources>

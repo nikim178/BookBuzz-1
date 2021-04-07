@@ -38,19 +38,17 @@ import java.util.Map;
 
 
 public class indiFragment extends Fragment  {
-
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-
     private String mParam1;
     private String mParam2;
     String name, location, zipcode, email, imageURL, documentId;
+    //
     public Button request;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
     private String current_user_id;
+    private String current_user_name;
     private String currentState;
 
     public indiFragment() {
@@ -65,8 +63,6 @@ public class indiFragment extends Fragment  {
         this.imageURL=imageURL;
 
     }
-
-
     public static indiFragment newInstance(String param1, String param2) {
         indiFragment fragment = new indiFragment();
         Bundle args = new Bundle();
@@ -84,8 +80,6 @@ public class indiFragment extends Fragment  {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -110,6 +104,44 @@ public class indiFragment extends Fragment  {
         current_user_id=mAuth.getCurrentUser().getUid();
         currentState="not_friends";
         //
+     /*   firebaseFirestore.collection("users").document(current_user_id +"friends"+documentId).
+                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.getResult().exists())
+                {
+                    currentState="friends";
+                    request.setText("Unfriend");
+                }
+            }
+        });
+        // check if req id is pending
+        firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req"+ "/" +documentId).
+                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.getResult().exists())
+                {
+                    currentState="cancel_req";
+                    request.setText("Cancel Request");
+                }
+
+            }
+        });
+        //detect if they are friends
+        firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req" +"/"+documentId).
+                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(!task.getResult().exists())
+                {
+                    currentState="not_friends";
+                    request.setText("Request");
+                }
+
+            }
+        });
+        //*/
        booklist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +160,6 @@ public class indiFragment extends Fragment  {
 
             }
         });
-
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,124 +167,38 @@ public class indiFragment extends Fragment  {
                 if(currentState.equals("not_friends")) {
                     addFriend();
                     request.setText("Cancel Request");
-
                 }
                 if(currentState.equals("req_sent")) {
                     deleteFriend();
                     request.setText("Request");
                 }
-           /*  switch (currentState) {
-                    case "not_friends":
-                        addFriend();
-                        break;
-                    case "friends":
-                        unFriend();
-                        break;
-                    case "cancel_req":
-                        deleteFriend();
-                        break;
-                }*/
-                /*firebaseFirestore.collection("users").document(current_user_id +"friends"+documentId).
-                            get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if(task.getResult().exists())
-                            {
-                                request.setText("Unfriend");
-                                currentState="friends";
-                            }
-                        }
-                    });
-                    firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req" +"/"+documentId).
-                            get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if(!task.getResult().exists())
-                            {
-                                request.setText("Request");
-                                currentState="not_friends";
-                            }
-
-                        }
-                    });
-                    firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req"+ "/" +documentId).
-                            get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if(task.getResult().exists())
-                            {
-                                request.setText("Cancel_Request");
-                                currentState="cancel_req";
-                            }
-
-                        }
-                    });*/
-
             }
         });
 
         return view;
     }
- /*  @Override
-    public void onStart()
-    {
-        super.onStart();
-        firebaseFirestore.collection("users").document(current_user_id +"friends"+documentId).
-                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.getResult().exists())
-                {
-                    currentState="friends";
-                }
-            }
-        });
-        // check if req id is pending
-        firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req"+ "/" +documentId).
-                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.getResult().exists())
-                {
-                    currentState="cancel_req";
-                }
-
-            }
-        });
-        //detect if they are friends
-        firebaseFirestore.collection("users").document(current_user_id + "/" +"friend_req" +"/"+documentId).
-                get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(!task.getResult().exists())
-                {
-                    currentState="not_friends";
-                }
-
-            }
-        });
-    }*/
-    //add friends
     public void addFriend()
     {
+       DocumentReference documentReference= firebaseFirestore.collection("users").document(current_user_id)
+               .collection("friend_req").document(documentId);
         Map other=new HashMap();
         other.put("request_type","sent");
-        other.put("oid",documentId);
-        firebaseFirestore.collection("users").document(current_user_id+"/"
-                +"friend_req"+"/"+"user_id").set(other).addOnCompleteListener(new OnCompleteListener<Void>() {
+        documentReference.set(other).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
                 {
+                    DocumentReference documentReference1= firebaseFirestore.collection("users").document(documentId)
+                            .collection("friend_req").document(current_user_id);
+
                     Map current=new HashMap();
-                    current.put("cid",current_user_id);
-                    firebaseFirestore.collection("users").document(documentId+"/"
-                            +"friend_req"+"/"+"user_id").set(current).addOnSuccessListener(new OnSuccessListener<Void>() {
+                   current.put("request_type","received");
+                   current.put("name",current_user_name);
+                   documentReference1.set(current).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             request.setEnabled(true);
-                            currentState="req_sent";
-
+                           currentState="req_sent";
                             Toast.makeText(getActivity(),"request Sent succesfully!",Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -269,16 +214,16 @@ public class indiFragment extends Fragment  {
     {
         try{
             firebaseFirestore.collection("users").document(current_user_id+"/"
-                    +"friend_req"+"/"+"user_id").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    +"friend_req"+"/"+documentId).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                     firebaseFirestore.collection("users").document(documentId + "/"
-                            + "friend_req" + "/" + "user_id").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            + "friend_req" + "/" + current_user_id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             request.setEnabled(true);
                             currentState = "not_friends";
-
+                            Toast.makeText(getActivity(),"request cacel succesfully!",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -289,7 +234,7 @@ public class indiFragment extends Fragment  {
         }
     }
     //unfriend
-  /*  public void unFriend()
+   public void unFriend()
     {
         try{
             firebaseFirestore.collection("users").document(current_user_id+"/"
@@ -305,113 +250,6 @@ public class indiFragment extends Fragment  {
             e.printStackTrace();
         }
     }
-    //accept
-    public void acceptRequest()
-    {
-        Map map=new HashMap();
-        try{
-            firebaseFirestore.collection("users").
-                    document(current_user_id+"/"+"friends").set(documentId);
-            firebaseFirestore.collection("users").
-                    document(documentId+"/"+"friends").set(current_user_id);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-*/
-
-  /*  private void sendingRequest() {
-        Dialog dialog = new Dialog(getActivity());
-        dialog.setTitle("Enter User id");
-        dialog.setContentView(R.layout.dialog_add);
-        dialog.show();
-
-        EditText edtID = dialog.findViewById(R.id.edtID);
-        Button btnOk = dialog.findViewById(R.id.btnOk);
-
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String idUser = edtID.getText().toString();
-
-                if (TextUtils.isEmpty(idUser)) {
-                    edtID.setError("required");
-                } else {
-                    db.collection("users").whereEqualTo("id", idUser)
-                            .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            if (queryDocumentSnapshots.isEmpty()) {
-                                edtID.setError("Id not found");
-                            } else {
-                                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
-                                    String uidFriend = documentSnapshot.getId();
-                                    if (gUid.equals(uidFriend)) {
-                                        edtID.setError("wrong ID");
-                                    } else {
-                                        checkFriendExist(uidFriend);
-                                        dialog.cancel();
-
-                                    }
-
-                                }
-                            }
-                        }
-
-                    });
-
-                }
-            }
-        });
-    }
-            private void checkFriendExist(final String uidFriend) {
-        db.collection("users").document(gUid).collection("friend").document().get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()) {
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot.exists()) {
-                        String idChatRoom = documentSnapshot.get("idChatRoom", String.class);
-                        goChatRoom(idChatRoom,uidFriend);
-                    } else {
-                        createNewChatRoom(uidFriend);
-                    }
-                }
-            }
-        });
-    }
-
-    private void goChatRoom(String idChatRoom, String uidFriend) {
-    }
-
-    private void createNewChatRoom(final String uidFriend) {
-        HashMap<String,Object> dataChatRoom = new HashMap<>();
-        dataChatRoom.put("dateAdded", FieldValue.serverTimestamp());
-        db.collection("chatRoom").document(gUid+uidFriend).set(dataChatRoom).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                //write user data
-                HashMap<String,Object> dataFriend = new HashMap<>();
-                dataFriend.put("idChatRoom",gUid+uidFriend);
-                db.collection("users").document(gUid).collection("friend").document(uidFriend).set(dataFriend).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        //write on user's friend data
-                        HashMap<String,Object> dataUserFriend = new HashMap<>();
-                        dataUserFriend.put("idChatRoom",gUid+uidFriend);
-                        db.collection("users").document(uidFriend).collection("friend").document(gUid).set(dataUserFriend).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                goChatRoom(gUid+uidFriend,uidFriend);
-                            }
-                        });
-                    }
-                });
-            }
-        });
-    }*/
-
     public void onBackPressed(){
         AppCompatActivity activity=(AppCompatActivity)getContext();
         activity.getSupportFragmentManager().beginTransaction()

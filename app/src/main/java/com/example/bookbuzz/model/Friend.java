@@ -1,21 +1,17 @@
 package com.example.bookbuzz.model;
 
 public class Friend {
-    private String idChatRoom;
-    public Friend()
-    {
+    private String request_type;
 
+    public String getRequest_type() {
+        return request_type;
+    }
+    private Friend(){}
+    private Friend(String request_type){
+        this.request_type=request_type;
     }
 
-    public Friend(String idChatRoom) {
-        this.idChatRoom = idChatRoom;
-    }
-
-    public String getIdChatRoom() {
-        return idChatRoom;
-    }
-
-    public void setIdChatRoom(String idChatRoom) {
-        this.idChatRoom = idChatRoom;
+    public void setRequest_type(String request_type) {
+        this.request_type = request_type;
     }
 }

@@ -8,14 +8,15 @@
     <application
         android:allowBackup="true"
         android:configChanges="orientation|screenSize"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:largeHeap="true"
-        android:hardwareAccelerated="false"
         android:theme="@style/Theme.BookBuzz">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".Friend_Message" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".model.ChatActivity" />
         <activity android:name=".PendingRequest" />
         <activity android:name=".Wishlist" />
