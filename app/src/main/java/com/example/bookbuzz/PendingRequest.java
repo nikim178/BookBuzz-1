@@ -35,6 +35,7 @@ import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,6 +47,8 @@ public class PendingRequest extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
     private SparseBooleanArray hideButtons = new SparseBooleanArray();
+    private ArrayList<Friend> friendArrayList;
+
     String uidFriend;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

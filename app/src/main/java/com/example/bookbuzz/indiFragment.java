@@ -104,6 +104,7 @@ public class indiFragment extends Fragment  {
         current_user_id=mAuth.getCurrentUser().getUid();
         currentState="not_friends";
         //
+
      /*   firebaseFirestore.collection("users").document(current_user_id +"friends"+documentId).
                 get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -179,6 +180,18 @@ public class indiFragment extends Fragment  {
     }
     public void addFriend()
     {
+        firebaseFirestore.collection("users").document(current_user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        String uname = documentSnapshot.get("userName", String.class);
+                        current_user_name=uname;
+                    }
+                }
+            }
+        });
        DocumentReference documentReference= firebaseFirestore.collection("users").document(current_user_id)
                .collection("friend_req").document(documentId);
         Map other=new HashMap();
