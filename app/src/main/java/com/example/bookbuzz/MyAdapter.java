@@ -31,7 +31,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
         holder.userZipcode.setText(model.getUserZipcode());
         holder.userEmail.setText(model.getUserEmail());
         Glide.with(holder.userProfileURI.getContext()).load(model.getUserProfileURI()).into(holder.userProfileURI);
-        holder.userProfileURI.setOnClickListener(new View.OnClickListener() {
+        holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity=(AppCompatActivity)v.getContext();
@@ -51,6 +51,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
     }
 
     class viewHolder extends RecyclerView.ViewHolder{
+        private View mView;
         private TextView userName;
         private TextView userLocation;
         private TextView userZipcode;
@@ -59,6 +60,7 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+            mView=itemView;
             userName=itemView.findViewById(R.id.name);
             userLocation=itemView.findViewById(R.id.location);
             userZipcode=itemView.findViewById(R.id.zip);

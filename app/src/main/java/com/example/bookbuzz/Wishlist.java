@@ -12,13 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.bookbuzz.models.BookModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -28,6 +32,7 @@ public class Wishlist extends AppCompatActivity {
     private RecyclerView list;
     FirebaseFirestore firestore;
     FirestoreRecyclerAdapter adapter;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,8 @@ public class Wishlist extends AppCompatActivity {
         FirebaseUser user;
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        Query query= firestore.collection("users").document(user.getUid()).collection("wishlist");
+        userId=user.getUid();
+        Query query= firestore.collection("users").document(userId).collection("wishlist");
 
         FirestoreRecyclerOptions<BookModel> options= new FirestoreRecyclerOptions.Builder<BookModel>()
                 .setQuery(query, BookModel.class)
@@ -54,9 +60,17 @@ public class Wishlist extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull BookModel model) {
+                String bookid= getSnapshots().getSnapshot(position).getId();
+                model.setDocumentId(bookid);
                 holder.BookTitle.setText(model.getBookTitle());
                 holder.BookAuth.setText(model.getBookAuth());
                 Glide.with(holder.image.getContext()).load(model.getImage()).into(holder.image);
+                holder.remove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        removeBook(model.getDocumentId());
+                    }
+                });
 
             }
         };
@@ -67,11 +81,22 @@ public class Wishlist extends AppCompatActivity {
         Log.d("one", "done ");
 
     }
+    private void removeBook(String documentId) {
+        String BookId=documentId;
+        DocumentReference documentReference=firestore.collection("users").document(userId).collection("wishlist").document(BookId);
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(Wishlist.this,"Book Removed Successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private class viewHolder extends RecyclerView.ViewHolder{
         private TextView BookTitle;
         private TextView BookAuth;
         private CircleImageView image;
+        private Button remove;
 
 
         public viewHolder(@NonNull View itemView) {
@@ -79,6 +104,7 @@ public class Wishlist extends AppCompatActivity {
             BookAuth = itemView.findViewById(R.id.BookAuth);
             BookTitle = itemView.findViewById(R.id.BookTitle);
             image = itemView.findViewById(R.id.image);
+            remove=itemView.findViewById(R.id.remove);
         }
     }
 

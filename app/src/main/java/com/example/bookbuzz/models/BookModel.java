@@ -4,6 +4,7 @@ public class BookModel {
     private String BookAuth;
     private String BookTitle;
     private String image;
+    private String documentId;
 
 
     public BookModel() {
@@ -14,6 +15,14 @@ public class BookModel {
         this.BookTitle = BookTitle;
         this.image = image;
 
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getBookAuth() {

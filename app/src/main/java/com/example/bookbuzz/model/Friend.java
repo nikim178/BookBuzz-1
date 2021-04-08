@@ -3,6 +3,25 @@ package com.example.bookbuzz.model;
 public class Friend {
     private String request_type;
     private String name;
+    private String profile;
+    private String documentId;
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
     public String getName() {
         return name;
     }

@@ -1,14 +1,17 @@
 package com.example.bookbuzz;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.bookbuzz.EditProfile;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,14 +33,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PendingRequest extends AppCompatActivity {
     private RecyclerView rvFriend;
@@ -48,7 +57,11 @@ public class PendingRequest extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private SparseBooleanArray hideButtons = new SparseBooleanArray();
     private ArrayList<Friend> friendArrayList;
-
+    private String current_user_name;
+    private String current_user_image;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userId;
     String uidFriend;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +73,13 @@ public class PendingRequest extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         gUid = currentUser.getUid();
-
       /* DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvFriend.getContext(), mLayoutManager.getOrientation());
        rvFriend.addItemDecoration(dividerItemDecoration);*/
        rvFriend.setHasFixedSize(true);
        rvFriend.setLayoutManager(mLayoutManager);
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userId = fAuth.getCurrentUser().getUid();
 
         Query query=db.collection("users").document(gUid).collection("friend_req"+"/")
                 .whereEqualTo("request_type","received");
@@ -75,19 +90,28 @@ public class PendingRequest extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull FriendViewHolder holder, int position, @NonNull Friend model) {
                 uidFriend= getSnapshots().getSnapshot(position).getId();
-                holder.setList(uidFriend);
-             /*   holder.accept.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        acceptRequest();
-                    }
-                });
-                holder.decline.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        declineRequest();
-                    }
-                });*/
+                model.setDocumentId(uidFriend);
+                String name= model.getName();
+                String profile= model.getProfile();
+                holder.txtName.setText(model.getName());
+                Glide.with(holder.imageProfile.getContext()).load(model.getProfile()).into(holder.imageProfile);
+
+                holder.accept
+                        .setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+
+                                                acceptRequest(model.getDocumentId(),name,profile);
+                                            }
+                                        });
+                holder.decline
+                        .setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                declineRequest(model.getDocumentId());
+                                            }
+                                        });
+
             }
             @NonNull
             @Override
@@ -109,11 +133,32 @@ public class PendingRequest extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-    public void acceptRequest(){
+    public void acceptRequest(String uid, String name, String profile){
+        String uidFriend=uid;
+        String uname=name;
+        String uprofile=profile;
+        fStore.collection("users").document(userId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        String uname = documentSnapshot.get("userName", String.class);
+                        String uprofile= documentSnapshot.get("userProfileURI",String.class);
+                        current_user_name=uname;
+                        current_user_image=uprofile;
+
+                    }
+                }
+            }
+        });
     DocumentReference documentReference=db.collection("users").document(gUid)
-            .collection("friends").document(uidFriend);
+            .collection("friends").document();
+    String userAccepted=documentReference.getId();
     Map currentId=new HashMap();
                    currentId.put("idChatRoom",gUid+uidFriend);
+                   currentId.put("name",uname);
+                   currentId.put("profile",uprofile);
                    documentReference.set(currentId).addOnCompleteListener(new OnCompleteListener<Void>() {
         @Override
         public void onComplete(@NonNull Task<Void> task) {
@@ -121,6 +166,9 @@ public class PendingRequest extends AppCompatActivity {
                     .collection("friends").document(gUid);
             Map otherId=new HashMap();
             otherId.put("idChatRoom",gUid+uidFriend);
+            otherId.put("name",current_user_name);
+            otherId.put("profile",current_user_image);
+
             documentReference1.set(otherId).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -144,7 +192,8 @@ public class PendingRequest extends AppCompatActivity {
         }
     });
     }
-   public void declineRequest(){
+   public void declineRequest(String uid){
+        String uidFriend= uid;
        DocumentReference documentReference2=db.collection("users").document(gUid).collection("friend_req").document(uidFriend);
 
        documentReference2.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -162,56 +211,19 @@ public class PendingRequest extends AppCompatActivity {
    }
 
     public class FriendViewHolder extends RecyclerView.ViewHolder  {
-        View mView;
         Button accept;
+        View mView;
         Button decline;
-        ImageView imageProfile;
+        CircleImageView imageProfile;
         TextView txtName;
         public FriendViewHolder(View itemView) {
             super(itemView);
-            mView = itemView;
-            imageProfile= itemView.findViewById(R.id.imgProfile);
-            txtName = mView.findViewById(R.id.txtName);
-            accept = (Button)mView.findViewById(R.id.accept_request);
-            decline=(Button)mView.findViewById(R.id.decline_request);
+            mView=itemView;
+            imageProfile= itemView.findViewById(R.id.img1);
+            txtName = itemView.findViewById(R.id.txtName);
+            accept = itemView.findViewById(R.id.accept_request);
+            decline=itemView.findViewById(R.id.decline_request);
 
         }
-        public void setList(String uidFriend) {
-            db.collection("users").document(uidFriend)
-                    .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if(task.isSuccessful())
-                    {
-                        DocumentSnapshot documentSnapshot=task.getResult();
-                        if(documentSnapshot.exists())
-                        {
-                            String name=documentSnapshot.get("userName",String.class);
-                            txtName.setText(name);
-
-                            accept.findViewById(R.id.accept_request)
-                                    .setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-
-                                                acceptRequest();
-                                        }
-                                    });
-                            decline.findViewById(R.id.decline_request)
-                                    .setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                           declineRequest();
-                                        }
-                                    });
-
-                        }
-
-                    }
-                }
-            });
-        }
-
-
     }
 }

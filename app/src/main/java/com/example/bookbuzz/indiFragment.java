@@ -49,7 +49,9 @@ public class indiFragment extends Fragment  {
     private FirebaseAuth mAuth;
     private String current_user_id;
     private String current_user_name;
+    private String current_user_image;
     private String currentState;
+    String newer;
 
     public indiFragment() {
 
@@ -187,7 +189,10 @@ public class indiFragment extends Fragment  {
                     DocumentSnapshot documentSnapshot = task.getResult();
                     if (documentSnapshot.exists()) {
                         String uname = documentSnapshot.get("userName", String.class);
+                        String uprofile= documentSnapshot.get("userProfileURI",String.class);
                         current_user_name=uname;
+                        current_user_image=uprofile;
+
                     }
                 }
             }
@@ -207,6 +212,7 @@ public class indiFragment extends Fragment  {
                     Map current=new HashMap();
                    current.put("request_type","received");
                    current.put("name",current_user_name);
+                   current.put("profile",current_user_image);
                    documentReference1.set(current).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
