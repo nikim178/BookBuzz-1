@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookBuzz">
+        <activity android:name=".Settings"></activity>
         <activity android:name=".Friend_Message" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".model.ChatActivity" />

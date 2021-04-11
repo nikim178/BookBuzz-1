@@ -1,5 +1,6 @@
 package com.example.bookbuzz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,13 +13,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.bookbuzz.ui.home.HomeFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class HomeActivity extends AppCompatActivity {
-    private static final String TAG = HomeActivity.class.getSimpleName ();
+    private static final String TAG = HomeActivity.class.getSimpleName ( );
     //Initialize variable
     DrawerLayout drawerLayout;
 
@@ -30,51 +34,78 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_home2 );
 
-        bottomNav = findViewById ( R.id.bottom_nav);
+        bottomNav = findViewById ( R.id.bottom_nav );
 
-        if ( savedInstanceState==null ){
-            bottomNav.setItemSelected ( R.id.nav_home,true );
-            fragmentManager = getSupportFragmentManager ();
-            HomeFragment homeFragment = new HomeFragment ();
-            fragmentManager.beginTransaction ()
-                           .replace ( R.id.fragment_container,homeFragment )
-                           .commit();
+        if ( savedInstanceState == null ) {
+            bottomNav.setItemSelected ( R.id.nav_home , true );
+            fragmentManager = getSupportFragmentManager ( );
+            HomeFragment homeFragment = new HomeFragment ( );
+            fragmentManager.beginTransaction ( )
+                           .replace ( R.id.fragment_container , homeFragment )
+                           .commit ( );
         }
-
 
 
         bottomNav.setOnItemSelectedListener ( new ChipNavigationBar.OnItemSelectedListener ( ) {
             @Override
             public void onItemSelected ( int id ) {
-                Fragment fragment =  null;
-                switch ( id ){
+                Fragment fragment = null;
+                switch ( id ) {
                     case R.id.home:
-                        fragment = new HomeFragment ();
+                        fragment = new HomeFragment ( );
                         break;
                     case R.id.chat:
-                        fragment = new ChatFragment ();
+                        fragment = new ChatFragment ( );
                         break;
                     case R.id.search_user:
-                        fragment = new SearchUserFragment ();
+                        fragment = new SearchUserFragment ( );
+                        break;
+                    case R.id.request:
+                        fragment = new RequestsFragment ();
                         break;
 
                 }
 
-                if ( fragment!=null ) {
+                if ( fragment != null ) {
 
-                    fragmentManager = getSupportFragmentManager ();
-                    fragmentManager.beginTransaction ()
-                                   .replace ( R.id.fragment_container, fragment )
-                                   .commit ();
-                }else {
+                    fragmentManager = getSupportFragmentManager ( );
+                    fragmentManager.beginTransaction ( )
+                                   .replace ( R.id.fragment_container , fragment )
+                                   .commit ( );
+                }
+                else {
 
-                    Log.e ( TAG, "Error in creating fragment" );
+                    Log.e ( TAG , "Error in creating fragment" );
                 }
             }
         } );
 
         //Assign variable
         drawerLayout = findViewById ( R.id.drawer_layout );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu ( Menu menu ) {
+        getMenuInflater ().inflate ( R.menu.home2,menu );
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected ( @NonNull MenuItem item ) {
+       switch ( item.getItemId () )
+       {
+           case R.id.settings:
+               Toast.makeText ( this,"Settings",Toast.LENGTH_SHORT ).show ();
+               return true;
+           default:
+               return super.onOptionsItemSelected ( item );
+
+       }
+
+    }
+    public void settings(View view){
+        redirectActivity ( this,Settings.class );
     }
 
     public void ClickMenu ( View view ) {
@@ -128,13 +159,18 @@ public class HomeActivity extends AppCompatActivity {
         redirectActivity ( this , Wishlist.class );
     }
 
+    public void help (View view){
+        //Redirect activity to about us/ help
+        redirectActivity ( this,Help.class );
+    }
+
     public void skip ( View view ) {
         //Close app
         logout ( this );
     }
 
-    private static void logout ( Activity activity ) {
-        //Initialize slert dialog
+    private void logout ( Activity activity ) {
+        //Initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder ( activity );
         //Set title
         builder.setTitle ( "Logout" );
@@ -144,10 +180,8 @@ public class HomeActivity extends AppCompatActivity {
         builder.setPositiveButton ( "YES" , new DialogInterface.OnClickListener ( ) {
             @Override
             public void onClick ( DialogInterface dialog , int which ) {
-                //Finish activity
-                activity.finishAffinity ( );
-                //Exit app
-                System.exit ( 0 );
+                startActivity ( new Intent ( HomeActivity.this , UserLogin.class ) );
+                finish ( );
             }
         } ).setNegativeButton ( "NO" , new DialogInterface.OnClickListener ( ) {
             @Override
@@ -177,7 +211,26 @@ public class HomeActivity extends AppCompatActivity {
         //Close drawer
         closeDrawer ( drawerLayout );
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
