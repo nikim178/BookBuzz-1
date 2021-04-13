@@ -11,5 +11,7 @@
     <color name="grey">#aaa</color>
     <color name="purple">#FF6200EE</color>
     <color name="red">#FFDA0303</color>
-
+    <color name="darkTextColor">#020000</color>
+    <color name="themeColor">#11CFC5</color>
+    <color name="primaryTextColor">#11CFC5</color>
 </resources>
