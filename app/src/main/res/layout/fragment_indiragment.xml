@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#DDF5F8"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -56,30 +57,30 @@
             android:layout_marginTop="10dp"
             android:text="Candidate Email"
             android:textColor="#000"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/booklist"
             android:layout_width="200dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:background="#D5638A"
-            android:text="Booklist" />
+            android:text="Booklist"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/wishlist"
             android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:background="#DA5683"
-            android:text="Wishlist" />
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:text="Wishlist"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/request"
             android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="#8561C5"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
             android:text="Request"
             android:textColor="#FFFFFF" />
 

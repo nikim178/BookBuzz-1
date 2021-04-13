@@ -1,9 +1,11 @@
 package com.example.bookbuzz;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,15 +31,20 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
         holder.userName.setText(model.getUserName());
         holder.userLocation.setText(model.getUserLocation());
         holder.userZipcode.setText(model.getUserZipcode());
-        holder.userEmail.setText(model.getUserEmail());
-        Glide.with(holder.userProfileURI.getContext()).load(model.getUserProfileURI()).into(holder.userProfileURI);
+       // holder.userEmail.setText(model.getUserEmail());
+        String uri=model.getUserProfileURI();
+       /* if(uri.equals(null)){
+            Glide.with(holder.userProfileURI.getContext()).load("https://firebasestorage.googleapis.com/v0/b/bookbuzz-a24fb.appspot.com/o/users%2FAYedmcN0UWNZwL5TbHUGaEFrsPo1profile.jpg?alt=media&token=97e3b07e-4984-4d62-88f1-68518de3142e").into(holder.userProfileURI);
+        }*/
+       // else{
+        Glide.with(holder.userProfileURI.getContext()).load(model.getUserProfileURI()).into(holder.userProfileURI);//}
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity=(AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction()
                         .replace(R.id.wrapper,new indiFragment(model.getDocumentId(),model.getUserName(),model.getUserLocation(),model.getUserZipcode(),model.getUserEmail(),model.getUserProfileURI())).addToBackStack(null).commit();
-
+               // Log.d("one", uri);
             }
         });
 
