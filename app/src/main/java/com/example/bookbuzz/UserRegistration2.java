@@ -3,10 +3,14 @@ package com.example.bookbuzz;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.util.Patterns;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,10 +37,16 @@ public class UserRegistration2 extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     private String userID;
+    private ImageView logoimage;
+    private TextView welcome;
+    private TextView signText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration2);
+        welcome=findViewById(R.id.logoTexts);
+        signText=findViewById(R.id.random);
+        logoimage=findViewById(R.id.logoimages);
         uEmail=findViewById(R.id.email);
         uPass=findViewById(R.id.password);
         uZipcode=findViewById(R.id.zipcode);
@@ -45,21 +55,25 @@ public class UserRegistration2 extends AppCompatActivity {
         oldUser=findViewById(R.id.signInUser);
         mAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
-        oldUser.setOnClickListener((v)-> {
 
-            startActivity(new Intent(UserRegistration2.this,UserLogin2.class));
+        oldUser.setOnClickListener((v)-> {
+            Intent intent=new Intent(UserRegistration2.this,UserLogin2.class);
+            Pair[] pairs=new Pair[7];
+            pairs[0]=new Pair<View,String>(logoimage,"logo_image");
+            pairs[1]=new Pair<View,String>(welcome,"logo_text");
+            pairs[2]=new Pair<View,String>(uEmail,"user_trans");
+            pairs[3]=new Pair<View,String>(uPass,"pass_trans");
+            pairs[4]=new Pair<View,String>(signText,"sign_trans");
+            pairs[5]=new Pair<View,String>(uSignUpButton,"float_text");
+            pairs[6]=new Pair<View,String>(oldUser,"new_trans");
+            ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(UserRegistration2.this,pairs);
+            startActivity(intent,options.toBundle());
         });
 
         uSignUpButton.setOnClickListener((v)-> {
 
             createUser();
         });
-        FirebaseUser firebaseUser=mAuth.getCurrentUser();
-        if(firebaseUser!=null)
-        {
-            startActivity(new Intent(UserRegistration2.this,Startpage.class));
-
-        }
     }
     private void createUser()
     {

@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class UserLogin2 extends AppCompatActivity {
     private ImageView logoImage;
@@ -62,6 +63,12 @@ public class UserLogin2 extends AppCompatActivity {
             startActivity(intent,options.toBundle());
 
         });
+        FirebaseUser firebaseUser=mAuth.getCurrentUser();
+        if(firebaseUser!=null)
+        {
+            startActivity(new Intent(UserLogin2.this,Startpage.class));
+
+        }
 
     }
     private void loginUser() {

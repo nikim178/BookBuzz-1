@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/logoimages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -36,6 +37,7 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
+                    android:id="@+id/logoTexts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -188,6 +190,7 @@
                             app:fabCustomSize="0dp" />
 
                         <TextView
+                            android:id="@+id/random"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
