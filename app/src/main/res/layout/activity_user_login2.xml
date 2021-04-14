@@ -127,7 +127,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="#8CD9E3"
+                android:backgroundTint="#11cfc5"
                 android:elevation="0dp"
                 android:transitionName="float_trans"
                 android:src="@drawable/farrow"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#8CD9E3"
+    android:background="#11cfc5"
     android:focusableInTouchMode="true"
     android:gravity="center"
     tools:context=".UserRegistration2">
@@ -181,7 +181,7 @@
                             android:layout_marginTop="20dp"
                             android:layout_marginEnd="30dp"
                             android:layout_marginBottom="20dp"
-                            android:backgroundTint="#8CD9E3"
+                            android:backgroundTint="#11cfc5"
                             android:elevation="0dp"
                             android:transitionName="float_trans"
                             android:src="@drawable/farrow"
