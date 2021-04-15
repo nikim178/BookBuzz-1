@@ -11,17 +11,17 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="375dp"
+        android:layout_height="266dp">
 
         <ImageView
             android:id="@+id/logoimage"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:transitionName="logo_image"
             android:layout_marginBottom="40dp"
             android:src="@drawable/ic_register_hero"
+            android:transitionName="logo_image"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -31,12 +31,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/bungee"
-            android:transitionName="logo_text"
             android:text="Hello\nthere,\nWelcome\nBack"
             android:textColor="#000"
             android:textSize="35sp"
+            android:transitionName="logo_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/logoimage" />
 
@@ -45,13 +45,15 @@
             android:layout_width="206dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="serif"
-            android:text=" Sign In to continue"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="11dp"
+            android:fontFamily="monospace"
+            android:text="SIGN IN TO CONTINUE"
             android:textColor="#595959"
-            android:textSize="18sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -59,7 +61,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
@@ -67,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:hint="Username"
+            android:hint="Email"
             android:textColorHint="@color/grey"
             app:boxStrokeColor="@color/grey"
             app:boxStrokeWidth="2dp"
@@ -75,7 +77,9 @@
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
-
+            app:startIconDrawable="@drawable/mail"
+            app:endIconMode="clear_text"
+            app:startIconTint="@color/grey"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -102,6 +106,8 @@
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/lock"
+            app:startIconTint="@color/grey"
             app:passwordToggleTint="@color/grey"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
@@ -163,6 +169,7 @@
             android:transitionName="new_trans"
             android:text="New User? SIGN UP"
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
     </LinearLayout>
+
 </LinearLayout>

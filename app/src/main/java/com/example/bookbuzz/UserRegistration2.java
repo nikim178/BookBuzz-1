@@ -10,6 +10,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +34,7 @@ import java.util.Random;
 public class UserRegistration2 extends AppCompatActivity {
     private TextInputEditText uEmail,uPass,uZipcode,uName;
     private FloatingActionButton uSignUpButton;
-    private TextView oldUser;
+    private Button oldUser;
     private FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     private String userID;
