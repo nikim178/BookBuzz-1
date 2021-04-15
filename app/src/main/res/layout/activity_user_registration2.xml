@@ -92,6 +92,7 @@
                         app:startIconDrawable="@drawable/ic_person"
                         app:startIconTint="@color/grey"
                         app:endIconMode="clear_text"
+                        app:endIconTint="@color/red"
                         android:hint="Username"
                         android:textColorHint="@color/grey">
 
@@ -120,6 +121,7 @@
 
                         android:hint="Email"
                         app:endIconMode="clear_text"
+                        app:endIconTint="@color/red"
                         app:startIconDrawable="@drawable/mail"
                         app:startIconTint="@color/grey"
                         android:textColorHint="@color/grey"
@@ -151,6 +153,7 @@
                         android:hint="Zipcode"
                         app:startIconDrawable="@drawable/mapmarker"
                         app:endIconMode="clear_text"
+                        app:endIconTint="@color/red"
                         app:startIconTint="@color/grey"
                         android:textColorHint="@color/grey"
                        >

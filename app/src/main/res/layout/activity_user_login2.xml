@@ -79,6 +79,7 @@
             app:boxCornerRadiusTopStart="10dp"
             app:startIconDrawable="@drawable/mail"
             app:endIconMode="clear_text"
+            app:endIconTint="@color/red"
             app:startIconTint="@color/grey"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
