@@ -5,8 +5,8 @@
     <item
         android:title="Settings"
         android:icon="@drawable/ic_settings"
-        android:id="@+id/settings"
-        app:showAsAction="never"
-        android:onClick="settings"/>
+        android:id="@+id/settings"/>
+        //app:showAsAction="never"
+        //android:onClick="settings"/>
 
 </menu>

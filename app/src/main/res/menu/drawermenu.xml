@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
+        //android:onClick="clickProfile"
+
+
+    <item
+        android:id="@+id/search_book"
+        android:icon="@drawable/ic_search"
+        android:title="Search Book" />
+       // android:onClick="onClick"
+
+
+    <item
+        android:id="@+id/genre"
+        android:icon="@drawable/ic_genre"
+        android:title="Select Ganre" />
+        // android:onClick="genre"
+
+
+    <item
+        android:id="@+id/booklist"
+        android:icon="@drawable/ic_booklist"
+        android:title="Booklist" />
+        //android:onClick="booklist"
+
+
+    <item
+        android:id="@+id/wishlist"
+        android:icon="@drawable/ic_wishlist"
+        android:title="Wishlist" />
+        //android:onClick="wishlist"
+
+
+    <item
+        android:id="@+id/about_us"
+        android:icon="@drawable/ic_aboutus"
+        android:title="About Us" />
+        //android:onClick="help"
+
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        android:title="Logout" />
+        //android:onClick="skip"
+
+
+</menu>
