@@ -7,40 +7,17 @@
     android:id="@+id/drawer"
     tools:context=".HomeActivity">
 
-
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationview"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#FFFFFF"
-        app:headerLayout="@layout/header"
-        app:itemIconTint="@color/purple_700"
-        app:itemTextColor="@color/purple_700"
-        app:menu="@menu/drawermenu">
-
-        <include
-            layout="@layout/header"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
-
-    </com.google.android.material.navigation.NavigationView>
-
-
-
-
     <androidx.cardview.widget.CardView
-        android:layout_margin="10dp"
+        android:layout_margin="0dp"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="100dp"
         app:cardBackgroundColor="#F1F1F1"
         app:cardElevation="8dp">
 
 
         <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="600dp">
 
 
         <LinearLayout
@@ -52,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="10dp"
                 android:padding="20dp"
                 >
 
@@ -131,10 +108,66 @@
         </LinearLayout>
 
     </ScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/bg1"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="20dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/bg1"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="130dp"
+            android:layout_marginBottom="20dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/bg1"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="225dp"
+            android:layout_marginBottom="20dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/searchicon1"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="320dp"
+            android:layout_marginBottom="20dp"/>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
+    <include
+        layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#FFFFFF"
+        app:headerLayout="@layout/header"
+        app:itemIconTint="@color/purple_700"
+        app:itemTextColor="@color/purple_700"
+        app:menu="@menu/drawermenu">
+
+    </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
