@@ -8,6 +8,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 //import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -19,16 +21,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.bookbuzz.adapter.BooklistAdapter;
+import com.example.bookbuzz.adapter.BooklistHelperClass;
+import com.example.bookbuzz.adapter.WishlistAdapter;
+import com.example.bookbuzz.adapter.WishlistHelperClass;
 import com.example.bookbuzz.ui.home.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
-
+import java.util.ArrayList;
 
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,12 +48,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     NavigationView navigationView;
     Toolbar toolbar;
-
-
+    
+    RecyclerView book_list,wish_list;
+    RecyclerView.Adapter adapter;
+    
     //ChipNavigationBar bottomNav;
     //FragmentManager fragmentManager;
-
-
+    
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         super.onCreate ( savedInstanceState );
@@ -63,17 +71,62 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener ( Toggle );
         Toggle.syncState ( );
         getSupportActionBar ( ).setDisplayHomeAsUpEnabled ( true );
+
+        getWindow ().setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //Hooks
+
+        book_list = findViewById ( R.id.book_list);
+        book_list();
+
+        wish_list = findViewById ( R.id.wish_list );
+        wish_list();
+
+
+    }
+
+    private void wish_list ( ) {
+
+        wish_list.setHasFixedSize ( true );
+        wish_list.setLayoutManager ( new LinearLayoutManager ( this,LinearLayoutManager.HORIZONTAL,false ) );
+
+        ArrayList< WishlistHelperClass > wishlistLocations = new ArrayList <> (  );
+
+        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish1,"Queen Victoria" ) );
+        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish2,"Vampire Diaries" ) );
+        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish3,"Big Book of BTS" ) );
+        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish4,"Revolution 2020" ) );
+        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish5,"Harry Potter" ) );
+
+        adapter = new WishlistAdapter ( wishlistLocations );
+        wish_list.setAdapter ( adapter );
+
+    }
+
+    private void book_list ( ) {
+
+        book_list.setHasFixedSize ( true );
+        book_list.setLayoutManager ( new LinearLayoutManager ( this,LinearLayoutManager.HORIZONTAL,false ) );
+
+        ArrayList< BooklistHelperClass > booklistLocations = new ArrayList <> (  );
+
+        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book1,"The Hobbit" ) );
+        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book2,"The Famous Five" ) );
+        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book3,"To Kill a Mocking Bird" ) );
+        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book4,"Life of Pi" ) );
+        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book5,"The Office" ) );
+
+
+        adapter = new BooklistAdapter ( booklistLocations );
+        book_list.setAdapter ( adapter );
+
     }
 
     private ActionBar getSupportActionBar ( Toolbar toolbar ) {
         return null;
     }
 
-
-
-
-
-
+    
     /* Toolbar toolbar = findViewById ( R.id.toolbar_menu );
        setSupportActionBar ( toolbar );
 
@@ -380,17 +433,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 //Show dialog
                 builder.show ( );
             }
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
