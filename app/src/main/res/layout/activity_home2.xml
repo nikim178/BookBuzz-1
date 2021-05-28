@@ -46,14 +46,15 @@
                         android:fontFamily="@font/bungee"
                         android:textAllCaps="true"/>
 
-                    <TextView
+                    <Button
+                        android:id="@+id/view1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/view_all"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:textSize="20sp" />
-
+                        android:onClick="bookList"
+                        android:text="@string/view_all"
+                        android:textSize="10sp" />
 
                 </RelativeLayout>
 
@@ -86,18 +87,20 @@
                         android:fontFamily="@font/bungee"
                         android:textAllCaps="true"/>
 
-                    <TextView
+                    <Button
+                        android:id="@+id/view2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/view_all"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:textSize="20sp" />
+                        android:onClick="wishList"
+                        android:text="@string/view_all"
+                        android:textSize="10sp" />
 
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/wish_list"
+                    android:id="@+id/wish_listt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -113,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:srcCompat="@drawable/bg1"
+            android:src="@drawable/ic_user_search"
             android:layout_gravity="bottom"
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="20dp"/>
@@ -123,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:srcCompat="@drawable/bg1"
+            android:src="@drawable/ic_wishlist"
             android:layout_gravity="bottom"
             android:layout_marginLeft="130dp"
             android:layout_marginBottom="20dp"/>
@@ -133,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:srcCompat="@drawable/bg1"
+            android:src="@drawable/ic_requests"
             android:layout_gravity="bottom"
             android:layout_marginLeft="225dp"
             android:layout_marginBottom="20dp"/>
@@ -143,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:srcCompat="@drawable/searchicon1"
+            android:src="@drawable/ic_chat"
             android:layout_gravity="bottom"
             android:layout_marginLeft="320dp"
             android:layout_marginBottom="20dp"/>

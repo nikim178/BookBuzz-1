@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 //import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,24 +17,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.bookbuzz.adapter.BooklistAdapter;
-import com.example.bookbuzz.adapter.BooklistHelperClass;
-import com.example.bookbuzz.adapter.WishlistAdapter;
-import com.example.bookbuzz.adapter.WishlistHelperClass;
-import com.example.bookbuzz.ui.home.HomeFragment;
+import com.bumptech.glide.Glide;
+import com.example.bookbuzz.models.BookModel;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-
-import java.util.ArrayList;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +46,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private Button uSignOutButton;
     private FirebaseAuth mAuth;
     //Initialize variable
+    FirebaseFirestore firestore;
+    FirestoreRecyclerAdapter adapter;
+    FirestoreRecyclerAdapter adapter1;
+    String userId;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle Toggle;
     private AppBarConfiguration mAppBarConfiguration;
@@ -50,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     
     RecyclerView book_list,wish_list;
-    RecyclerView.Adapter adapter;
+   // RecyclerView.Adapter adapter;
     
     //ChipNavigationBar bottomNav;
     //FragmentManager fragmentManager;
@@ -75,53 +82,114 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         getWindow ().setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Hooks
-
+        firestore=FirebaseFirestore.getInstance();
+        FirebaseAuth mAuth;
+        FirebaseUser user;
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        userId=user.getUid();
         book_list = findViewById ( R.id.book_list);
-        book_list();
+        Query query= firestore.collection("users").document(userId).collection("booklist");
 
-        wish_list = findViewById ( R.id.wish_list );
-        wish_list();
+        FirestoreRecyclerOptions<BookModel> options= new FirestoreRecyclerOptions.Builder<BookModel>()
+                .setQuery(query, BookModel.class)
+                .build();
+        adapter= new FirestoreRecyclerAdapter<BookModel, BookViewHolder>(options) {
+            @NonNull
+            @Override
+            public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.book_list_1,parent,false);
+                return new HomeActivity.BookViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull BookViewHolder holder, int position, @NonNull BookModel model) {
+                String bookid= getSnapshots().getSnapshot(position).getId();
+                model.setDocumentId(bookid);
+                holder.BookTitle.setText(model.getBookTitle());
+                //holder.BookAuth.setText(model.getBookAuth());
+                Glide.with(holder.image.getContext()).load(model.getImage()).into(holder.image);
+            }
+        };
+
+        book_list.setHasFixedSize(true);
+        book_list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false ));
+        book_list.setAdapter(adapter);
+
+        wish_list = findViewById ( R.id.wish_listt);
+        Query query1= firestore.collection("users").document(userId).collection("wishlist");
+        FirestoreRecyclerOptions<BookModel> options1= new FirestoreRecyclerOptions.Builder<BookModel>()
+                .setQuery(query1, BookModel.class)
+                .build();
+        adapter1=new FirestoreRecyclerAdapter<BookModel, WishViewHolder>(options1) {
+            @NonNull
+            @Override
+            public WishViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.wish_list_1,parent,false);
+                return new HomeActivity.WishViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull WishViewHolder holder, int position, @NonNull BookModel model) {
+                String bookid= getSnapshots().getSnapshot(position).getId();
+                model.setDocumentId(bookid);
+                holder.BookTitle1.setText(model.getBookTitle());
+                //holder.BookAuth.setText(model.getBookAuth());
+                Glide.with(holder.image1.getContext()).load(model.getImage()).into(holder.image1);
+            }
+        };
+        Log.d("one","works");
+        wish_list.setHasFixedSize(true);
+        wish_list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false ));
+        wish_list.setAdapter(adapter1);
+        FloatingActionButton fab1 = findViewById(R.id.floatingActionButton);
+        fab1.setOnClickListener(new View.OnClickListener (){
+
+            @Override
+            public void onClick(View v) {
+             Intent i= new Intent(HomeActivity.this, SearchUsers.class);
+             startActivity(i);
+            }
+        });
+        FloatingActionButton fab2 = findViewById(R.id.floatingActionButton2);
+        fab2.setOnClickListener(new View.OnClickListener (){
+
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(HomeActivity.this, SelectGenre.class);
+                startActivity(i);
+            }
+        });
+        FloatingActionButton fab3 = findViewById(R.id.floatingActionButton3);
+        fab3.setOnClickListener(new View.OnClickListener (){
+
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(HomeActivity.this, PendingRequest.class);
+                startActivity(i);
+            }
+        });
+        FloatingActionButton fab4 = findViewById(R.id.floatingActionButton4);
+        fab4.setOnClickListener(new View.OnClickListener (){
+
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(HomeActivity.this, Friend_Message.class);
+                startActivity(i);
+            }
+        });
+
 
 
     }
-
-    private void wish_list ( ) {
-
-        wish_list.setHasFixedSize ( true );
-        wish_list.setLayoutManager ( new LinearLayoutManager ( this,LinearLayoutManager.HORIZONTAL,false ) );
-
-        ArrayList< WishlistHelperClass > wishlistLocations = new ArrayList <> (  );
-
-        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish1,"Queen Victoria" ) );
-        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish2,"Vampire Diaries" ) );
-        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish3,"Big Book of BTS" ) );
-        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish4,"Revolution 2020" ) );
-        wishlistLocations.add ( new WishlistHelperClass ( R.drawable.wish5,"Harry Potter" ) );
-
-        adapter = new WishlistAdapter ( wishlistLocations );
-        wish_list.setAdapter ( adapter );
-
+    public void bookList(View view){
+        Intent i=new Intent(HomeActivity.this, Booklist.class);
+        startActivity(i);
     }
-
-    private void book_list ( ) {
-
-        book_list.setHasFixedSize ( true );
-        book_list.setLayoutManager ( new LinearLayoutManager ( this,LinearLayoutManager.HORIZONTAL,false ) );
-
-        ArrayList< BooklistHelperClass > booklistLocations = new ArrayList <> (  );
-
-        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book1,"The Hobbit" ) );
-        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book2,"The Famous Five" ) );
-        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book3,"To Kill a Mocking Bird" ) );
-        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book4,"Life of Pi" ) );
-        booklistLocations.add ( new BooklistHelperClass ( R.drawable.book5,"The Office" ) );
-
-
-        adapter = new BooklistAdapter ( booklistLocations );
-        book_list.setAdapter ( adapter );
-
+    public void wishList(View view){
+        Intent i=new Intent(HomeActivity.this, Wishlist.class);
+        startActivity(i);
     }
-
     private ActionBar getSupportActionBar ( Toolbar toolbar ) {
         return null;
     }
@@ -189,6 +257,51 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
       }
     }
 */
+    private class BookViewHolder extends RecyclerView.ViewHolder{
+        private TextView BookTitle;
+       // private TextView BookAuth;
+        private ImageView image;
+       // private Button remove;
+
+        public BookViewHolder(@NonNull View itemView) {
+            super(itemView);
+           // BookAuth = itemView.findViewById(R.id.BookAuth);
+            BookTitle = itemView.findViewById(R.id.book1_title);
+            image = itemView.findViewById(R.id.book1);
+            //remove=itemView.findViewById(R.id.remove);
+
+        }
+    }
+    private class WishViewHolder extends RecyclerView.ViewHolder{
+        private TextView BookTitle1;
+        // private TextView BookAuth;
+        private ImageView image1;
+        // private Button remove;
+
+        public WishViewHolder(@NonNull View itemView) {
+            super(itemView);
+            // BookAuth = itemView.findViewById(R.id.BookAuth);
+            BookTitle1 = itemView.findViewById(R.id.wish1_title);
+            image1 = itemView.findViewById(R.id.wish1);
+            //remove=itemView.findViewById(R.id.remove);
+
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+        adapter1.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+        adapter1.stopListening();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu ( Menu menu ) {

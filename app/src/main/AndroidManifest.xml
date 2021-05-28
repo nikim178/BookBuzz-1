@@ -21,25 +21,25 @@
         <activity android:name=".UserLogin2"
             android:theme="@style/Theme.BookBuzz.NoActionBar"/>
         <activity android:name=".Settings" />
-        <activity android:name=".Friend_Message" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".Friend_Message" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".HomeActivity" android:parentActivityName=".HomeActivity" />
         <activity android:name=".model.ChatActivity" />
-        <activity android:name=".PendingRequest" />
-        <activity android:name=".Wishlist" />
-        <activity android:name=".Booklist" />
-        <activity android:name=".SearchUsers" android:label="Search Users" />
+        <activity android:name=".PendingRequest" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".Wishlist" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".Booklist" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".SearchUsers" android:label="Search Users"  android:parentActivityName=".HomeActivity"/>
         <activity
             android:name=".SelectGenre"
-            tools:ignore="MissingClass" />
-        <activity android:name=".SwipeGenre" />
+            tools:ignore="MissingClass" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".SwipeGenre" android:parentActivityName=".SelectGenre"/>
         <activity
             android:name=".Transformationac"
             android:label="Introduction" />
         <activity android:name=".Startpage" />
-        <activity android:name=".SearchBook" />
-        <activity android:name=".EditProfile" />
-        <activity android:name=".Profile" />
-        <activity android:name=".Help" />
+        <activity android:name=".SearchBook" android:parentActivityName=".HomeActivity" />
+        <activity android:name=".EditProfile" android:parentActivityName=".Profile" />
+        <activity android:name=".Profile" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".Help" android:parentActivityName=".HomeActivity"/>
         <activity android:name=".Home" />
         <activity android:name=".UserLogin" />
         <activity android:name=".UserRegistration" />
