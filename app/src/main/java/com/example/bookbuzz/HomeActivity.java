@@ -31,6 +31,7 @@ import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.bookbuzz.models.BookModel;
+import com.example.bookbuzz.ui.Select_Genre2;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -156,7 +157,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(HomeActivity.this, SelectGenre.class);
+                Intent i= new Intent(HomeActivity.this, Select_Genre2.class);
                 startActivity(i);
             }
         });
@@ -478,7 +479,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.genre:
 
                 Toast.makeText ( getApplicationContext ( ) , "Select Genre" , Toast.LENGTH_LONG ).show ( );
-                redirectActivity ( this , SelectGenre.class );
+                redirectActivity ( this , Select_Genre2.class );
 
                 break;
 

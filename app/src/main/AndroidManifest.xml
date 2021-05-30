@@ -6,40 +6,62 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-
         android:allowBackup="true"
-        android:hardwareAccelerated="true"
         android:configChanges="orientation|screenSize"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookBuzz">
-        <activity android:name=".UserRegistration2"
-            android:theme="@style/Theme.BookBuzz.NoActionBar"></activity>
-        <activity android:name=".UserLogin2"
-            android:theme="@style/Theme.BookBuzz.NoActionBar"/>
-        <activity android:name=".Settings" />
-        <activity android:name=".Friend_Message" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".HomeActivity" android:parentActivityName=".HomeActivity" />
-        <activity android:name=".model.ChatActivity" />
-        <activity android:name=".PendingRequest" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".Wishlist" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".Booklist" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".SearchUsers" android:label="Search Users"  android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".ui.Select_Genre2"></activity>
         <activity
-            android:name=".SelectGenre"
-            tools:ignore="MissingClass" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".SwipeGenre" android:parentActivityName=".SelectGenre"/>
+            android:name=".UserRegistration2"
+            android:theme="@style/Theme.BookBuzz.NoActionBar" />
+        <activity
+            android:name=".UserLogin2"
+            android:theme="@style/Theme.BookBuzz.NoActionBar" />
+        <activity android:name=".Settings" />
+        <activity
+            android:name=".Friend_Message"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".HomeActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".model.ChatActivity" />
+        <activity
+            android:name=".PendingRequest"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".Wishlist"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".Booklist"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".SearchUsers"
+            android:label="Search Users"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".SwipeGenre"
+            android:parentActivityName=".ui.Select_Genre2" />
         <activity
             android:name=".Transformationac"
             android:label="Introduction" />
         <activity android:name=".Startpage" />
-        <activity android:name=".SearchBook" android:parentActivityName=".HomeActivity" />
-        <activity android:name=".EditProfile" android:parentActivityName=".Profile" />
-        <activity android:name=".Profile" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".Help" android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".SearchBook"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".EditProfile"
+            android:parentActivityName=".Profile" />
+        <activity
+            android:name=".Profile"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".Help"
+            android:parentActivityName=".HomeActivity" />
         <activity android:name=".Home" />
         <activity android:name=".UserLogin" />
         <activity android:name=".UserRegistration" />

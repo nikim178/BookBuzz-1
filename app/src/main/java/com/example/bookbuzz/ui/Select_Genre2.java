@@ -1,4 +1,4 @@
-package com.example.bookbuzz;
+package com.example.bookbuzz.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,31 +6,41 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
+
+import com.example.bookbuzz.R;
+import com.example.bookbuzz.SwipeGenre;
+import com.google.android.material.checkbox.MaterialCheckBox;
 
 import java.util.ArrayList;
 
-public class SelectGenre extends AppCompatActivity {
-        CheckBox cb1,cb2,cb3,cb4,cb5,cb6;
-        Button btn1;
-        TextView mResult;
-        ArrayList<String> storeResult;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class Select_Genre2 extends AppCompatActivity {
+    @BindView(R.id.checkBox)
+    MaterialCheckBox cb1;
+    @BindView(R.id.checkBox2)
+    MaterialCheckBox cb2;
+    @BindView(R.id.checkBox3)
+    MaterialCheckBox cb3;
+    @BindView(R.id.checkBox4)
+    MaterialCheckBox cb4;
+    @BindView(R.id.checkBox5)
+    MaterialCheckBox cb5;
+    @BindView(R.id.checkBox6)
+    MaterialCheckBox cb6;
+    Button btn1;
+
+    ArrayList<String> storeResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_genre);
-        cb1=findViewById(R.id.checkBox);
-        cb2=findViewById(R.id.checkBox2);
-        cb3=findViewById(R.id.checkBox3);
-        cb4=findViewById(R.id.checkBox4);
-        cb5=findViewById(R.id.checkBox5);
-        cb6=findViewById(R.id.checkBox6);
+        setContentView(R.layout.activity_select__genre2);
+        ButterKnife.bind(this);
         btn1=findViewById(R.id.button);
-        mResult=findViewById(R.id.textView);
+
 
         storeResult=new ArrayList<String>();
-        mResult.setEnabled(false);
 
         cb1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,13 +103,14 @@ public class SelectGenre extends AppCompatActivity {
                 StringBuilder stringBuilder=new StringBuilder(6);
                 for(String s: storeResult)
                     stringBuilder.append(s).append("\n");
-                mResult.setText(stringBuilder.toString());
-                mResult.setEnabled(false);
-                Intent intent = new Intent(SelectGenre.this, SwipeGenre.class);
+
+                Intent intent = new Intent(Select_Genre2.this, SwipeGenre.class);
                 intent.putExtra("book",storeResult);
                 startActivity(intent);
 
             }
         });
     }
-    }
+
+
+}
