@@ -17,4 +17,10 @@
     <color name="darkblue">#013c58</color>
     <color name="tranparent">#0000ffff</color>
     <color name="lightblue">#a9dcd6</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="purple_1">#ba53de</color>
+    <color name="pink">#f469a9</color>
+    <color name="blue_1">#88bef5</color>
 </resources>
