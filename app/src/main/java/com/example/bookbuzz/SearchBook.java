@@ -186,16 +186,17 @@ public class SearchBook extends AppCompatActivity implements View.OnClickListene
             Button addWishListButton = convertView.findViewById(R.id.searchAddWishListButton);
 
             if (book.imageLink != null && !book.imageLink.equals("")) {
-                Picasso.with(getContext()).load(book.imageLink).into(matchImage, new Callback() {
+                Picasso.get().load(book.imageLink).into(matchImage, new Callback() {
                     @Override
                     public void onSuccess() {
                         System.out.println("Successfully loaded " + book.imageLink);
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception e) {
                         System.out.println("Could not load " + book.imageLink);
                     }
+
                 });
             }
 

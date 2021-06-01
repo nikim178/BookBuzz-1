@@ -78,7 +78,7 @@ public class EditProfile extends AppCompatActivity {
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(EditProfile.this).load(uri).into(profileImageView);
+                Picasso.get().load(uri).into(profileImageView);
 
             }
         });
@@ -162,7 +162,7 @@ public class EditProfile extends AppCompatActivity {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.with(EditProfile.this).load(uri).into(profileImageView);
+                        Picasso.get().load(uri).into(profileImageView);
                         /// for uploading image to firestore
                         DocumentReference documentReference = fstore.collection("users").document(user.getUid());
                         Map<String, Object> edited = new HashMap<>();

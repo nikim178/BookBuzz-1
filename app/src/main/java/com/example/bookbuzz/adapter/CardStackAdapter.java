@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookbuzz.models.ItemModel;
 import com.example.bookbuzz.R;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.PicassoProvider;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
         }
 
         void setData(ItemModel data) {
-            Picasso.with(null)
+            Picasso.get()
                     .load(data.getImage())
                     .fit()
                     .centerCrop()

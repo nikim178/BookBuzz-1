@@ -35,16 +35,9 @@
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
             android:shadowColor="@color/black"/>
-        <TextView
-            android:id="@+id/item_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+
 
     </LinearLayout>
-
     <FrameLayout
         android:id="@+id/left_overlay"
         android:layout_width="match_parent"
@@ -54,22 +47,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_forward_black_24dp"
+            android:src="@drawable/skip_white_120dp"
             android:layout_gravity="center"/>
-
-        <FrameLayout
-            android:id="@+id/bottom_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/overlay_black">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_arrow_upward_black_24dp" />
-
-        </FrameLayout>
 
     </FrameLayout>
 
@@ -82,7 +61,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:src="@drawable/like_white_120dp"
             android:layout_gravity="center"/>
 
     </FrameLayout>
@@ -92,13 +71,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/overlay_black">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_downward_black_24dp"
-            android:layout_gravity="center"/>
-
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+
+
+
 
 </androidx.cardview.widget.CardView>

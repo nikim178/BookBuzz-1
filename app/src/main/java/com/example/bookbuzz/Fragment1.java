@@ -33,6 +33,6 @@ public class Fragment1 extends Fragment {
 
         ImageView one = (ImageView) view.findViewById(R.id.fragmentOneBackground);
 
-        Picasso.with(getContext()).load(R.drawable.one).fit().centerCrop().into(one);
+        Picasso.get().load(R.drawable.one).fit().centerCrop().into(one);
     }
 }

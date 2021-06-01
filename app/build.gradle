@@ -51,7 +51,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
-    implementation files('libs/picasso.jar')
+    //implementation files('libs/picasso.jar')
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation files('libs\\Volley.jar')
     implementation 'com.google.firebase:firebase-storage:19.2.0'
     implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'

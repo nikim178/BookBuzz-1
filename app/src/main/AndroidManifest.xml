@@ -47,6 +47,7 @@
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".SwipeGenre"
+            android:theme="@style/Theme.BookBuzz.NoActionBar"
             android:parentActivityName=".ui.Select_Genre2" />
         <activity
             android:name=".Transformationac"
