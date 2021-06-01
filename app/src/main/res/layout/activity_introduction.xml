@@ -10,9 +10,10 @@
     <ImageView
         android:id="@+id/bg"
         android:layout_width="410dp"
-        android:layout_height="800dp"
+        android:layout_height="900dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/bgintro1"
+        android:elevation="2dp"
+        android:src="@drawable/newbg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,6 +27,7 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:src="@drawable/logobook"
+        android:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -43,6 +45,7 @@
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold|italic"
+        android:elevation="2dp"
         app:layout_constraintBottom_toTopOf="@+id/intro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -54,6 +57,7 @@
         android:id="@+id/intro"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
+        android:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -62,6 +66,12 @@
         app:layout_constraintVertical_bias="0.427"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/intro1" />
+
+    <com.cuberto.liquid_swipe.LiquidPager
+        android:id="@+id/liquidpager"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

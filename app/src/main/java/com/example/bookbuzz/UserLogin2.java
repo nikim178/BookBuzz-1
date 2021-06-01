@@ -66,7 +66,7 @@ public class UserLogin2 extends AppCompatActivity {
         FirebaseUser firebaseUser=mAuth.getCurrentUser();
         if(firebaseUser!=null)
         {
-            startActivity(new Intent(UserLogin2.this,Startpage.class));
+            startActivity(new Intent(UserLogin2.this,Introduction.class));
 
         }
 
@@ -82,7 +82,7 @@ public class UserLogin2 extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(UserLogin2.this, "Login Successful!!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(UserLogin2.this, Startpage.class));
+                                startActivity(new Intent(UserLogin2.this, Introduction.class));
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
