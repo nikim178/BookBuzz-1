@@ -45,12 +45,11 @@
             android:layout_marginBottom="100dp"
             android:layout_toEndOf="@+id/img1"
             android:background="@drawable/border_deco"
-            android:backgroundTint="@color/red"
             android:clickable="true"
             android:padding="5dp"
             android:text="Accept"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <Button
@@ -61,12 +60,12 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/accept_request"
-            android:background="@drawable/button_back"
+            android:background="@drawable/border_deco"
             android:clickable="true"
             android:padding="5dp"
             android:text="Decline"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="12sp" />
 
 

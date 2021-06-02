@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,8 +87,8 @@ public class indiFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_indiragment, container, false);
-        ImageView imageholder= view.findViewById(R.id.imagegholder);
+        View view= inflater.inflate(R.layout.indifragment, container, false);
+        ImageView imageholder= view.findViewById(R.id.img1);
         TextView nameholder= view.findViewById(R.id.name);
         TextView locationholder= view.findViewById(R.id.location);
         TextView zipcodeholder= view.findViewById(R.id.zipcode);
@@ -97,8 +98,8 @@ public class indiFragment extends Fragment  {
         zipcodeholder.setText(zipcode);
         emailholder.setText(email);
         Glide.with(getContext()).load(imageURL).into(imageholder);
-       Button booklist=(Button) view.findViewById(R.id.booklist);
-       Button wishlist=(Button) view.findViewById(R.id.wishlist);
+       LinearLayout booklist=(LinearLayout) view.findViewById(R.id.booklist);
+       LinearLayout wishlist=(LinearLayout) view.findViewById(R.id.wishlist);
        //
         request= view.findViewById(R.id.request);
         firebaseFirestore=FirebaseFirestore.getInstance();

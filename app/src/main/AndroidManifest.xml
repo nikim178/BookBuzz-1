@@ -36,11 +36,9 @@
             android:name=".PendingRequest"
             android:parentActivityName=".HomeActivity" />
         <activity
-            android:name=".Wishlist"
-            android:parentActivityName=".HomeActivity" />
+            android:name=".Wishlist"/>
         <activity
-            android:name=".Booklist"
-            android:parentActivityName=".HomeActivity" />
+            android:name=".Booklist"/>
         <activity
             android:name=".SearchUsers"
             android:label="Search Users"
