@@ -4,5 +4,7 @@
         <item>@font/advent_pro_medium</item>
         <item>@font/antic_didone</item>
         <item>@font/bungee</item>
+        <item>@font/lato_black</item>
+        <item>@font/lato_bold</item>
     </array>
 </resources>
