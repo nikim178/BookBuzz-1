@@ -3,7 +3,7 @@
     app:cnb_unselectedColor="#000000"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+<group android:checkableBehavior="none">
     <item
         android:id="@+id/home"
         android:title="HOME"
@@ -38,4 +38,11 @@
         app:cnb_backgroundColor="@color/teal_700"
         app:cnb_iconColor="#000000"
         app:cnb_textColor="#000000"/>
+</group>
+
+
+
+
+
+
 </menu>

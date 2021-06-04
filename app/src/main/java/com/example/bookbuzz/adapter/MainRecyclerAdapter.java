@@ -41,7 +41,9 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     @Override
     public int getItemCount() {
-        return allCategoryList.size();
+
+            return allCategoryList.size ( );
+
     }
 
     public static final class MainViewHolder extends RecyclerView.ViewHolder{

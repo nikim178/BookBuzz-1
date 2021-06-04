@@ -22,4 +22,11 @@
     <style name="Theme.BookBuzz.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.BookBuzz.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="line">
+        <item name="android:background">@color/pastel1</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
 </resources>

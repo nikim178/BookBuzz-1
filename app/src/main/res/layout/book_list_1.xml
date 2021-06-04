@@ -3,11 +3,13 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="160dp"
-    android:layout_height="263dp"
+    android:layout_height="280dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="10dp"
     app:cardElevation="8dp"
     android:layout_margin="10dp">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,14 +20,16 @@
         <ImageView
             android:id="@+id/book1"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="185dp"
+            android:layout_marginTop="10dp"/>
 
 
         <TextView
             android:id="@+id/book1_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textColor="#9B989C"
             android:textSize="18sp" />
 
 

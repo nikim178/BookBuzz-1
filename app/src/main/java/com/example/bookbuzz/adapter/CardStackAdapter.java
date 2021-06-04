@@ -19,6 +19,7 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
 
     private List<ItemModel> items;
 
+
     public CardStackAdapter(List<ItemModel> items) {
         this.items = items;
     }
@@ -38,7 +39,10 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
 
     @Override
     public int getItemCount() {
-        return items.size();
+
+
+            return items.size ( );
+
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

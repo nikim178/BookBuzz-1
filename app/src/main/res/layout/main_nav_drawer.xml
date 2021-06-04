@@ -1,198 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:backgroundTint="#D3C5EC">
 
-    <ImageView
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="16dp"
-        android:onClick="ClickLogo"
-        android:src="@drawable/bb_logo"/>
+        android:layout_height="155dp"
+        android:background="#B5BAD6"
+        android:backgroundTint="#B5BAD6">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Book Buzz"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="#6621E9"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilepic"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_user4"
+            app:civ_border_color="#0B0B0B" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#6621E9"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profilepic"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Joey Tribbiani"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginLeft="16dp"
+            android:text="babykangaroo@tribbiani"
+            android:textColor="#3E3D3D"
+            android:textSize="14dp" />
+
+        <View
+            style="@style/line"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@+id/username" />
+
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:onClick="clickProfile">
+        android:onClick="clickProfile"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="71dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_user2" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="1"
-            android:padding="12dp"
+            android:fontFamily="@font/bubblegum_sans"
+            android:paddingTop="12dp"
             android:text="Profile"
-            android:textColor="#6621E9" />
+            android:textAlignment="center"
+            android:textColor="#6621E9"
+            android:textSize="30sp" />
 
-           <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_profile"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="60dp"
         android:layout_gravity="center_vertical"
-        android:onClick="onClick">
+        android:onClick="onClick"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:paddingTop="5dp"
+            android:src="@drawable/ic_search" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
             android:padding="12dp"
             android:text="Search Book"
-            android:textColor="#6621E9" />
+            android:textAlignment="center"
+            android:textColor="#6621E9"
+            android:textSize="24sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_search"/>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="60dp"
         android:layout_gravity="center_vertical"
-        android:onClick="genre">
+        android:onClick="genre"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="71dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_genre" />
+
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
             android:padding="12dp"
             android:text="Select Genre"
-            android:textColor="#6621E9" />
+            android:textAlignment="center"
+            android:textColor="#6621E9"
+            android:textSize="24sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_genre"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:onClick="booklist">
+        android:onClick="booklist"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="71dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_booklists2" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
             android:padding="12dp"
             android:text="Book List"
-            android:textColor="#6621E9" />
+            android:textAlignment="center"
+            android:textColor="#6621E9"
+            android:textSize="24sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_booklist"/>
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:onClick="wishlist">
+        android:onClick="wishlist"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="71dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_wish3" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
             android:padding="12dp"
             android:text="Wish List"
-            android:textColor="#6621E9" />
+            android:textAlignment="center"
+            android:textColor="#6621E9"
+            android:textSize="24sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_wishlist"/>
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:onClick="help"
-        >
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="71dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:paddingTop="4dp"
+            android:src="@drawable/ic_info2" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
             android:padding="12dp"
             android:text="About Us"
-            android:textColor="#6621E9"/>
+            android:textAlignment="center"
+            android:textColor="#6621E9"
+            android:textSize="24sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_aboutus"/>
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:onClick="skip">
+        android:onClick="skip"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_logout2" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
             android:padding="12dp"
             android:text="Logout"
-            android:textColor="#6621E9" />
+            android:textAlignment="center"
+            android:textColor="#6621E9"
+            android:textSize="24sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_logout"/>
+
 
     </LinearLayout>
 

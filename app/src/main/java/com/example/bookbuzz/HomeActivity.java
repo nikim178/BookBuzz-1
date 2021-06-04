@@ -74,6 +74,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mAuth = FirebaseAuth.getInstance ( );
 
         navigationView.setNavigationItemSelectedListener ( this );
+        navigationView.setItemIconTintList ( null );
 
         Toggle = new ActionBarDrawerToggle ( this , drawerLayout , R.string.open , R.string.close );
         drawerLayout.addDrawerListener ( Toggle );
@@ -258,6 +259,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
       }
     }
 */
+
     private class BookViewHolder extends RecyclerView.ViewHolder{
         private TextView BookTitle;
        // private TextView BookAuth;
@@ -420,6 +422,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         builder.show ( );
     }
 */
+
     private static void redirectActivity ( Activity activity , Class aClass ) {
         //Initialize intent
         Intent intent = new Intent ( activity , aClass );
@@ -506,7 +509,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.logout:
 
-                Toast.makeText ( getApplicationContext ( ) , "Logout" , Toast.LENGTH_LONG ).show ( );
+
                 skip ( );
                 break;
 

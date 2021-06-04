@@ -2,154 +2,172 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer"
+    android:onClick="@string/booklist"
     tools:context=".HomeActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="0dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_margin="0dp"
         app:cardBackgroundColor="#F1F1F1"
         app:cardElevation="8dp">
 
 
         <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="600dp">
-
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:padding="20dp"
-                >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/booklist"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_500"
-                        android:fontFamily="@font/bungee"
-                        android:textAllCaps="true"/>
-
-                    <Button
-                        android:id="@+id/view1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:onClick="bookList"
-                        android:text="@string/view_all"
-                        android:textSize="10sp" />
-
-                </RelativeLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/book_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
+            android:layout_height="641dp">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:padding="20dp"
-                >
+                android:layout_height="80dp"
+                android:orientation="vertical">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/wishlist"
-                        android:textSize="20sp"
-                        android:textColor="@color/purple_500"
-                        android:fontFamily="@font/bungee"
-                        android:textAllCaps="true"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <Button
-                        android:id="@+id/view2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:onClick="wishList"
-                        android:text="@string/view_all"
-                        android:textSize="10sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/booklist"
+                            android:textAllCaps="true"
+                            android:textColor="#5B3761"
+                            android:textSize="25sp" />
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/view1"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:onClick="bookList"
+                            android:paddingTop="10dp"
+                            android:text="@string/view_all"
+                            android:textAlignment="center"
+                            android:textColor="#434343"
+                            android:textColorLink="#090909"
+                            android:textSize="15sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/wish_listt"
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/book_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/wishlist"
+                            android:textAllCaps="true"
+                            android:textColor="#5B3761"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:id="@+id/view2"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:onClick="wishList"
+                            android:paddingTop="10dp"
+                            android:text="@string/view_all"
+                            android:textAlignment="center"
+                            android:textColor="#434343"
+                            android:textColorLink="#090909"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/wish_listt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
 
+        </ScrollView>
 
-        </LinearLayout>
-
-    </ScrollView>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/ic_user_search"
             android:layout_gravity="bottom"
             android:layout_marginLeft="35dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:src="@drawable/ic_twotone_person_search_24"
+            app:backgroundTint="#82B8D1"
+            app:rippleColor="#2E4051"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/ic_wishlist"
             android:layout_gravity="bottom"
             android:layout_marginLeft="130dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#DD8BA8"
+            app:rippleColor="#813357"
+            android:clickable="true"
+            android:src="@drawable/ic_twotone_favorite_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/ic_requests"
             android:layout_gravity="bottom"
             android:layout_marginLeft="225dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#A488A8"
+            app:rippleColor="#3A223E"
+            android:clickable="true"
+            android:src="@drawable/ic_people" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/ic_chat"
             android:layout_gravity="bottom"
             android:layout_marginLeft="320dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#7EC3CC"
+            app:rippleColor="#274D51"
+            android:clickable="true"
+            android:src="@drawable/ic_msg" />
 
 
     </androidx.cardview.widget.CardView>
@@ -160,14 +178,13 @@
         android:layout_height="80dp" />
 
     <com.google.android.material.navigation.NavigationView
+
         android:id="@+id/navigationview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFFFFF"
+        android:background="#D3C5EC"
         app:headerLayout="@layout/header"
-        app:itemIconTint="@color/purple_700"
-        app:itemTextColor="@color/purple_700"
         app:menu="@menu/drawermenu">
 
     </com.google.android.material.navigation.NavigationView>
