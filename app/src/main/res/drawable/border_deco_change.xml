@@ -3,9 +3,9 @@
     <item android:state_enabled="true">
 
         <shape android:shape="rectangle">
-            <solid android:color="@color/lightblue"/>
+            <solid android:color="@color/transpink"/>
             <corners android:radius="17dp"/>
-            <stroke android:color="@color/darkblue" android:width="2dp"/>
+            <stroke android:color="@color/transpink" android:width="2dp"/>
         </shape>
     </item>
 </selector>

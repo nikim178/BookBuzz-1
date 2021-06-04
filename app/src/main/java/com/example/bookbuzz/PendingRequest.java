@@ -11,6 +11,7 @@ import com.example.bookbuzz.EditProfile;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Layout;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -116,7 +117,7 @@ public class PendingRequest extends AppCompatActivity {
             @NonNull
             @Override
             public FriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.friend_list, parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.friend_list2, parent,false);
                 return new FriendViewHolder(view);
             }
 
@@ -211,10 +212,10 @@ public class PendingRequest extends AppCompatActivity {
    }
 
     public class FriendViewHolder extends RecyclerView.ViewHolder  {
-        Button accept;
+        TextView accept;
         View mView;
-        Button decline;
-        CircleImageView imageProfile;
+        TextView decline;
+        ImageView imageProfile;
         TextView txtName;
         public FriendViewHolder(View itemView) {
             super(itemView);
