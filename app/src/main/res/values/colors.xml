@@ -6,7 +6,7 @@
     <color name="teal_200">#DA0303</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="blue">#3F51B5</color>
     <color name="grey">#aaa</color>
     <color name="purple">#FF6200EE</color>
@@ -15,12 +15,17 @@
     <color name="themeColor">#11CFC5</color>
     <color name="primaryTextColor">#11CFC5</color>
     <color name="darkblue">#013c58</color>
-    <color name="tranparent">#0000ffff</color>
+    <color name="tranparent">#80FFFFFF</color>
     <color name="lightblue">#a9dcd6</color>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
+    <color name="transblue">#83191970</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="purple_1">#ba53de</color>
     <color name="pink">#f469a9</color>
     <color name="blue_1">#88bef5</color>
+    <color name="pastel1">#FF573B5C</color>
+    <color name="lightpink">#FF798F</color>
+    <color name="transblack">#70000000</color>
+
 </resources>

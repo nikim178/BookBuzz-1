@@ -28,6 +28,7 @@
         <activity android:name=".Settings" />
         <activity
             android:name=".Friend_Message"
+            android:label="Friends"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".HomeActivity"
@@ -35,6 +36,7 @@
         <activity android:name=".model.ChatActivity" />
         <activity
             android:name=".PendingRequest"
+            android:label="Follow Request"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".Wishlist"/>

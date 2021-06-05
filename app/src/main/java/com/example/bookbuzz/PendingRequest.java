@@ -215,7 +215,7 @@ public class PendingRequest extends AppCompatActivity {
         TextView accept;
         View mView;
         TextView decline;
-        ImageView imageProfile;
+        CircleImageView imageProfile;
         TextView txtName;
         public FriendViewHolder(View itemView) {
             super(itemView);
