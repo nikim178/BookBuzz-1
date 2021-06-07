@@ -1,166 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg3"
+    android:layout_gravity="center"
+    android:background="#8DA47E"
+    android:focusableInTouchMode="true"
+    android:gravity="center"
     tools:context=".ui.Select_Genre2">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/logoTexts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:fontFamily="@font/bungee"
+                    android:transitionName="logo_text"
+                    android:text="SELECT YOUR FAVOURITE GENRE!"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="SELECT YOUR FAVOURITE GENRE!"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox2"
-        style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_weight="1"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="15dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical">
 
-        android:background="@drawable/check_box_selector"
-        android:button="@null"
-        android:drawableTop="@drawable/heart"
-        android:fontFamily="@font/lato_bold"
-        android:gravity="center"
-        android:text="ROMANCE"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/checkBox"
+                            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/check_box_selector"
+                            android:button="@null"
+                            android:drawableTint="@color/black"
+                            android:textStyle="bold"
+                            android:drawableTop="@drawable/nf2"
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="NON FICTION"
+                            android:textSize="22sp"
+                            app:layout_constraintEnd_toStartOf="@+id/checkBox2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/checkBox2"
+                            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/check_box_selector"
+                            android:button="@null"
+                            android:drawableTint="@color/black"
+                            android:drawableTop="@drawable/heart2"
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="ROMANCE"
+                            android:textSize="25sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox"
-        style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/check_box_selector"
-        android:button="@null"
-        android:drawableTop="@drawable/nf2"
-        android:fontFamily="@font/lato_bold"
-        android:gravity="center"
-        android:text="NON FICTION"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/checkBox3"
+                            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginEnd="5dp"
+                            android:textColor="@color/white"
+                            android:layout_weight="1"
+                            android:background="@drawable/check_box_selector"
+                            android:button="@null"
+                            android:drawableTint="@color/black"
+                            android:drawableTop="@drawable/hp3"
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="FANTASY"
+                            android:textSize="22sp"
+                            />
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/checkBox4"
+                            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/check_box_selector"
+                            android:button="@null"
+                            android:drawableTint="@color/black"
+                            android:textColor="@color/white"
+                            android:drawableTop="@drawable/self"
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="SELF\nIMPROVEMENT"
+                            android:textSize="19sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox6"
-        style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/check_box_selector"
-        android:button="@null"
-        android:drawableTop="@drawable/ironman1"
-        android:fontFamily="@font/lato_bold"
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/checkBox5"
+                            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:drawableTint="@color/black"
+                            android:textColor="@color/white"
+                            android:background="@drawable/check_box_selector"
+                            android:button="@null"
+                            android:drawableTop="@drawable/spy"
 
-        android:gravity="center"
-        android:text="COMIC"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.697"
-        app:layout_constraintStart_toEndOf="@+id/checkBox5"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="DETECTIVE"
+                            android:textSize="22sp"
+                            />
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/checkBox6"
+                            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/check_box_selector"
+                            android:button="@null"
+                            android:drawableTint="@color/black"
+                            android:drawableTop="@drawable/batman2"
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="COMIC"
+                            android:textSize="22sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.697"
+                            app:layout_constraintStart_toEndOf="@+id/checkBox5"
+                            app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+                    </LinearLayout>
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox3"
-        style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:drawableTint="@color/white"
-        android:layout_weight="1"
-        android:background="@drawable/check_box_selector"
-        android:button="@null"
-        android:drawableTop="@drawable/hp2"
-        android:fontFamily="@font/lato_bold"
-        android:gravity="center"
-        android:text="FANTASY"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox4"
-        style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/check_box_selector"
-        android:button="@null"
-        android:drawableTop="@drawable/self"
-        android:fontFamily="@font/lato_bold"
-        android:gravity="center"
-        android:drawableTint="@color/white"
-        android:text="SELF\nIMPROVEMENT"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.697"
-        app:layout_constraintStart_toEndOf="@+id/checkBox3"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+                        <Button
+                            android:id="@+id/button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/white"
+                            android:backgroundTint="#8DA47E"
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="DONE"
+                            android:layout_centerInParent="true"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent"
+                            />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox5"
-        style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/check_box_selector"
-        android:button="@null"
-        android:drawableTint="@color/white"
-        android:drawableTop="@drawable/spy"
-        android:fontFamily="@font/lato_bold"
-        android:gravity="center"
-        android:text="DETECTIVE"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+                    </RelativeLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/lightpink"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="DONE"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:weightSum="12">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="3"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>>
+</RelativeLayout>

@@ -24,8 +24,12 @@
     <color name="purple_1">#ba53de</color>
     <color name="pink">#f469a9</color>
     <color name="blue_1">#88bef5</color>
-    <color name="pastel1">#FF573B5C</color>
+    <color name="pastel1">#573B5C</color>
     <color name="lightpink">#FF798F</color>
     <color name="transblack">#70000000</color>
+    <color name="khaki">#9FE8D595</color>
+    <color name="dkhaki">#ABBAD7C8</color>
+    <color name="pinkk">#D3E9D5BE</color>
+    <color name="tryy">#A9E9BBB5</color>
 
 </resources>

@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class UserRegistration2 extends AppCompatActivity {
-    private TextInputEditText uEmail,uPass,uZipcode,uName;
+    private TextInputEditText uEmail,uPass,uZipcode,uName,uLocation;
     private FloatingActionButton uSignUpButton;
     private Button oldUser;
     private FirebaseAuth mAuth;
@@ -52,6 +52,7 @@ public class UserRegistration2 extends AppCompatActivity {
         uPass=findViewById(R.id.password);
         uZipcode=findViewById(R.id.zipcode);
         uName=findViewById(R.id.username);
+        uLocation=findViewById(R.id.location);
         uSignUpButton=findViewById(R.id.signUp);
         oldUser=findViewById(R.id.signInUser);
         mAuth = FirebaseAuth.getInstance();
@@ -82,6 +83,7 @@ public class UserRegistration2 extends AppCompatActivity {
         String password=uPass.getText().toString();
         String name=uName.getText().toString();
         String zipCode=uZipcode.getText().toString();
+        String location=uLocation.getText().toString();
 
         if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
@@ -99,6 +101,7 @@ public class UserRegistration2 extends AppCompatActivity {
                                 user.put("userName",name);
                                 user.put("userEmail",email);
                                 user.put("userPassword",password);
+                                user.put("userLocation",location);
                                 user.put("userZipcode",zipCode);
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override

@@ -108,6 +108,7 @@ public class indiFragment extends Fragment  {
         currentState="not_friends";
         //
 
+
      /*   firebaseFirestore.collection("users").document(current_user_id +"friends"+documentId).
                 get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -168,6 +169,7 @@ public class indiFragment extends Fragment  {
             @Override
             public void onClick(View view) {
                 request.setEnabled(false);
+
                 if(currentState.equals("not_friends")) {
                     addFriend();
                     request.setText("Cancel Request");
@@ -176,6 +178,7 @@ public class indiFragment extends Fragment  {
                     deleteFriend();
                     request.setText("Request");
                 }
+
             }
         });
 
@@ -243,7 +246,7 @@ public class indiFragment extends Fragment  {
                         public void onSuccess(Void aVoid) {
                             request.setEnabled(true);
                             currentState = "not_friends";
-                            Toast.makeText(getActivity(),"request cacel succesfully!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),"request cancel succesfully!",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -262,7 +265,27 @@ public class indiFragment extends Fragment  {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     firebaseFirestore.collection("users").document(documentId+"/"
-                            +"friends"+"/"+current_user_id).delete();
+                            +"friends"+"/"+current_user_id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            firebaseFirestore.collection("users").document(documentId + "/"
+                                    + "friends" + "/" + current_user_id).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    firebaseFirestore.collection("users").document(documentId+"/"
+                                            +"friends"+"/"+current_user_id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            request.setEnabled(true);
+                                            currentState = "friends";
+                                            Toast.makeText(getActivity(),"Unfriend!",Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            });
+
+                        }
+                    });
                 }
             });
         }
