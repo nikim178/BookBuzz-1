@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#8DA47E"
+    android:background="@color/darkgreen"
     android:focusableInTouchMode="true"
     android:gravity="center"
     tools:context=".ui.Select_Genre2">
@@ -202,7 +202,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:textColor="@color/white"
-                            android:backgroundTint="#8DA47E"
+                            android:backgroundTint="@color/darkgreen"
                             android:fontFamily="sans-serif-smallcaps"
                             android:text="DONE"
                             android:layout_centerInParent="true"
