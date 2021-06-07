@@ -2,16 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="155dp"
-    android:background="#B5BAD6"
-    android:backgroundTint="#B5BAD6">
+    android:layout_height="195dp"
+    android:background="@drawable/ic_navbg3">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilepic"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="45dp"
         android:src="@drawable/ic_user4"
         app:civ_border_color="#0B0B0B" />
 
@@ -21,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/profilepic"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="Joey Tribbiani"
         android:textColor="@color/black"
         android:textSize="19dp"
@@ -41,7 +40,8 @@
         style="@style/line"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:layout_below="@+id/username" />
+        android:layout_below="@+id/username"
+        android:layout_marginTop="51dp" />
 
 
 </RelativeLayout>

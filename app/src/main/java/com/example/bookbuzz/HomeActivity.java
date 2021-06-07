@@ -73,6 +73,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar ( toolbar );
         mAuth = FirebaseAuth.getInstance ( );
 
+
+        //Navigation view
         navigationView.setNavigationItemSelectedListener ( this );
         navigationView.setItemIconTintList ( null );
 

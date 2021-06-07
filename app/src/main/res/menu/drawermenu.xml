@@ -1,51 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_user2"
         android:title="Profile" />
-        //android:onClick="clickProfile"
 
-    <item
-        android:id="@+id/search_book"
-        android:icon="@drawable/ic_search"
-        android:title="Search Book" />
-       // android:onClick="onClick"
+        <item
+            android:id="@+id/about_us"
+            android:icon="@drawable/ic_info2"
+            android:title="About Us" />
 
+    </group>
 
-    <item
-        android:id="@+id/genre"
-        android:icon="@drawable/ic_genre"
-        android:title="Select Genre" />
-        // android:onClick="genre"
+    <item android:title="Lists">
 
+        <menu>
+            <group
+                android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/booklist"
-        android:icon="@drawable/ic_booklists2"
-        android:title="Booklist" />
-        //android:onClick="booklist"
+                <item
+                    android:id="@+id/booklist"
+                    android:icon="@drawable/ic_booklists2"
+                    android:title="Booklist" />
 
 
-    <item
-        android:id="@+id/wishlist"
-        android:icon="@drawable/ic_wish3"
-        android:title="Wishlist" />
-        //android:onClick="wishlist"
+
+                <item
+                    android:id="@+id/wishlist"
+                    android:icon="@drawable/ic_wish3"
+                    android:title="Wishlist" />
 
 
-    <item
-        android:id="@+id/about_us"
-        android:icon="@drawable/ic_info2"
-        android:title="About Us" />
-        //android:onClick="help"
+            </group>
+        </menu>
 
 
-    <item
-        android:id="@+id/logout"
-        android:icon="@drawable/ic_logout2"
-        android:title="Logout" />
-        //android:onClick="skip"
+    </item>
 
 
+    <item android:title="Explore more">
+
+        <menu>
+            <group
+                android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/search_book"
+                    android:icon="@drawable/ic_search"
+                    android:title="Search Book" />
+
+
+                <item
+                    android:id="@+id/genre"
+                    android:icon="@drawable/ic_genre"
+                    android:title="Select Genre" />
+
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+
+            <group >
+                <item
+                    android:id="@+id/logout"
+                    android:icon="@drawable/ic_logout2"
+                    android:title="Logout" />
+
+            </group>
+        </menu>
+    </item>
 </menu>
