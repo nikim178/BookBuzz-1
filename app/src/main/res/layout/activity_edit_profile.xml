@@ -11,7 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="116dp"
-        android:background="@drawable/gradientbackground"
         android:orientation="vertical"
         tools:ignore="MissingConstraints"></LinearLayout>
 
@@ -23,6 +22,7 @@
         android:layout_marginTop="132dp"
         android:text="Username"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,6 +33,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="12dp"
         android:ems="10"
+        android:textColor="@color/black"
         android:hint="Your name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +46,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="23dp"
         android:text="Email"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
@@ -56,6 +58,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="23dp"
         android:text="Location"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
@@ -68,6 +71,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Your location"
+        android:textColor="@color/black"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -80,6 +84,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Your email"
+        android:textColor="@color/black"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -91,6 +96,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="23dp"
         android:text="Biography"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
@@ -104,6 +110,7 @@
         android:ems="10"
         android:hint="Your biography"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -112,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="116dp"
         android:backgroundTint="#876C8C"
         android:shadowColor="#494747"
@@ -123,6 +130,7 @@
         android:textStyle="bold"
         app:iconTint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5"
         app:strokeColor="#131313" />
@@ -149,6 +157,7 @@
         android:layout_marginTop="23dp"
         android:text="Zipcode"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
@@ -160,6 +169,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Your zipcode"
+        android:textColor="@color/black"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
