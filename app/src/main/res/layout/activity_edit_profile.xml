@@ -4,7 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:foregroundTint="#403232"
     tools:context=".EditProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:background="@drawable/gradientbackground"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"></LinearLayout>
 
     <TextView
         android:id="@+id/textView3"
@@ -13,6 +22,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="132dp"
         android:text="Username"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +45,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="23dp"
         android:text="Email"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
@@ -45,6 +56,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="23dp"
         android:text="Location"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
 
@@ -79,6 +91,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="23dp"
         android:text="Biography"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
 
@@ -99,14 +112,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="116dp"
+        android:backgroundTint="#876C8C"
+        android:shadowColor="#494747"
         android:text="Update"
+        android:textAllCaps="false"
+        android:textColor="#050505"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
+        app:iconTint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5"
+        app:strokeColor="#131313" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView3"
         android:layout_width="112dp"
         android:layout_height="98dp"
@@ -116,6 +137,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:civ_border_width="3dp"
+        app:civ_border_color="@color/black"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <TextView
@@ -125,6 +148,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="23dp"
         android:text="Zipcode"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 

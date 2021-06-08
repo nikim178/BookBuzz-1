@@ -38,5 +38,11 @@ Call” facility through which citizen can make an emergency call (100, 108, 101
 
     <string name="about_us2">The Mobile App has been developed on Android platforms. The HelpDesk App aims to provide
 safety and security of the citizen anytime anywhere.</string>
+    <string name="zipcode">Zipcode</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="location">Location</string>
+    <string name="biography">Biography</string>
+    <string name="edit_text">Edit text</string>
 
 </resources>

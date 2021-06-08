@@ -4,78 +4,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Profile">
 
-    <TextView
-        android:id="@+id/TextView6"
-        android:layout_width="286dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginBottom="50dp"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/TextView5"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/gradientbackground"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iview3"
+            android:layout_width="164dp"
+            android:layout_height="153dp"
+            android:contentDescription="TODO"
+            app:civ_border_width="2dp"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <TextView
+            android:id="@+id/TextView6"
+            android:layout_width="240dp"
+            android:layout_height="86dp"
+            android:layout_gravity="center"
+            android:elevation="6dp"
+            android:fontFamily="@font/bungee"
+            android:paddingHorizontal="13dp"
+            android:paddingVertical="13dp"
+            android:text="@string/name"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#BCB5BD"
+        android:contentDescription="@string/edit_text"
+        android:tint="#0B0A0A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <TextView
         android:id="@+id/TextView5"
         android:layout_width="286dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginBottom="50dp"
-        android:text="Email"
+        android:layout_height="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/round"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        android:padding="13dp"
+        android:paddingLeft="10dp"
+        android:text="@string/email"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_baseline_email_24"
         app:layout_constraintBottom_toTopOf="@+id/TextView7"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/TextView7"
+        android:id="@+id/textView6"
         android:layout_width="286dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginBottom="50dp"
-        android:text="Location"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        android:layout_height="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/round"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        android:padding="13dp"
+        android:paddingLeft="10dp"
+        android:text="@string/zipcode"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_baseline_home_24"
+        app:layout_constraintBottom_toTopOf="@+id/TextView8"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/TextView8"
         android:layout_width="286dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginBottom="50dp"
-        android:text="Biography"
+        android:layout_height="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/round"
+        android:drawablePadding="10dp"
+        android:paddingHorizontal="13dp"
+        android:paddingVertical="13dp"
+        android:text="@string/biography"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_baseline_event_note_24"
         app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="66dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="276dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView8"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
-    <ImageView
-        android:id="@+id/iview3"
-        android:layout_width="124dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/TextView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
-
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/TextView7"
         android:layout_width="286dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginBottom="50dp"
-        android:text="Zipcode"
-        app:layout_constraintBottom_toTopOf="@+id/TextView8"
+        android:layout_height="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/round"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        android:padding="13dp"
+        android:paddingLeft="10dp"
+        android:text="@string/location"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_baseline_location_on_24"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
