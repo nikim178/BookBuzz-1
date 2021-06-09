@@ -10,38 +10,47 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="265dp"
         android:background="@drawable/gradientbackground"
         android:orientation="vertical"
-        android:paddingTop="15dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="-16dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iview3"
-            android:layout_width="163dp"
-            android:layout_height="153dp"
-            android:layout_marginStart="120dp"
+            android:layout_width="185dp"
+            android:layout_height="156dp"
             android:contentDescription="TODO"
-            app:civ_border_width="2dp"
-
+            android:paddingTop="3dp"
+            app:civ_border_width="1dp"
             app:srcCompat="@android:drawable/ic_menu_gallery" />
 
         <TextView
             android:id="@+id/TextView6"
             android:layout_width="240dp"
-            android:layout_height="71dp"
-            android:layout_gravity="center"
+            android:layout_height="34dp"
             android:elevation="6dp"
-            android:fontFamily="@font/bungee"
+            android:fontFamily="@font/lato_black"
             android:paddingHorizontal="13dp"
-            android:paddingVertical="13dp"
+            android:paddingVertical="5dp"
             android:text="@string/name"
-            android:textAlignment="center"
-            android:textAllCaps="true"
+            android:textAlignment="gravity"
+            android:textAllCaps="false"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TextView8"
+            android:layout_width="326dp"
+            android:layout_height="57dp"
+            android:drawablePadding="10dp"
+            android:paddingHorizontal="13dp"
+            android:text="@string/biography"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 
@@ -49,8 +58,8 @@
         android:id="@+id/imageButton"
         android:layout_width="70dp"
         android:layout_height="60dp"
-        android:layout_marginStart="316dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="#BCB5BD"
         android:contentDescription="@string/edit_text"
         android:tint="#0B0A0A"
@@ -62,26 +71,27 @@
         android:id="@+id/TextView5"
         android:layout_width="286dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="34dp"
         android:background="@drawable/round"
         android:drawablePadding="10dp"
-        android:elevation="3dp"
+        android:elevation="10dp"
         android:padding="13dp"
         android:paddingLeft="10dp"
+        android:selectAllOnFocus="false"
         android:text="@string/email"
+        android:textIsSelectable="false"
         android:textStyle="bold"
-
         app:drawableLeftCompat="@drawable/ic_baseline_email_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        app:layout_constraintBottom_toTopOf="@+id/TextView7"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="286dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/round"
         android:drawablePadding="10dp"
         android:elevation="3dp"
@@ -90,31 +100,15 @@
         android:text="@string/zipcode"
         android:textStyle="bold"
         app:drawableLeftCompat="@drawable/ic_baseline_home_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView7" />
-
-    <TextView
-        android:id="@+id/TextView8"
-        android:layout_width="286dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="310dp"
-        android:background="@drawable/round"
-        android:drawablePadding="10dp"
-        android:paddingHorizontal="13dp"
-        android:paddingVertical="13dp"
-        android:text="@string/biography"
-        android:textStyle="bold"
-        app:drawableLeftCompat="@drawable/ic_baseline_event_note_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/TextView7"
         android:layout_width="286dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="34dp"
         android:background="@drawable/round"
         android:drawablePadding="10dp"
         android:elevation="3dp"
@@ -123,7 +117,7 @@
         android:text="@string/location"
         android:textStyle="bold"
         app:drawableLeftCompat="@drawable/ic_baseline_location_on_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView5" />
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
