@@ -17,13 +17,10 @@
             <item
                 android:width="48dp"
                 android:height="48dp"
-                android:top="32dp"
+                android:top="31dp"
                 android:left="29dp"
-                android:right="28dp"
-                android:bottom="25dp"
-                android:drawable="@drawable/nf4"
-
-                >
+                android:right="17dp"
+                android:drawable="@drawable/heart4">
 
             </item>
         </layer-list>

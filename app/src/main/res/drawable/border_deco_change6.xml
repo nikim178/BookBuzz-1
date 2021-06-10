@@ -15,15 +15,12 @@
                 </shape>
             </item>
             <item
-                android:width="48dp"
-                android:height="48dp"
-                android:top="32dp"
-                android:left="29dp"
-                android:right="28dp"
-                android:bottom="25dp"
-                android:drawable="@drawable/nf4"
-
-                >
+                android:width="50dp"
+                android:height="50dp"
+                android:top="33dp"
+                android:left="28dp"
+                android:right="17dp"
+                android:drawable="@drawable/bat">
 
             </item>
         </layer-list>

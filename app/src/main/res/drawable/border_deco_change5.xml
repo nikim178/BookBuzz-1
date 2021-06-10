@@ -15,15 +15,13 @@
                 </shape>
             </item>
             <item
-                android:width="48dp"
-                android:height="48dp"
-                android:top="32dp"
-                android:left="29dp"
+                android:width="45dp"
+                android:height="45dp"
+                android:top="30dp"
+                android:left="31dp"
                 android:right="28dp"
                 android:bottom="25dp"
-                android:drawable="@drawable/nf4"
-
-                >
+                android:drawable="@drawable/spyyy">
 
             </item>
         </layer-list>

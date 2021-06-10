@@ -58,44 +58,68 @@
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/checkBox"
                             style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_weight="0"
                             android:textColor="@color/white"
                             android:background="@drawable/check_box_selector"
                             android:button="@null"
                             android:drawableTint="@color/black"
                             android:textStyle="bold"
-                            android:drawableTop="@drawable/nf2"
+
                             android:fontFamily="@font/lato_black"
                             android:gravity="center"
-                            android:text="NON FICTION"
                             android:textSize="22sp"
-                            app:layout_constraintEnd_toStartOf="@+id/checkBox2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+                             />
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/checkBox2"
                             style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="62dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="35dp"
+                            android:layout_weight="0"
                             android:textColor="@color/white"
-                            android:background="@drawable/check_box_selector"
+                            android:background="@drawable/check_box_selector1"
                             android:button="@null"
                             android:drawableTint="@color/black"
-                            android:drawableTop="@drawable/heart2"
+
                             android:fontFamily="@font/lato_black"
                             android:gravity="center"
-                            android:text="ROMANCE"
+
                             android:textSize="25sp"
                             />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="55dp"
+                            android:layout_marginEnd="40dp"
+                            android:fontFamily="@font/biryani"
+                            android:text="Non Fiction"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="48dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="@font/biryani"
+                            android:text="Romance"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -106,90 +130,132 @@
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/checkBox3"
                             style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="11dp"
-                            android:layout_marginEnd="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="0dp"
                             android:textColor="@color/white"
-                            android:layout_weight="1"
-                            android:background="@drawable/check_box_selector"
+                            android:layout_weight="0"
+                            android:background="@drawable/check_box_selector2"
                             android:button="@null"
                             android:drawableTint="@color/black"
-                            android:drawableTop="@drawable/hp3"
+
                             android:fontFamily="@font/lato_black"
                             android:gravity="center"
-                            android:text="FANTASY"
+
                             android:textSize="22sp"
                             />
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/checkBox4"
                             style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="0dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/check_box_selector"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="62dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="35dp"
+                            android:layout_weight="0"
+                            android:background="@drawable/check_box_selector3"
                             android:button="@null"
                             android:drawableTint="@color/black"
                             android:textColor="@color/white"
-                            android:drawableTop="@drawable/self"
+
                             android:fontFamily="@font/lato_black"
                             android:gravity="center"
-                            android:text="SELF\nIMPROVEMENT"
+
                             android:textSize="19sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:orientation="horizontal">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fantasy"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:fontFamily="@font/biryani"
+                            android:textColor="@color/black"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginEnd="30dp"/>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Self Improvement"
+                            android:fontFamily="@font/biryani"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:layout_marginStart="55dp"
+                            android:layout_marginEnd="30dp"/>
+
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_margin="6dp"
                         android:orientation="horizontal">
 
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/checkBox5"
                             style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="0dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_weight="0"
                             android:drawableTint="@color/black"
                             android:textColor="@color/white"
-                            android:background="@drawable/check_box_selector"
+                            android:background="@drawable/check_box_selector4"
                             android:button="@null"
-                            android:drawableTop="@drawable/spy"
-
                             android:fontFamily="@font/lato_black"
                             android:gravity="center"
-                            android:text="DETECTIVE"
+
                             android:textSize="22sp"
                             />
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/checkBox6"
                             style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/white"
-                            android:background="@drawable/check_box_selector"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="62dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="35dp"
+                            android:layout_weight="0"
+                            android:background="@drawable/check_box_selector5"
                             android:button="@null"
-                            android:drawableTint="@color/black"
-                            android:drawableTop="@drawable/batman2"
-                            android:fontFamily="@font/lato_black"
                             android:gravity="center"
-                            android:text="COMIC"
-                            android:textSize="22sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.697"
-                            app:layout_constraintStart_toEndOf="@+id/checkBox5"
-                            app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+                            />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:orientation="horizontal">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="18dp"
+                            android:layout_marginStart="56dp"
+                            android:layout_marginEnd="30dp"
+                            android:fontFamily="@font/biryani"
+                            android:text="Detective"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Comic"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/biryani"
+                            android:layout_marginStart="84dp"
+                            android:layout_marginEnd="20dp"/>
+
                     </LinearLayout>
 
                     <RelativeLayout
@@ -200,7 +266,7 @@
                             android:id="@+id/button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="25dp"
                             android:textColor="@color/white"
                             android:backgroundTint="@color/darkgreen"
                             android:fontFamily="sans-serif-smallcaps"
