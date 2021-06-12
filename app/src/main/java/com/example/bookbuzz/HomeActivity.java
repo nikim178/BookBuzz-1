@@ -40,6 +40,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.StorageReference;
 
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     FirestoreRecyclerAdapter adapter;
     FirestoreRecyclerAdapter adapter1;
     String userId;
+    StorageReference storageReference;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle Toggle;
     private AppBarConfiguration mAppBarConfiguration;

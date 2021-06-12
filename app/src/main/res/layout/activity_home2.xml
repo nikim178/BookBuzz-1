@@ -129,6 +129,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
+            app:borderWidth="0dp"
             android:src="@drawable/ic_twotone_person_search_24"
             app:backgroundTint="#82B8D1"
             app:rippleColor="#2E4051"/>
@@ -143,6 +144,7 @@
             android:backgroundTint="#DD8BA8"
             app:rippleColor="#813357"
             android:clickable="true"
+            app:borderWidth="0dp"
             android:src="@drawable/ic_twotone_favorite_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -155,6 +157,7 @@
             android:backgroundTint="#A488A8"
             app:rippleColor="#3A223E"
             android:clickable="true"
+            app:borderWidth="0dp"
             android:src="@drawable/ic_people" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -167,6 +170,7 @@
             android:backgroundTint="#7EC3CC"
             app:rippleColor="#274D51"
             android:clickable="true"
+            app:borderWidth="0dp"
             android:src="@drawable/ic_msg" />
 
 
