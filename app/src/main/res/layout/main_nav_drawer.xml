@@ -27,7 +27,6 @@
             android:layout_below="@id/profilepic"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="5dp"
-            android:text="Joey Tribbiani"
             android:textColor="@color/black"
             android:textSize="19dp"
             android:textStyle="bold" />
@@ -38,17 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
         android:layout_marginLeft="16dp"
-        android:text="babykangaroo@tribbiani"
         android:textColor="#3E3D3D"
         android:textSize="14dp" />
-
-    <View
-        style="@style/line"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_below="@+id/username"
-        android:layout_marginTop="27dp" />
-
 
 </RelativeLayout>
 

@@ -1,6 +1,7 @@
 package com.example.bookbuzz;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -15,6 +16,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,13 +38,22 @@ import com.example.bookbuzz.models.BookModel;
 import com.example.bookbuzz.ui.Select_Genre2;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,15 +71,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     NavigationView navigationView;
     Toolbar toolbar;
+    TextView name,email;
+    CircleImageView profileImage;
     
     RecyclerView book_list,wish_list;
    // RecyclerView.Adapter adapter;
+    androidx.appcompat.app.ActionBar actionBar;
     
     //ChipNavigationBar bottomNav;
     //FragmentManager fragmentManager;
     
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
+        actionBar=getSupportActionBar();
+        ColorDrawable colorDrawable=new ColorDrawable(Color.parseColor("#0F9D58"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_home2 );
         drawerLayout = ( DrawerLayout ) findViewById ( R.id.drawer );
@@ -74,8 +93,29 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = ( Toolbar ) findViewById ( R.id.toolbar );
         getSupportActionBar ( toolbar );
         mAuth = FirebaseAuth.getInstance ( );
+        View header=navigationView.getHeaderView(0);
+        name = (TextView)header.findViewById(R.id.name);
+        email = (TextView)header.findViewById(R.id.email);
+        profileImage = (CircleImageView) header.findViewById(R.id.profilepic);
+        storageReference = FirebaseStorage.getInstance().getReference();
+        firestore = FirebaseFirestore.getInstance();
 
-
+        StorageReference profileRef = storageReference.child("users/" + mAuth.getCurrentUser().getUid()+ "profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+            }
+        });
+        userId = mAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = firestore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                name.setText(documentSnapshot.getString("userName"));
+                email.setText(documentSnapshot.getString("userEmail"));
+            }
+        });
         //Navigation view
         navigationView.setNavigationItemSelectedListener ( this );
         navigationView.setItemIconTintList ( null );
@@ -94,6 +134,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         userId=user.getUid();
+        String[] mColors = {"#3F51B5","#FF9800","#009688","#673AB7"};
         book_list = findViewById ( R.id.book_list);
         Query query= firestore.collection("users").document(userId).collection("booklist");
 
@@ -110,6 +151,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             protected void onBindViewHolder(@NonNull BookViewHolder holder, int position, @NonNull BookModel model) {
+                holder.itemView.setBackgroundColor(Color.parseColor(mColors[position % 4]));
                 String bookid= getSnapshots().getSnapshot(position).getId();
                 model.setDocumentId(bookid);
                 holder.BookTitle.setText(model.getBookTitle());
@@ -137,6 +179,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             protected void onBindViewHolder(@NonNull WishViewHolder holder, int position, @NonNull BookModel model) {
+                holder.itemView.setBackgroundColor(Color.parseColor(mColors[position % 4]));
                 String bookid= getSnapshots().getSnapshot(position).getId();
                 model.setDocumentId(bookid);
                 holder.BookTitle1.setText(model.getBookTitle());

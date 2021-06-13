@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#9B989C"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
 
