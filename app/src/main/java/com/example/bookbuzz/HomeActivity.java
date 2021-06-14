@@ -20,6 +20,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -84,8 +85,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         actionBar=getSupportActionBar();
-        ColorDrawable colorDrawable=new ColorDrawable(Color.parseColor("#0F9D58"));
+        ColorDrawable colorDrawable=new ColorDrawable(Color.parseColor("#62A6BF"));
         actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>BookBuzz </font>"));
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_home2 );
         drawerLayout = ( DrawerLayout ) findViewById ( R.id.drawer );
@@ -134,7 +136,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         userId=user.getUid();
-        String[] mColors = {"#3F51B5","#FF9800","#009688","#673AB7"};
+        String[] mColors = {"#F4ADC6","#AAC5E2","#FDFD95","#EBB8ED"};
         book_list = findViewById ( R.id.book_list);
         Query query= firestore.collection("users").document(userId).collection("booklist");
 
