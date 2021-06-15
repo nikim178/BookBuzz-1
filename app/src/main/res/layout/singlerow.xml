@@ -3,20 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="5dp"
-    android:elevation="5dp"
-    app:cardUseCompatPadding="true">
+    app:cardCornerRadius="0dp"
+    android:elevation="0dp"
+    app:cardUseCompatPadding="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F8EDED"
+        android:background="#F8F6F8"
         android:padding="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_centerVertical="true"
             android:src="@mipmap/ic_launcher"
             app:civ_border_color="#FF000000"
@@ -28,42 +28,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginLeft="7dp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/img1"
             android:text="name"
             android:textColor="#000"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/name"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="0dp"
-            android:layout_toRightOf="@id/img1"
-            android:fontFamily="sans-serif-light"
-            android:text="location"
-            android:textColor="#000"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/zip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/location"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="0dp"
-            android:layout_toRightOf="@id/img1"
-            android:fontFamily="sans-serif-light"
-            android:text="zipcode"
-            android:textColor="#000"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

@@ -45,7 +45,7 @@
         <activity
             android:name=".SearchUsers"
             android:label="Search Users"
-            android:parentActivityName=".HomeActivity" />
+            android:theme="@style/Theme.BookBuzz.NoActionBar" />
         <activity
             android:name=".SwipeGenre"
             android:theme="@style/Theme.BookBuzz.NoActionBar"

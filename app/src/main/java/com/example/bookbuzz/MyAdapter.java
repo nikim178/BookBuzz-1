@@ -29,8 +29,8 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
         String documentID=getSnapshots().getSnapshot(position).getId();
         model.setDocumentId(documentID);
         holder.userName.setText(model.getUserName());
-        holder.userLocation.setText(model.getUserLocation());
-        holder.userZipcode.setText(model.getUserZipcode());
+        //holder.userLocation.setText(model.getUserLocation());
+        //holder.userZipcode.setText(model.getUserZipcode());
        // holder.userEmail.setText(model.getUserEmail());
         String uri=model.getUserProfileURI();
        /* if(uri.equals(null)){
@@ -69,8 +69,8 @@ public class MyAdapter extends FirestoreRecyclerAdapter<UserModel,MyAdapter.view
             super(itemView);
             mView=itemView;
             userName=itemView.findViewById(R.id.name);
-            userLocation=itemView.findViewById(R.id.location);
-            userZipcode=itemView.findViewById(R.id.zip);
+            //userLocation=itemView.findViewById(R.id.location);
+            //userZipcode=itemView.findViewById(R.id.zip);
             userEmail=itemView.findViewById(R.id.email);
             userProfileURI= itemView.findViewById(R.id.img1);
         }

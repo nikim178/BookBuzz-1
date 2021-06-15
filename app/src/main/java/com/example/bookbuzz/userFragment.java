@@ -1,5 +1,6 @@
 package com.example.bookbuzz;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.bookbuzz.models.UserModel;
@@ -74,8 +76,15 @@ public class userFragment extends Fragment {
                 .build();
         adapter=new MyAdapter(options);
         recview.setAdapter(adapter);
+        ImageView backarrow=view.findViewById(R.id.back);
+        backarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),HomeActivity.class));
+            }
+        });
         //for search
-        EditText searchbox= view.findViewById(R.id.editTextTextPersonName);
+        EditText searchbox= view.findViewById(R.id.Search);
         searchbox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
