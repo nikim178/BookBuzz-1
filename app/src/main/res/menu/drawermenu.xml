@@ -4,12 +4,12 @@
     <group android:checkableBehavior="single">
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_user2"
+        android:icon="@drawable/ic_profpic"
         android:title="Profile" />
 
         <item
             android:id="@+id/about_us"
-            android:icon="@drawable/ic_info2"
+            android:icon="@drawable/ic_infopic"
             android:title="About Us" />
 
     </group>
@@ -22,14 +22,14 @@
 
                 <item
                     android:id="@+id/booklist"
-                    android:icon="@drawable/ic_booklists2"
+                    android:icon="@drawable/ic_blistpic"
                     android:title="Booklist" />
 
 
 
                 <item
                     android:id="@+id/wishlist"
-                    android:icon="@drawable/ic_wish3"
+                    android:icon="@drawable/ic_wlistpic"
                     android:title="Wishlist" />
 
 
@@ -48,13 +48,13 @@
 
                 <item
                     android:id="@+id/search_book"
-                    android:icon="@drawable/ic_search"
+                    android:icon="@drawable/ic_searchpic"
                     android:title="Search Book" />
 
 
                 <item
                     android:id="@+id/genre"
-                    android:icon="@drawable/ic_genre"
+                    android:icon="@drawable/ic_genrepic"
                     android:title="Select Genre" />
 
 
@@ -68,7 +68,7 @@
             <group >
                 <item
                     android:id="@+id/logout"
-                    android:icon="@drawable/ic_logout2"
+                    android:icon="@drawable/ic_logoutpic"
                     android:title="Logout" />
 
             </group>
