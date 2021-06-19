@@ -36,4 +36,6 @@
     <color name="darkgreen">#8DA47E</color>
     <color name="purple2">#9B809F</color>
     <color name="transgreen">#888DA47E</color>
+    <color name="brinjal">#614051</color>
+    <color name="lightbrinjal">#FFE9BBB5</color>
 </resources>

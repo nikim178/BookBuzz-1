@@ -68,7 +68,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
-
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="15dp">
 
@@ -248,7 +247,7 @@
                             android:transitionName="float_trans"
                             android:src="@drawable/farrow"
                             app:elevation="0dp"
-                            app:tint="@null"
+                            app:tint="@color/white"
                             app:fabCustomSize="0dp" />
 
                         <TextView

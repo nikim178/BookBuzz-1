@@ -139,7 +139,7 @@
                 android:transitionName="float_trans"
                 android:src="@drawable/farrow"
                 app:elevation="0dp"
-                app:tint="@null"
+                app:tint="@color/white"
                 app:fabCustomSize="80dp" />
 
             <TextView
