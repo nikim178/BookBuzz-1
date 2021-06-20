@@ -33,6 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Friend_Message extends AppCompatActivity {
 
     private RecyclerView rvFriend;
+    private ImageView goToRequest;
     private LinearLayoutManager mLayoutManager;
     private FirestoreRecyclerAdapter<FriendM, FriendMViewHolder> adapter;
     private String gUid;
@@ -45,6 +46,7 @@ public class Friend_Message extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend__message);
         rvFriend = findViewById(R.id.Friends);
+        goToRequest=findViewById(R.id.gotopendingrequest);
         mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setReverseLayout(true);
         mLayoutManager.setStackFromEnd(true);
@@ -92,8 +94,17 @@ public class Friend_Message extends AppCompatActivity {
 
         rvFriend.setAdapter(adapter);
         adapter.startListening();
+        goToRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goPendingRequest();
+            }
+        });
     }
-
+    private void goPendingRequest(){
+        Intent i= new Intent(this, PendingRequest.class);
+        startActivity(i);
+    }
     private void goChatRoom(String idChatRoom, String uidFriend) {
         Intent i= new Intent(this, ChatActivity.class);
         i.putExtra("idChatRoom",idChatRoom);

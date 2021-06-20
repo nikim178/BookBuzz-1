@@ -36,7 +36,7 @@
         <activity android:name=".model.ChatActivity" />
         <activity
             android:name=".PendingRequest"
-            android:label="Follow Request"
+            android:theme="@style/Theme.BookBuzz.NoActionBar"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".Wishlist"/>

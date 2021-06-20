@@ -81,7 +81,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="62dp"
                             android:layout_marginTop="1dp"
-                            android:layout_marginEnd="35dp"
+
                             android:layout_weight="0"
                             android:textColor="@color/white"
                             android:background="@drawable/check_box_selector1"
@@ -153,7 +153,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="62dp"
                             android:layout_marginTop="1dp"
-                            android:layout_marginEnd="35dp"
+
                             android:layout_weight="0"
                             android:background="@drawable/check_box_selector3"
                             android:button="@null"
@@ -222,7 +222,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="62dp"
                             android:layout_marginTop="1dp"
-                            android:layout_marginEnd="35dp"
+
                             android:layout_weight="0"
                             android:background="@drawable/check_box_selector5"
                             android:button="@null"
