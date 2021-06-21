@@ -16,7 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookBuzz">
         <activity android:name=".Introduction"
-                  android:theme="@style/Theme.BookBuzz.NoActionBar"></activity>
+                  android:theme="@style/Theme.BookBuzz.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.Select_Genre2"
             android:theme="@style/Theme.BookBuzz.NoActionBar"/>
         <activity
@@ -33,7 +39,8 @@
         <activity
             android:name=".HomeActivity"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".model.ChatActivity" />
+        <activity android:name=".model.ChatActivity"
+            android:theme="@style/Theme.BookBuzz.NoActionBar"/>
         <activity
             android:name=".PendingRequest"
             android:theme="@style/Theme.BookBuzz.NoActionBar"
@@ -70,11 +77,6 @@
         <activity android:name=".UserLogin" />
         <activity android:name=".UserRegistration" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

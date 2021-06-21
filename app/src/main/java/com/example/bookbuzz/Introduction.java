@@ -50,7 +50,7 @@ public class Introduction extends AppCompatActivity {
 
     }
     public void skip(View view){
-        Intent i= new Intent(this, HomeActivity.class);
+        Intent i= new Intent(this, UserLogin2.class);
         startActivity(i);
     }
     private class ScreenSlidePageAdapter extends FragmentStatePagerAdapter{

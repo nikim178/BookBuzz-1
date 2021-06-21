@@ -129,7 +129,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         getWindow ().setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //Hooks
+        //Books
         firestore=FirebaseFirestore.getInstance();
         FirebaseAuth mAuth;
         FirebaseUser user;

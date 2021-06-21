@@ -76,8 +76,8 @@ public class userFragment extends Fragment {
                 .build();
         adapter=new MyAdapter(options);
         recview.setAdapter(adapter);
-        ImageView backarrow=view.findViewById(R.id.back);
-        backarrow.setOnClickListener(new View.OnClickListener() {
+        ImageView backArrow =view.findViewById(R.id.back);
+        backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(),HomeActivity.class));

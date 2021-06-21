@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bookbuzz.R;
@@ -35,7 +36,7 @@ public class ChatActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private RecyclerView rvChat;
     private EditText edtMessage;
-    private ImageButton imbSend;
+    private ImageView imbSend;
     private LinearLayoutManager mLayoutManager;
     FirestoreRecyclerAdapter<Chat, ChatViewHolder> adapter;
     String uid,idChatroom;
