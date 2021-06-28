@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.bookbuzz.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -27,8 +28,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -39,7 +43,7 @@ public class ChatActivity extends AppCompatActivity {
     private ImageView imbSend;
     private LinearLayoutManager mLayoutManager;
     FirestoreRecyclerAdapter<Chat, ChatViewHolder> adapter;
-    String uid,idChatroom;
+    String uid,idChatroom,name,profile;
     String uidFriend;
 
     @Override
@@ -58,10 +62,16 @@ public class ChatActivity extends AppCompatActivity {
 
         idChatroom = getIntent().getExtras().getString("idChatRoom");
         uidFriend = getIntent().getExtras().getString("uidFriend");
-
+        name = getIntent().getExtras().getString("name");
+        profile = getIntent().getExtras().getString("profile");
         mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setReverseLayout(false);
         mLayoutManager.setStackFromEnd(true);
+
+        CircleImageView imageholder= findViewById(R.id.img1);
+        TextView nametxt= findViewById(R.id.Nametxt);
+        nametxt.setText(name);
+        Glide.with(imageholder.getContext()).load(profile).into(imageholder);
 
         rvChat.setHasFixedSize(true);
         rvChat.setLayoutManager(mLayoutManager);

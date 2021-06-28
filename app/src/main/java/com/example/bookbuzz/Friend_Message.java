@@ -79,7 +79,7 @@ public class Friend_Message extends AppCompatActivity {
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        goChatRoom(model.getIdChatRoom(), uidFriend);
+                        goChatRoom(model.getIdChatRoom(),model.getName(),model.getProfile(),uidFriend);
                     }
                 });
             }
@@ -105,10 +105,12 @@ public class Friend_Message extends AppCompatActivity {
         Intent i= new Intent(this, PendingRequest.class);
         startActivity(i);
     }
-    private void goChatRoom(String idChatRoom, String uidFriend) {
+    private void goChatRoom(String idChatRoom, String name, String profile, String uidFriend) {
         Intent i= new Intent(this, ChatActivity.class);
         i.putExtra("idChatRoom",idChatRoom);
         i.putExtra("uidFriend",uidFriend);
+        i.putExtra("name",name);
+        i.putExtra("profile",profile);
         startActivity(i);
     }
 
