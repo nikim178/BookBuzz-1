@@ -28,6 +28,7 @@
         android:layout_marginRight="8dp"
         android:text="TextView"
         android:textSize="15dp"
+        android:fontFamily="@font/lato_black"
         app:layout_constraintEnd_toStartOf="@+id/searchAddWishListButton"
         app:layout_constraintStart_toEndOf="@+id/searchMatchImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,19 +42,25 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="TextView"
-        android:textSize="15dp"
+        android:textSize="10dp"
         app:layout_constraintEnd_toStartOf="@+id/searchAddWishListButton"
         app:layout_constraintStart_toEndOf="@+id/searchMatchImage"
         app:layout_constraintTop_toBottomOf="@+id/searchMatchUserId" />
 
     <Button
         android:id="@+id/searchAddBookListButton"
-        android:layout_width="42dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="+"
+        android:layout_marginRight="6dp"
+        android:text="Add"
+        android:textSize="10sp"
+        android:width="6dp"
+        android:drawableTint="@color/white"
+        android:drawableLeft="@drawable/h4"
+        android:fontFamily="@font/lato_bold"
+        android:backgroundTint="@color/brinjal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,10 +68,15 @@
         android:id="@+id/searchAddWishListButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Wish"
+        android:textSize="10sp"
+        android:fontFamily="@font/lato_bold"
+        android:drawableTint="@color/white"
+        android:drawableLeft="@drawable/h5"
+        android:backgroundTint="@color/brinjal"
         app:layout_constraintEnd_toStartOf="@+id/searchAddBookListButton"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
