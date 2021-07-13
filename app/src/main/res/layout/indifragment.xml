@@ -218,17 +218,23 @@
 
     <Button
         android:id="@+id/request"
-        android:layout_width="250dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="Request"
+        android:fontFamily="@font/lato_bold"
         android:textAllCaps="false"
         android:textStyle="bold"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/addp2"
+        android:drawableTint="@color/white"
         android:textColor="@color/white"
-        android:backgroundTint="@color/blue"
+
+        android:backgroundTint="@color/purple2"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
