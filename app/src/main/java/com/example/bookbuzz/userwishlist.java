@@ -41,12 +41,14 @@ public class userwishlist extends Fragment {
     FirebaseFirestore firestore;
     FirestoreRecyclerAdapter adapter;
     String documentId;
+    String name;
 
     public userwishlist() {
         // Required empty public constructor
     }
-    public userwishlist(String documentId){
+    public userwishlist(String documentId, String name){
         this.documentId=documentId;
+        this.name=name;
     }
 
     /**
@@ -80,7 +82,9 @@ public class userwishlist extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_userbooklist, container, false);
+        View view = inflater.inflate(R.layout.fragment_userwishlist, container, false);
+        TextView nameholder=view.findViewById(R.id.Nametxt);
+        nameholder.setText(name);
         recview = (RecyclerView) view.findViewById(R.id.list);
         recview.setLayoutManager(new LinearLayoutManager(getContext()));
         firestore= FirebaseFirestore.getInstance();

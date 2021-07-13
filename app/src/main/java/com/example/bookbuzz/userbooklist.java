@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -43,13 +44,14 @@ public class userbooklist extends Fragment {
     FirebaseFirestore firestore;
     FirestoreRecyclerAdapter adapter;
     String documentId;
+    String name;
 
     public userbooklist() {
         // Required empty public constructor
     }
-    public userbooklist(String documentId) {
+    public userbooklist(String documentId, String name) {
         this.documentId=documentId;
-
+        this.name=name;
     }
     public static userbooklist newInstance(String param1, String param2) {
         userbooklist fragment = new userbooklist();
@@ -73,6 +75,8 @@ public class userbooklist extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_userbooklist, container, false);
+        TextView nameholder=view.findViewById(R.id.Nametxt);
+        nameholder.setText(name);
         recview = (RecyclerView) view.findViewById(R.id.list);
         recview.setLayoutManager(new LinearLayoutManager(getContext()));
         firestore=FirebaseFirestore.getInstance();

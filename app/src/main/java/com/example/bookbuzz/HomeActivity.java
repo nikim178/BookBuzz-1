@@ -355,12 +355,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu ( Menu menu ) {
         getMenuInflater ( ).inflate ( R.menu.home2 , menu );
         return true;
 
-    }
+    }*/
     //public void Settings ( View view ) {
     //}
 

@@ -40,6 +40,7 @@ public class SwipeGenre extends AppCompatActivity {
     private CardStackAdapter adapter;
 
     ArrayList<String> storeResult;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +52,17 @@ public class SwipeGenre extends AppCompatActivity {
         manager = new CardStackLayoutManager(this, new CardStackListener() {
             @Override
             public void onCardDragging(Direction direction, float ratio) {
-                Log.d(TAG, "onCardDragging: d=" + direction.name() + " ratio=" + ratio);
+                Log.d("one", "onCardDragging: d=" + direction.name() + " ratio=" + ratio);
+                position= manager.getTopPosition();
             }
 
             @Override
             public void onCardSwiped(Direction direction) {
-                Log.d(TAG, "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
+                Log.d("one", "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
                 if (direction == Direction.Right){
                     if (direction == Direction.Right){
                         List<ItemModel> books= adapter.getItems();
-                        ItemModel book=books.get(manager.getTopPosition());
+                        ItemModel book=books.get(position);
                         Item b= new Item();
                         b.title= book.getName();
                         b.imageLink=book.getImage();

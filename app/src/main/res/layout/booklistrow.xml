@@ -29,6 +29,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="15dp"
             android:layout_marginTop="0dp"
+            android:textColor="@color/black"
             android:layout_marginEnd="60dp"
             android:layout_toEndOf="@+id/image"
             android:text="TextView" />
@@ -36,12 +37,13 @@
         <TextView
             android:id="@+id/BookAuth"
             android:layout_width="80dp"
-            android:layout_height="45dp"
+            android:layout_height="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="15dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="60dp"
+            android:textColor="@color/black"
             android:layout_toEndOf="@+id/image"
             android:text="TextView" />
 

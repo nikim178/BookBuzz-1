@@ -152,7 +152,7 @@ public class indiFragment extends Fragment  {
             public void onClick(View v) {
                 AppCompatActivity activity=(AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.wrapper,new userbooklist(documentId)).addToBackStack(null).commit();
+                        .replace(R.id.wrapper,new userbooklist(documentId, name)).addToBackStack(null).commit();
 
             }
         });
@@ -161,7 +161,7 @@ public class indiFragment extends Fragment  {
             public void onClick(View v) {
                 AppCompatActivity activity=(AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.wrapper,new userwishlist(documentId)).addToBackStack(null).commit();
+                        .replace(R.id.wrapper,new userwishlist(documentId, name)).addToBackStack(null).commit();
 
             }
         });
