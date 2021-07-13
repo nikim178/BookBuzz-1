@@ -40,42 +40,42 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="294dp"
-                    android:layout_height="188dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="18dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginRight="18dp"
                     android:fontFamily="@font/biryani"
                     android:text="@string/aboutus1"
                     android:textAlignment="center"
                     android:textColor="@color/black"
+                    android:layout_marginLeft="18dp"
                     android:textSize="14sp"
+                    android:layout_marginRight="18dp"
                     android:textStyle="bold" />
 
 
                 <TextView
                     android:id="@+id/text2"
-                    android:layout_width="302dp"
-                    android:layout_height="175dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="0dp"
                     android:fontFamily="@font/biryani"
                     android:text="@string/about_us2"
                     android:textAlignment="center"
                     android:textColor="@color/black"
+                    android:layout_marginRight="18dp"
                     android:textSize="14sp"
+                    android:layout_marginLeft="18dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/text3"
-                    android:layout_width="302dp"
-                    android:layout_height="71dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="18dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:layout_marginRight="18dp"
                     android:fontFamily="@font/biryani"
                     android:text="@string/about_us3"

@@ -24,7 +24,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="remove">hello</string>
-    <string name="aboutus1">The “Bookbuzz“ App project is an android application which will create a platform for exchanging, lending books to someone or borrowing books from someone in your neighborhood. The application’s main aim is to unite users on a platform that share a similar interest of reading and make it easier for them to borrow or lend books. In this application, users will register and login into the application and share their collection of books in the ‘Booklist’ through this app.
+    <string name="aboutus1">The “Bookbuzz“ App project is an android application which will create a platform for exchanging, lending books to someone or borrowing books from someone in your neighborhood. The application’s main aim is to unite users on a platform that share a similar interest of reading and make it easier for them to borrow or lend books. In this application, users will register and login into the application and share their collection of books through this app.
 </string>
     <string name="about_us2">
         The users may also add the books of their favorite genre that they wish to read someday in the ‘Wishlist’. The users can view the other user’s Booklists and Wishlists i.e., the collection of books the user has and what he/she wishes to read. In this application if a user wishes to read one of the books possessed by another user, he/she can send request to them to discuss their meeting details for exchanging the books.
