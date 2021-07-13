@@ -46,9 +46,13 @@
             android:theme="@style/Theme.BookBuzz.NoActionBar"
             android:parentActivityName=".HomeActivity" />
         <activity
-            android:name=".Wishlist"/>
+            android:name=".Wishlist"
+            android:parentActivityName=".HomeActivity"
+            android:label="My Wishlist"/>
         <activity
-            android:name=".Booklist"/>
+            android:name=".Booklist"
+            android:parentActivityName=".HomeActivity"
+            android:label="My Booklist"/>
         <activity
             android:name=".SearchUsers"
             android:label="Search Users"
@@ -63,7 +67,7 @@
         <activity android:name=".Startpage" />
         <activity
             android:name=".SearchBook"
-            android:parentActivityName=".HomeActivity" />
+            android:theme="@style/Theme.BookBuzz.NoActionBar" />
         <activity
             android:name=".EditProfile"
             android:parentActivityName=".Profile" />

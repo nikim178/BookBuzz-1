@@ -1,6 +1,7 @@
 package com.example.bookbuzz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,8 +53,9 @@ public class SearchBook extends AppCompatActivity implements View.OnClickListene
 
         //private UserViewModel mUserViewModel;
         EditText _mSearch;
-        Button _mButton;
+        ImageView _mButton;
         ListView _mSearchResultList;
+        ImageView backArrow;
         ArrayAdapter<BookItem> _mBookListAdapter;
 
         @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
@@ -76,6 +78,13 @@ public class SearchBook extends AppCompatActivity implements View.OnClickListene
             _mButton.performClick();
             return true;
         });
+            this.backArrow = findViewById(R.id.back);
+            backArrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(SearchBook.this,HomeActivity.class));
+                }
+            });
     }
 
     @Override

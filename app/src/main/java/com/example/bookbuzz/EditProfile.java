@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -48,10 +50,14 @@ public class EditProfile extends AppCompatActivity {
     FirebaseUser user;
     StorageReference storageReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    androidx.appcompat.app.ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        actionBar=getSupportActionBar();
+        ColorDrawable colorDrawable=new ColorDrawable(Color.parseColor("#62A6BF"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         setContentView(R.layout.activity_edit_profile);
 
         Intent data = getIntent();

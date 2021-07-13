@@ -18,11 +18,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Introduction extends AppCompatActivity {
     Animation anim;
     ImageView bg;
     ImageView logo;
+    private FirebaseAuth mAuth;
     TextView logoname;
     LottieAnimationView lottieAnimationView;
     private static final int numpages=3;
@@ -34,6 +37,7 @@ public class Introduction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_introduction);
+        mAuth = FirebaseAuth.getInstance();
         logoname= findViewById(R.id.logo_name);
         logo=findViewById(R.id.logo);
         lottieAnimationView=findViewById(R.id.intro);
@@ -47,7 +51,12 @@ public class Introduction extends AppCompatActivity {
         viewpager.setAdapter(pagerAdapter);
         anim = AnimationUtils.loadAnimation(this,R.anim.intro);
         viewpager.startAnimation(anim);
+        FirebaseUser firebaseUser=mAuth.getCurrentUser();
+        if(firebaseUser!=null)
+        {
+            startActivity(new Intent(Introduction.this,HomeActivity.class));
 
+        }
     }
     public void skip(View view){
         Intent i= new Intent(this, UserLogin2.class);

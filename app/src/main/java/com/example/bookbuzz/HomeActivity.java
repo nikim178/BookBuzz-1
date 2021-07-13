@@ -87,7 +87,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         actionBar=getSupportActionBar();
         ColorDrawable colorDrawable=new ColorDrawable(Color.parseColor("#62A6BF"));
         actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>BookBuzz </font>"));
+        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Home </font>"));
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_home2 );
         drawerLayout = ( DrawerLayout ) findViewById ( R.id.drawer );
