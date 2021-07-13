@@ -13,7 +13,7 @@
         android:layout_height="900dp"
         android:scaleType="centerCrop"
         android:elevation="2dp"
-        android:src="@drawable/newbg"
+        android:src="@drawable/bg_pastel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -41,8 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="serif"
-        android:text="BOOKBUZZ"
-        android:textColor="@color/black"
+        android:layout_marginTop="50dp"
+        android:text="WELCOME\n        TO \nBOOKBUZZ"
+        android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold|italic"
         android:elevation="2dp"
@@ -65,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintVertical_bias="0.427"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/intro1" />
+        app:lottie_rawRes="@raw/bookst" />
 
     <com.cuberto.liquid_swipe.LiquidPager
         android:id="@+id/liquidpager"
