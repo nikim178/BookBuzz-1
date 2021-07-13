@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -34,7 +35,7 @@ import static com.squareup.picasso.Picasso.*;
 import static java.lang.System.load;
 
 public class Profile extends AppCompatActivity {
-    private ImageButton eprofile;
+    private FloatingActionButton eprofile;
     private TextView name, email,location,bio,zipcode;
     FirebaseAuth fAuth;
     StorageReference storageReference;

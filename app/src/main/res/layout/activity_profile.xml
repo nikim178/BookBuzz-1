@@ -91,18 +91,19 @@
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageButton"
-        android:layout_width="61dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="312dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="#BCB5BD"
         android:contentDescription="@string/edit_text"
-        android:tint="#000000"
+        android:background="#BCB5BD"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:srcCompat="@drawable/editbutton2" />
 
     <TextView
         android:id="@+id/TextView5"
