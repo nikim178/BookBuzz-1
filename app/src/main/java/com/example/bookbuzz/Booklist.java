@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -44,10 +46,14 @@ public class Booklist extends AppCompatActivity {
     FirebaseFirestore firestore;
     FirestoreRecyclerAdapter adapter;
     String userId;
+    androidx.appcompat.app.ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        actionBar=getSupportActionBar();
+        ColorDrawable colorDrawable=new ColorDrawable(Color.parseColor("#62A6BF"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         setContentView(R.layout.activity_booklist);
         list=findViewById(R.id.list);
         firestore=FirebaseFirestore.getInstance();

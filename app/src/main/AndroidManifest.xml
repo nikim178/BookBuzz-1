@@ -70,12 +70,15 @@
             android:theme="@style/Theme.BookBuzz.NoActionBar" />
         <activity
             android:name=".EditProfile"
+            android:label="Edit Profile"
             android:parentActivityName=".Profile" />
         <activity
             android:name=".Profile"
+            android:label="Your Profile"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".Help"
+            android:label="About Us"
             android:parentActivityName=".HomeActivity" />
         <activity android:name=".Home" />
         <activity android:name=".UserLogin" />
